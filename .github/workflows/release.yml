@@ -1,0 +1,59 @@
+name: release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Lint
+        run: python3 skills/black-iris/scripts/universal/check.py
+
+      - name: Version matches the tag everywhere
+        run: |
+          VER="${GITHUB_REF_NAME#v}"
+          echo "tag version: $VER"
+          fail=0
+          for f in .claude-plugin/plugin.json .codex-plugin/plugin.json kimi.plugin.json qwen-extension.json gemini-extension.json package.json; do
+            v=$(python3 -c "import json,sys; print(json.load(open(sys.argv[1]))['version'])" "$f")
+            [ "$v" = "$VER" ] || { echo "$f says $v"; fail=1; }
+          done
+          grep -qE "^## \[?$VER\]?( |$)" .github/CHANGELOG.md || { echo "no ## $VER section in .github/CHANGELOG.md"; fail=1; }
+          exit $fail
+
+      - name: Release notes from the changelog
+        run: |
+          VER="${GITHUB_REF_NAME#v}"
+          awk -v v="$VER" '
+            $0 ~ "^## \\[?"v"\\]?" {p=1; next}
+            p && /^## / {exit}
+            p {print}
+          ' .github/CHANGELOG.md > notes.md
+          [ -s notes.md ] || { echo "empty notes"; exit 1; }
+          printf '\nInstall: see [INSTALL.md](https://github.com/%s/blob/%s/INSTALL.md). License: GPL-2.0-only.\n' "$GITHUB_REPOSITORY" "$GITHUB_REF_NAME" >> notes.md
+          cat notes.md
+
+      - name: Build the skill archive
+        run: |
+          VER="${GITHUB_REF_NAME#v}"
+          (cd skills && zip -qr "../black-iris-skill-$VER.zip" black-iris -x '*/__pycache__/*')
+          sha256sum "black-iris-skill-$VER.zip" | tee "black-iris-skill-$VER.zip.sha256"
+
+      - name: Publish the GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          VER="${GITHUB_REF_NAME#v}"
+          gh release create "$GITHUB_REF_NAME" \
+            --title "black-iris $VER" \
+            --notes-file notes.md \
+            --verify-tag \
+            "black-iris-skill-$VER.zip" "black-iris-skill-$VER.zip.sha256" \
+            .github/assets/readme/logo.png

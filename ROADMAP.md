@@ -4,21 +4,19 @@ Versions, not dates. Every item names its files and ends in a done-when that
 a script or a person can check. What shipped is in `.github/CHANGELOG.md`;
 this file only looks forward.
 
-## 1.0.1: CI green before the first public tag
+## 1.0.1: the release a clean machine installs is the release CI tested
 
-Goal: the release a clean machine installs is the release CI tested.
+CI is green on ubuntu, macos, and windows, and `v1.0.0` is tagged and
+released by `.github/workflows/release.yml`, which lints, checks that every
+manifest carries the tag's version, zips the skill, and publishes the
+changelog section as the notes.
 
-1. **First green run.** `.github/workflows/check.yml` exists and has never
-   run. It lints on ubuntu and macos with `universal/check.py` and the bash
-   lint, dry-runs the hook, parses every manifest, and runs `check.ps1` and
-   `install.ps1` on windows-latest. The PowerShell scripts were written on a
-   machine without pwsh. A red runner is fixed in the script that failed.
-   Done when one run on the release commit is green on all three runners.
-2. **Publish.** Push, tag `v1.0.1`, write the entry in `.github/CHANGELOG.md`.
-   On a machine with no prior copy, verify the Claude Code plugin route and
-   the Codex route from `INSTALL.md`. The other routes wait for the users
-   who file issues; `INSTALL.md` cites each agent's own docs, not a test.
-   Done when both routes install and the "Verify it works" step passes.
+1. **Verify two routes on a clean machine.** With no prior copy, install the
+   Claude Code plugin route and the Codex route from `INSTALL.md`. The other
+   routes wait for the users who file issues; `INSTALL.md` cites each agent's
+   own docs, not a test.
+   Done when both routes install, the "Verify it works" step passes, and the
+   result is a line in `.github/CHANGELOG.md` under 1.0.1.
 
 ## 1.1.0: measured
 

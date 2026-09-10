@@ -58,6 +58,13 @@ HOME=$H CLAUDE_PLUGIN_ROOT=$PWD sh hooks/reinject.sh | head -5
   verify, update, uninstall, and where the always-on snippet goes. Cite the
   agent's own docs; do not infer commands.
 
+## Releases
+
+Bump `version` in every root manifest and add a `## x.y.z - date` section to
+`.github/CHANGELOG.md`, then tag: `git tag -a vx.y.z -m "black-iris x.y.z" &&
+git push origin vx.y.z`. The release workflow refuses a tag whose version is
+missing from any manifest or from the changelog.
+
 ## Commits and PRs
 
 Commit subject `type(scope): subject`, imperative, lowercase, 72 characters.
