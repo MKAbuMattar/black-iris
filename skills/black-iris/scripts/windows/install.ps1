@@ -7,8 +7,10 @@
 param([switch]$AlwaysOn, [switch]$Uninstall)
 $ErrorActionPreference = 'Stop'
 $skill = (Resolve-Path (Join-Path $PSScriptRoot '..\..')).Path
-$dest  = Join-Path $HOME ".claude\skills\$(Split-Path $skill -Leaf)"
-$flag  = Join-Path $HOME '.BLACK_IRIS_AGENTS\always-on'
+# Honor HOME when set (CI, MSYS, a custom profile); fall back to the PowerShell profile dir.
+$homeDir = if ($env:HOME) { $env:HOME } else { $HOME }
+$dest  = Join-Path $homeDir ".claude\skills\$(Split-Path $skill -Leaf)"
+$flag  = Join-Path $homeDir '.BLACK_IRIS_AGENTS\always-on'
 function Remove-Dest {
   if (-not (Test-Path $dest)) { return }
   $item = Get-Item $dest
