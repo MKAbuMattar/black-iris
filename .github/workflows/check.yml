@@ -12,7 +12,7 @@ jobs:
         os: [ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Python lint
         run: python3 skills/black-iris/scripts/universal/check.py
       - name: Bash lint
@@ -46,7 +46,7 @@ jobs:
   windows:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Python lint
         run: python skills/black-iris/scripts/universal/check.py
       - name: PowerShell lint
