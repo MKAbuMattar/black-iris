@@ -1,0 +1,227 @@
+{
+  "terminal.integrated.defaultProfile.linux": "zsh",
+  "chat.useAgentSkills": true,
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "files.encoding": "utf8",
+  "files.associations": {
+    "CODEOWNERS": "ignore",
+    "LICENSE": "plaintext",
+    "*.cfg.toml": "toml",
+    "SKILL.md": "markdown"
+  },
+  "files.exclude": {
+    "**/__pycache__": true
+  },
+  "search.exclude": {
+    "__TMP__/**": true,
+    ".github/assets/readme/*.svg": true
+  },
+  "files.watcherExclude": {
+    "__TMP__/**": true
+  },
+  "editor.formatOnSave": false,
+  "editor.wordWrap": "off",
+  "editor.rulers": [
+    80
+  ],
+  "editor.unicodeHighlight.nonBasicASCII": true,
+  "editor.unicodeHighlight.ambiguousCharacters": true,
+  "editor.unicodeHighlight.allowedLocales": {
+    "ar": true,
+    "es": true
+  },
+  "explorer.compactFolders": false,
+  "[markdown]": {
+    "editor.formatOnSave": false,
+    "editor.wordWrap": "bounded",
+    "editor.wordWrapColumn": 80,
+    "editor.rulers": [
+      80
+    ],
+    "editor.quickSuggestions": {
+      "other": false,
+      "comments": false,
+      "strings": false
+    }
+  },
+  "markdownlint.config": {
+    "MD013": {
+      "line_length": 80,
+      "tables": false,
+      "code_blocks": false
+    },
+    "MD033": false,
+    "MD041": false,
+    "MD024": {
+      "siblings_only": true
+    }
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2
+  },
+  "json.schemas": [
+    {
+      "fileMatch": [
+        "hooks/hooks.json"
+      ],
+      "url": "https://json.schemastore.org/claude-code-settings.json"
+    }
+  ],
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2
+  },
+  "yaml.schemas": {
+    "https://json.schemastore.org/github-workflow.json": ".github/workflows/*.yml",
+    "https://json.schemastore.org/github-issue-forms.json": ".github/ISSUE_TEMPLATE/*.yml",
+    "https://json.schemastore.org/github-issue-config.json": ".github/ISSUE_TEMPLATE/config.yml"
+  },
+  "[shellscript]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2
+  },
+  "shellformat.flag": "-i 2 -ci -bn",
+  "shellcheck.enable": true,
+  "shellcheck.run": "onSave",
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 4
+  },
+  "ruff.lineLength": 100,
+  "[powershell]": {
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2
+  },
+  "powershell.codeFormatting.preset": "OTBS",
+  "[toml]": {
+    "editor.defaultFormatter": "tamasfe.even-better-toml",
+    "editor.formatOnSave": true
+  },
+  "[svg]": {
+    "editor.formatOnSave": false,
+    "editor.wordWrap": "off"
+  },
+  "svg.preview.mode": "svg",
+  "todohighlight.keywords": [
+    {
+      "text": "TODO:",
+      "color": "#fff",
+      "backgroundColor": "#ffbd2a",
+      "overviewRulerColor": "rgba(255,189,42,0.8)"
+    },
+    {
+      "text": "FIXME:",
+      "color": "#fff",
+      "backgroundColor": "#f06292",
+      "overviewRulerColor": "rgba(240,98,146,0.8)"
+    },
+    {
+      "text": "DEBUG:",
+      "color": "#fff",
+      "backgroundColor": "#f44336",
+      "overviewRulerColor": "rgba(244,67,54,0.8)"
+    },
+    {
+      "text": "REVIEW:",
+      "color": "#fff",
+      "backgroundColor": "#4caf50",
+      "overviewRulerColor": "rgba(76,175,80,0.8)"
+    },
+    {
+      "text": "TESTED:",
+      "color": "#fff",
+      "backgroundColor": "#2196f3",
+      "overviewRulerColor": "rgba(33,150,243,0.8)"
+    },
+    {
+      "text": "NOTE:",
+      "color": "#fff",
+      "backgroundColor": "#9e9e9e",
+      "overviewRulerColor": "rgba(158,158,158,0.8)"
+    },
+    {
+      "text": "INFO:",
+      "color": "#fff",
+      "backgroundColor": "#009688",
+      "overviewRulerColor": "rgba(0,150,136,0.8)"
+    },
+    {
+      "text": "DONE:",
+      "color": "#fff",
+      "backgroundColor": "#7e57c2",
+      "overviewRulerColor": "rgba(126,87,194,0.8)"
+    },
+    {
+      "text": "ponytail:",
+      "color": "#fff",
+      "backgroundColor": "#2B2233",
+      "overviewRulerColor": "rgba(43,34,51,0.8)"
+    }
+  ],
+  "todo-tree.general.tags": [
+    "TODO",
+    "FIXME",
+    "DEBUG",
+    "REVIEW",
+    "TESTED",
+    "NOTE",
+    "INFO",
+    "DONE",
+    "ponytail"
+  ],
+  "todo-tree.highlights.customHighlight": {
+    "TODO": {
+      "icon": "check-circle",
+      "iconColour": "#ffbd2a"
+    },
+    "FIXME": {
+      "icon": "flame",
+      "iconColour": "#f06292"
+    },
+    "DEBUG": {
+      "icon": "bug",
+      "iconColour": "#f44336"
+    },
+    "REVIEW": {
+      "icon": "eye",
+      "iconColour": "#4caf50"
+    },
+    "TESTED": {
+      "icon": "check",
+      "iconColour": "#2196f3"
+    },
+    "NOTE": {
+      "icon": "info",
+      "iconColour": "#9e9e9e"
+    },
+    "INFO": {
+      "icon": "info",
+      "iconColour": "#009688"
+    },
+    "DONE": {
+      "icon": "check-circle",
+      "iconColour": "#7e57c2"
+    },
+    "ponytail": {
+      "icon": "tag",
+      "iconColour": "#D9A36A"
+    }
+  },
+  "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
+  "todo-tree.filtering.excludeGlobs": [
+    "**/__TMP__/**",
+    "**/.git/**"
+  ]
+}

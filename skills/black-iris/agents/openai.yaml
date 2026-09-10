@@ -1,0 +1,6 @@
+interface:
+  display_name: "Black Iris"
+  short_description: "Eleven disciplines for a coding agent in one skill"
+  default_prompt: "Use $black-iris for this task."
+policy:
+  allow_implicit_invocation: true

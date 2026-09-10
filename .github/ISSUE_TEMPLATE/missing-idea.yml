@@ -1,0 +1,29 @@
+name: Something is missing
+description: A tell, trap, technique, or install route that should be in the skill.
+labels: [gap]
+body:
+  - type: input
+    id: source
+    attributes:
+      label: Where it comes from
+      description: A source skill, a paper, a doc page, or your own incident.
+    validations:
+      required: true
+  - type: input
+    id: where
+    attributes:
+      label: Where it belongs
+      placeholder: references/gates.md, "Author gates that can fail"
+    validations:
+      required: true
+  - type: textarea
+    id: text
+    attributes:
+      label: Proposed text
+      description: At most three sentences in the skill's plain style. No em dashes, no AI vocabulary.
+    validations:
+      required: true
+  - type: textarea
+    id: cut
+    attributes:
+      label: If it adds a line to SKILL.md, which line goes

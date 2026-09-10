@@ -1,0 +1,45 @@
+name: A rule misbehaved
+description: The model read a rule wrong, ignored it, or the rule contradicts another.
+labels: [rule]
+body:
+  - type: input
+    id: agent
+    attributes:
+      label: Agent and version
+      placeholder: Claude Code 2.x, Codex, dsh, ...
+    validations:
+      required: true
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Mode
+      options: [Shape, Build, Deslop, Gates, Ideate, Prompt, Memory, Ship, Name, Review, Diagram, Hook or install]
+    validations:
+      required: true
+  - type: textarea
+    id: rule
+    attributes:
+      label: The rule, quoted
+      description: File and section, then the exact text.
+    validations:
+      required: true
+  - type: textarea
+    id: prompt
+    attributes:
+      label: Your prompt
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: What the model did
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true

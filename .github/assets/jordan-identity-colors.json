@@ -1,0 +1,131 @@
+{
+  "id": 1,
+  "uuid": "0e472fa1-f5b0-4130-8483-78e06b4d12ab",
+  "key": "jordanian-identity-colors",
+  "name": "Jordanian Identity Colors",
+  "name_ar": "ألوان الهوية الأردنية",
+  "description_en": "A color palette of 10 tones drawn from Jordan's landscapes, culture, and heritage.",
+  "description_ar": "لوحة ألوان مكونة من 10 درجات مستوحاة من طبيعة الأردن وثقافته وتراثه.",
+  "colors": [
+    {
+      "id": 1,
+      "uuid": "807f6281-cbe3-48bd-8580-1a7e6fffcc55",
+      "key": "wadi-rum-sand",
+      "name": "Wadi Rum Sand",
+      "name_ar": "رمال وادي رم",
+      "description_en": "The warm golden-tan of the dunes in Wadi Rum, Jordan's iconic desert landscape.",
+      "description_ar": "اللون الذهبي الدافئ لكثبان وادي رم، أيقونة الصحراء الأردنية.",
+      "hex": "#D9A36A",
+      "rgb": {"r": 217, "g": 163, "b": 106},
+      "cmyk": {"c": 0, "m": 25, "y": 51, "k": 15}
+    },
+    {
+      "id": 2,
+      "uuid": "4c375a6f-473f-4ac2-8063-5b53aaf29f96",
+      "key": "dead-sea-blue",
+      "name": "Dead Sea Blue",
+      "name_ar": "أزرق البحر الميت",
+      "description_en": "A deep teal-blue drawn from the mineral-rich waters of the Dead Sea.",
+      "description_ar": "لون أزرق مخضر عميق مستوحى من مياه البحر الميت الغنية بالمعادن.",
+      "hex": "#2F5D6B",
+      "rgb": {"r": 47, "g": 93, "b": 107},
+      "cmyk": {"c": 56, "m": 13, "y": 0, "k": 58}
+    },
+    {
+      "id": 3,
+      "uuid": "dd5145ac-1426-4a8f-b335-651517996f86",
+      "key": "black-iris",
+      "name": "Black Iris",
+      "name_ar": "السوسنة السوداء",
+      "description_en": "A deep, dark plum named after Jordan's national flower, the black iris.",
+      "description_ar": "لون بنفسجي داكن مستوحى من زهرة السوسن الأسود، الزهرة الوطنية للأردن.",
+      "hex": "#2B2233",
+      "rgb": {"r": 43, "g": 34, "b": 51},
+      "cmyk": {"c": 16, "m": 33, "y": 0, "k": 80}
+    },
+    {
+      "id": 4,
+      "uuid": "a73208af-0866-4ea0-8ba4-3356726d2106",
+      "key": "olive-green",
+      "name": "Olive Green",
+      "name_ar": "زيتون أردني",
+      "description_en": "A muted green representing Jordan's olive groves, a staple of the local landscape and economy.",
+      "description_ar": "لون أخضر هادئ يمثل بساتين الزيتون الأردنية، أساس المشهد الطبيعي والاقتصاد المحلي.",
+      "hex": "#6B7A4F",
+      "rgb": {"r": 107, "g": 122, "b": 79},
+      "cmyk": {"c": 12, "m": 0, "y": 35, "k": 52}
+    },
+    {
+      "id": 5,
+      "uuid": "a1f6c1aa-836e-41dc-8ce8-58a627c9596b",
+      "key": "keffiyeh-red",
+      "name": "Keffiyeh Red",
+      "name_ar": "أحمر الشماغ",
+      "description_en": "The bold red of the traditional Jordanian keffiyeh (shemagh), a symbol of heritage and identity.",
+      "description_ar": "اللون الأحمر الجريء للشماغ الأردني التقليدي، رمز التراث والهوية.",
+      "hex": "#8B1E2D",
+      "rgb": {"r": 139, "g": 30, "b": 45},
+      "cmyk": {"c": 0, "m": 78, "y": 68, "k": 45}
+    },
+    {
+      "id": 6,
+      "uuid": "dc4a05b7-9921-44f2-b4e6-91d89f6572d5",
+      "key": "petra-rose",
+      "name": "Petra Rose",
+      "name_ar": "وردي البتراء",
+      "description_en": "The soft rose-pink of Petra's sandstone cliffs, home to the ancient Nabataean city.",
+      "description_ar": "اللون الوردي الناعم لصخور البتراء الرملية، موطن المدينة النبطية القديمة.",
+      "hex": "#C76B6B",
+      "rgb": {"r": 199, "g": 107, "b": 107},
+      "cmyk": {"c": 0, "m": 46, "y": 46, "k": 22}
+    },
+    {
+      "id": 7,
+      "uuid": "375e8a83-12a5-4d30-8d39-9d7a1921d75f",
+      "key": "desert-camel",
+      "name": "Desert Camel",
+      "name_ar": "لون الهجن",
+      "description_en": "A warm tan taken from the coat of the desert camel, a lasting symbol of Bedouin life.",
+      "description_ar": "لون بني دافئ مستوحى من فراء الجمل الصحراوي، رمز خالد للحياة البدوية.",
+      "hex": "#B9875E",
+      "rgb": {"r": 185, "g": 135, "b": 94},
+      "cmyk": {"c": 0, "m": 27, "y": 49, "k": 27}
+    },
+    {
+      "id": 8,
+      "uuid": "8c247f0e-d091-44e7-8a89-8f2786a100d6",
+      "key": "amman-stone",
+      "name": "Amman Stone",
+      "name_ar": "حجر عمان القديم",
+      "description_en": "The pale beige of the limestone used throughout old Amman's historic buildings and staircases.",
+      "description_ar": "اللون البيج الفاتح للحجر الجيري المستخدم في مباني ودرج عمان القديمة.",
+      "hex": "#D9C9B0",
+      "rgb": {"r": 217, "g": 201, "b": 176},
+      "cmyk": {"c": 0, "m": 7, "y": 19, "k": 15}
+    },
+    {
+      "id": 9,
+      "uuid": "6bc50ba5-a882-4b5c-be6f-7783e265c904",
+      "key": "salt-white",
+      "name": "Salt White",
+      "name_ar": "ملح الأردن",
+      "description_en": "An off-white drawn from the crystallized salt formations along the shores of the Dead Sea.",
+      "description_ar": "لون أبيض مائل للبيج مستوحى من تكوينات الملح المتبلورة على شواطئ البحر الميت.",
+      "hex": "#EAE6DB",
+      "rgb": {"r": 234, "g": 230, "b": 219},
+      "cmyk": {"c": 0, "m": 2, "y": 6, "k": 8}
+    },
+    {
+      "id": 10,
+      "uuid": "5a8de4c6-6cdd-4f69-8626-73941be5b9cb",
+      "key": "basalt-black",
+      "name": "Basalt Black",
+      "name_ar": "بازلت الحرة",
+      "description_en": "A deep charcoal-grey inspired by the volcanic basalt rock of Jordan's Harrat desert.",
+      "description_ar": "لون رمادي داكن مستوحى من صخور البازلت البركانية في حرة الأردن.",
+      "hex": "#3C3C3C",
+      "rgb": {"r": 60, "g": 60, "b": 60},
+      "cmyk": {"c": 0, "m": 0, "y": 0, "k": 76}
+    }
+  ]
+}

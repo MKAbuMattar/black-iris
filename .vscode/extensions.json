@@ -1,0 +1,19 @@
+{
+  "recommendations": [
+    "anthropic.claude-code",
+    "davidanson.vscode-markdownlint",
+    "bierner.markdown-preview-github-styles",
+    "redhat.vscode-yaml",
+    "foxundermoon.shell-format",
+    "timonwong.shellcheck",
+    "ms-python.python",
+    "charliermarsh.ruff",
+    "ms-vscode.powershell",
+    "tamasfe.even-better-toml",
+    "jock.svg",
+    "usernamehw.errorlens",
+    "aaron-bond.better-comments",
+    "wayou.vscode-todo-highlight",
+    "Gruntfuggly.todo-tree"
+  ]
+}

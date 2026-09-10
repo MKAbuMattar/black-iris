@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace-manifest.json",
+  "name": "black-iris",
+  "owner": {
+    "name": "Mohammad Abu Mattar",
+    "url": "https://github.com/MKAbuMattar"
+  },
+  "description": "Install black-iris as a Claude Code plugin.",
+  "plugins": [
+    {
+      "name": "black-iris",
+      "source": "./",
+      "description": "ADHD-shaped responses, AI-tell removal, surgical builds, completion gates, isolated ideation, prompt writing, memory consolidation, commit text, naming, and diff review in one skill.",
+      "license": "GPL-2.0-only",
+      "category": "productivity",
+      "icon": "./.github/assets/readme/logo-mark.svg"
+    }
+  ]
+}

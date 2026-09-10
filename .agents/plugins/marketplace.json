@@ -1,0 +1,22 @@
+{
+  "name": "black-iris",
+  "interface": {
+    "displayName": "Black Iris",
+    "logo": "./.github/assets/readme/logo.png"
+  },
+  "plugins": [
+    {
+      "name": "black-iris",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/MKAbuMattar/black-iris.git",
+        "ref": "main"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

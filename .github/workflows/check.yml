@@ -1,0 +1,58 @@
+name: check
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  lint:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Python lint
+        run: python3 skills/black-iris/scripts/universal/check.py
+      - name: Bash lint
+        run: bash skills/black-iris/scripts/${{ matrix.os == 'macos-latest' && 'mac' || 'linux' }}/check.sh
+      - name: Manifests parse
+        run: |
+          for f in .claude-plugin/*.json .codex-plugin/*.json .agents/plugins/*.json hooks/hooks.json *.json; do
+            python3 -c "import json,sys; json.load(open(sys.argv[1]))" "$f" && echo "ok $f"
+          done
+      - name: Hook dry run
+        run: |
+          H=$(mktemp -d); mkdir -p "$H/.BLACK_IRIS_AGENTS/projects/-p/memory"
+          echo '- [t](a.md) - h' > "$H/.BLACK_IRIS_AGENTS/projects/-p/memory/MEMORY.md"
+          test -z "$(HOME=$H CLAUDE_PLUGIN_ROOT=$PWD sh hooks/reinject.sh)" || { echo "hook printed without the flag"; exit 1; }
+          touch "$H/.BLACK_IRIS_AGENTS/always-on"
+          out=$(HOME=$H CLAUDE_PLUGIN_ROOT=$PWD CLAUDE_PROJECT_DIR=/p sh hooks/reinject.sh)
+          echo "$out" | grep -q 'black-iris skill root' || { echo "no root line"; exit 1; }
+          echo "$out" | grep -q '| Always on: every response |' || { echo "no body"; exit 1; }
+          echo "$out" | grep -q '\[t\](a.md)' || { echo "no memory index"; exit 1; }
+      - name: Hook fallbacks (no plugin root, no project dir)
+        run: |
+          H=$(mktemp -d); mkdir -p "$H/.BLACK_IRIS_AGENTS"; touch "$H/.BLACK_IRIS_AGENTS/always-on"
+          P=$(mktemp -d); git -C "$P" init -q; slug=$(printf '%s' "$P" | tr '/' '-')
+          mkdir -p "$H/.BLACK_IRIS_AGENTS/projects/$slug/memory"; echo '- [fb](b.md) - h' > "$H/.BLACK_IRIS_AGENTS/projects/$slug/memory/MEMORY.md"
+          out=$(cd "$P/." && env -u CLAUDE_PLUGIN_ROOT -u CLAUDE_PROJECT_DIR HOME=$H sh "$GITHUB_WORKSPACE/hooks/reinject.sh")
+          echo "$out" | grep -q 'black-iris skill root' || { echo "script-relative root failed"; exit 1; }
+          echo "$out" | grep -q '\[fb\](b.md)' || { echo "git-toplevel slug failed"; exit 1; }
+
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Python lint
+        run: python skills/black-iris/scripts/universal/check.py
+      - name: PowerShell lint
+        run: pwsh skills/black-iris/scripts/windows/check.ps1
+      - name: Installer dry run
+        shell: pwsh
+        run: |
+          $env:HOME = New-Item -ItemType Directory -Path (Join-Path $env:RUNNER_TEMP 'home') | Select-Object -ExpandProperty FullName
+          pwsh skills/black-iris/scripts/windows/install.ps1 -AlwaysOn
+          if (-not (Test-Path (Join-Path $env:HOME '.claude/skills/black-iris'))) { throw 'not installed' }
+          pwsh skills/black-iris/scripts/windows/install.ps1 -Uninstall

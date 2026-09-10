@@ -1,0 +1,66 @@
+# Working on black-iris
+
+This repo is a prompt-only skill. The product is `skills/black-iris/SKILL.md`
+and the nine files under `skills/black-iris/references/`. Everything else is
+packaging.
+
+## Before you edit
+
+1. Read `skills/black-iris/SKILL.md` in full. It is 200 lines by design.
+2. Read the one reference file your change touches, not all nine.
+3. Invoke the skill on yourself. Its Shape, Build, and Cut list rules apply to
+   every reply and every file you write here.
+
+## Hard constraints
+
+- `SKILL.md` stays at or under 200 lines and about 5,000 tokens. To add a
+  line, cut a line. Mode detail belongs in a reference file with a row in the
+  routing table; `references/evals.md` is the one maintainer document there
+  and is reached from the closing line instead.
+- Every file under `skills/` and `hooks/` is pure ASCII. No em or en dash, no
+  curly quote. The lint fails otherwise.
+- Deslop pattern numbers are stable ids. Never renumber or reuse one; a
+  removed pattern leaves a gap.
+- Per-project files go under `~/.BLACK_IRIS_AGENTS/projects/<slug>/`. Never
+  write to `~/.claude` or `/tmp` from the skill or the hook.
+- The hook stays fail-open: it exits 0 on every path and runs only when the
+  flag file exists.
+- No AI attribution anywhere: no Co-Authored-By naming a model, no "Generated
+  with", in commits, PRs, or docs. This is Cut list rule 10 and it applies to
+  this repo's own history.
+
+## After you edit
+
+```bash
+python3 skills/black-iris/scripts/universal/check.py   # lint, exit 0 or fail
+bash skills/black-iris/scripts/linux/check.sh          # same checks in bash
+```
+
+Both must print `clean`. If you changed a count the lint asserts (Shape 10,
+Build 5, Cut list 10, 15 ideate frames), update the assertion in all three
+check scripts: `universal/check.py`, `linux/check.sh`, `windows/check.ps1`.
+
+If you changed the hook, dry-run it with a scratch home:
+
+```bash
+H=$(mktemp -d); mkdir -p "$H/.BLACK_IRIS_AGENTS"; touch "$H/.BLACK_IRIS_AGENTS/always-on"
+HOME=$H CLAUDE_PLUGIN_ROOT=$PWD sh hooks/reinject.sh | head -5
+```
+
+## Keep in sync
+
+- A change to the skill's description goes to `SKILL.md` only. The root
+  manifests carry a one-line summary, not the trigger list.
+- A new mode needs: a routing-table row, a reference file named in that row,
+  and a handoff paragraph only if the mode has a hard rule the model must
+  know before reading the file.
+- A new agent install route goes in `INSTALL.md` with install, invoke,
+  verify, update, uninstall, and where the always-on snippet goes. Cite the
+  agent's own docs; do not infer commands.
+
+## Commits and PRs
+
+Commit subject `type(scope): subject`, imperative, lowercase, 72 characters.
+A body when the why is not in the diff, when you rejected an approach a reader
+would retry, or when it breaks something. The PR template asks four questions;
+answer them and stop. Full contract: `skills/black-iris/references/ship.md`.

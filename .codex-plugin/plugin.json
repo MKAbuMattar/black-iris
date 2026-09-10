@@ -1,0 +1,43 @@
+{
+  "name": "black-iris",
+  "version": "1.0.0",
+  "description": "ADHD-shaped responses, AI-tell removal, surgical builds, completion gates, isolated ideation, prompt writing, memory consolidation, commit text, naming, and diff review in one skill.",
+  "author": {
+    "name": "Mohammad Abu Mattar",
+    "url": "https://github.com/MKAbuMattar"
+  },
+  "homepage": "https://github.com/MKAbuMattar/black-iris",
+  "repository": "https://github.com/MKAbuMattar/black-iris",
+  "license": "GPL-2.0-only",
+  "keywords": [
+    "adhd",
+    "output-style",
+    "deslop",
+    "gates",
+    "ideation",
+    "prompting",
+    "memory",
+    "skills",
+    "codex"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Black Iris",
+    "shortDescription": "Eleven disciplines for a coding agent in one skill",
+    "longDescription": "ADHD-shaped responses, AI-tell removal, surgical builds, completion gates, isolated ideation, prompt writing, memory consolidation, commit text, naming, and diff review in one skill.",
+    "developerName": "Mohammad Abu Mattar",
+    "category": "Productivity",
+    "capabilities": [
+      "Instructions"
+    ],
+    "websiteURL": "https://github.com/MKAbuMattar/black-iris",
+    "defaultPrompt": [
+      "Use $black-iris for this task.",
+      "Use $black-iris to deslop this text.",
+      "Use $black-iris gates before starting this work."
+    ],
+    "logo": "./.github/assets/readme/logo.png",
+    "composerIcon": "./.github/assets/readme/logo.png",
+    "brandColor": "#2B2233"
+  }
+}
