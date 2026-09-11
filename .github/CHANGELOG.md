@@ -3,6 +3,22 @@
 Format follows Keep a Changelog. Entries are written for someone deciding
 whether to upgrade.
 
+## 1.1.0 - 2026-09-11
+
+### Changed
+
+- Memory now records how well each entry was checked. An episode is what
+  happened on one dated occasion, a semantic entry is the claim that outlived
+  the occasion, and a playbook is written only after you have run its steps
+  and a check passed. A claim moves up a level on a second sighting, so one
+  guess can no longer end up filed as a procedure that a later session runs.
+- Memory is harvested when the knowledge appears: after a check passes, after
+  a user correction, after a decision closes. The previous end-of-session
+  harvest lost that detail to compaction before anything was written.
+- Entries written before this release carry no class. The consolidation pass
+  adds one the next time it runs over them. Nothing migrates a store on its
+  own, and no entry is deleted for lacking a class.
+
 ## 1.0.0 - 2026-09-10
 
 ### Added
