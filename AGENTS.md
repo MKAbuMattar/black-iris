@@ -6,7 +6,7 @@ packaging.
 
 ## Before you edit
 
-1. Read `skills/black-iris/SKILL.md` in full. It is 200 lines by design.
+1. Read `skills/black-iris/SKILL.md` in full. It is about 12 KB by design.
 2. Read the one reference file your change touches, not all ten.
 3. Invoke the skill on yourself. Its Shape, Build, and Cut list rules apply to
    every reply and every file you write here.

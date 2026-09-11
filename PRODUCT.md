@@ -29,8 +29,9 @@ that can live in a prompt in one folder and drops the rest.
   it works in every harness that reads `SKILL.md`.
 - Not a diagram tool, a linter, or a memory database. It defers to a diagram
   skill for diagrams and uses a plain folder of markdown for memory.
-- Not measured. No benchmark is claimed. `references/evals.md` says how to
-  run an honest one.
+- Not measured. No benchmark is claimed. The harness is in `evals/`: 54 cases,
+  a rubric, and a runner. `evals/RESULTS.md` stays deliberately empty until
+  someone runs it and names every failed case.
 
 ## Principles
 
