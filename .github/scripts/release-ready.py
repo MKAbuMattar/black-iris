@@ -73,6 +73,27 @@ if plugin_manifest.exists():
             hit(".claude-plugin/plugin.json declares the standard hooks/hooks.json; "
                 "Claude Code loads it automatically and the duplicate stops the plugin loading")
 
+# Cut list items 1 and 9, on the documents a reader actually opens. The skill
+# lint enforces pure ASCII, but only across skills/ and hooks/, so the prose
+# that sells and explains the project was never held to the rules it sells.
+# Full ASCII cannot extend here: the Arabic and Spanish files need their own
+# alphabets. Dashes and curly quotes are alphabet-independent, so those do.
+PROSE = ["README.md", "INSTALL.md", "DESIGN.md", "PRODUCT.md", "ROADMAP.md",
+         "AGENTS.md", "CLAUDE.md", "GEMINI.md", ".github/CHANGELOG.md",
+         ".github/CONTRIBUTING.md", ".github/SECURITY.md",
+         ".github/PULL_REQUEST_TEMPLATE.md"]
+BANNED = {"—": "em dash", "–": "en dash", "‘": "curly quote",
+          "’": "curly quote", "“": "curly quote", "”": "curly quote"}
+for rel in PROSE:
+    p = ROOT / rel
+    if not p.exists():
+        continue
+    for i, line in enumerate(p.read_text(encoding="utf-8").splitlines(), 1):
+        for ch, name in BANNED.items():
+            if ch in line:
+                hit(f"{rel}:{i}: {name} (Cut list 1 and 9)")
+                break
+
 # A tracked text file must not carry a carriage return in the committed blob.
 # One got in when an editing script detected CRLF and then wrote CRLF into
 # content that already had it, leaving \r\r\n. Git normalises CRLF but not that,
