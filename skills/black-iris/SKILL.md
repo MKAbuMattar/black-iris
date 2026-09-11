@@ -7,11 +7,12 @@ description: >
   work and refuse a false done. Fan out isolated ideation branches for an open
   design question. Humanize, deslop, or audit text. Write or fix a prompt for a
   named AI tool. Autodream: harvest episodic, semantic, and procedural memory,
-  consolidate it, find what went stale. Write a commit message, PR body, or
-  changelog entry. Name or rename an identifier. Review a diff. Use when the
-  user says "black-iris", "shape this", "deslop", "humanize", "gates",
-  "ideate", "brainstorm", "write a prompt for", "autodream", "episodic
-  memory", "clean up my memory", "commit message", "rename", "review this".
+  consolidate it, find what went stale. Keep bulk data out of the context
+  window; derive, do not dump. Write a commit message, PR body, or changelog
+  entry. Name or rename an identifier. Review a diff. Use when the user says
+  "black-iris", "shape this", "deslop", "humanize", "gates", "ideate",
+  "brainstorm", "write a prompt for", "autodream", "episodic memory", "clean
+  up my memory", "analyze this log", "commit message", "rename", "review this".
 license: GPL-2.0-only
 compatibility: any agent that reads Agent Skills; the hook is Claude Code only
 allowed-tools: [Read, Grep, Glob, Agent]
@@ -32,6 +33,7 @@ the work has to prove itself before it is called done.
 | "ideate", "brainstorm", an open design or architecture question with no canonical answer | Ideate | `references/ideate.md` |
 | Write, fix, adapt, or split a prompt for a named AI tool | Prompt | `references/prompt.md` |
 | "autodream" (all three phases), "consolidate memory", "clean up my memory", "episodic", "semantic", or "procedural" memory, "what is stale", "save what we learned", "remember how we did this", why a new session did not know something, end of a session | Memory | `references/memory.md` |
+| Analyze, count, filter, parse, or search bulk data: logs, test output, a large file, an API response, many files at once | Context | `references/context.md` |
 | Commit message, PR title or body, changelog entry | Ship | `references/ship.md` |
 | Name or rename a variable, function, file, or module | Name | `references/naming.md` |
 | Review a diff or PR someone else wrote | Review | `references/review.md` |
@@ -39,8 +41,7 @@ the work has to prove itself before it is called done.
 
 Bare `/black-iris` reads every reference once before the first reply, so all
 modes are on. `/black-iris <mode>`, or an ask naming one mode, loads only that
-reference. Per-project files live in the store, `~/.BLACK_IRIS_AGENTS/projects/<slug>/`,
-slug from the one command in memory.md. Nothing goes in `~/.claude` or `/tmp`.
+reference. Per-project files live in `~/.BLACK_IRIS_AGENTS/projects/<slug>/`, slug from the one command in memory.md. Nothing goes in `~/.claude` or `/tmp`.
 
 ## Persistence and the dial
 
@@ -195,6 +196,5 @@ playbook a check proved). One sighting writes episodic; promotion needs a
 second, and nothing demotes. Where a credential lives, never its value. Mark
 the unverifiable, delete only the proven wrong, report every false claim.
 
-Before committing a change to this skill, run `scripts/universal/check.py`,
-or the `check` script under `scripts/linux`, `scripts/mac`, or
-`scripts/windows`. To measure whether the skill works: `references/evals.md`.
+Before a commit here run `scripts/universal/check.py`, or `check` under
+`scripts/linux`, `scripts/mac`, or `scripts/windows`. Measuring: `references/evals.md`.

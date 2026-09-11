@@ -3,6 +3,19 @@
 Format follows Keep a Changelog. Entries are written for someone deciding
 whether to upgrade.
 
+## Unreleased
+
+### Added
+
+- A Context mode, for tasks that analyze, count, filter, parse, or search bulk
+  data. The agent names the answer before fetching the thing that contains it,
+  turns the question into a script, and prints the value it needs in place of
+  the corpus it came from. When a sandbox tool family is present in the
+  session, such as the `ctx_*` tools from the separate context-mode MCP
+  server, bulk work routes through it. When none is present the same
+  discipline applies with ordinary shell and file tools, so nothing has to be
+  installed for the mode to work.
+
 ## 1.1.0 - 2026-09-11
 
 ### Changed
