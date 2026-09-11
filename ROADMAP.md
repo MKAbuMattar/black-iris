@@ -17,8 +17,19 @@ as the notes.
    own docs, not a test.
    Done when both routes install, the "Verify it works" step passes, and the
    result is a line in `.github/CHANGELOG.md` under 1.1.1.
+2. **Close the three install-route gaps.** A sweep against another project's
+   platform list found `INSTALL.md` already covers 15 of its 18. The rest:
+   `omp` (Oh My Pi) has no section at all; Kiro is one line under "Other
+   skills-CLI targets" and has its own `.kiro/steering/` snippet home;
+   GitHub Copilot inside JetBrains is a different route from Junie and from
+   JetBrains AI Assistant. Each needs install, invoke, verify, update,
+   uninstall, and where the always-on snippet goes, cited from that agent's
+   own documentation. Do not lift the commands from another project's config
+   files; that is inference, and those files carry their own license.
+   Done when each of the three has a section in `INSTALL.md` naming the doc
+   it was taken from.
 
-## 1.2.0: measured
+## 1.3.0: measured
 
 Goal: retire "no benchmark is claimed" with numbers a skeptic can check.
 
@@ -34,7 +45,7 @@ Goal: retire "no benchmark is claimed" with numbers a skeptic can check.
    Done when `PRODUCT.md` makes no claim `evals/RESULTS.md` does not
    support.
 
-## 1.3.0: an opt-in brake for Gates
+## 1.4.0: an opt-in brake for Gates
 
 Goal: an unchecked gate can stop a false "done", Claude Code only, for users
 who turn it on.
