@@ -5,7 +5,6 @@
   "author": {
     "name": "Mohammad Abu Mattar"
   },
-  "hooks": "./hooks/hooks.json",
   "license": "GPL-2.0-only",
   "homepage": "https://github.com/MKAbuMattar/black-iris",
   "repository": "https://github.com/MKAbuMattar/black-iris",
