@@ -90,6 +90,27 @@ the escape hatch. The manifest list is discovered by
 `.github/scripts/manifests.py`, so a new manifest is enrolled in the bump and
 the check when it gains a `version` field.
 
+## Branch and tag rules
+
+Two rulesets, both active. `main` blocks direct pushes, force pushes, deletion
+and merge commits, and needs a pull request whose five `check.yml` jobs pass:
+`lint (ubuntu-latest)`, `lint (macos-latest)`, `windows`, `evals`,
+`release-ready`. Reviews required: zero, so a solo maintainer merges their own
+pull request. `refs/tags/v*` blocks deletion and force-push, so a published
+release tag cannot move.
+
+One thing keeps the release flow working and is easy to break. A push made with
+`GITHUB_TOKEN` never starts a workflow, so `release-branch.yml`'s bump commit
+gets no `push` run. Those five checks reach it only through the `pull_request`
+event, which fires because a **person** opens the release pull request. If the
+repository setting "Allow GitHub Actions to create and approve pull requests"
+is ever turned on and the workflow opens that pull request itself, no checks
+will run on it and it will never be mergeable.
+
+`publish` is deliberately not a required check. It belongs to `release.yml` and
+runs on `main` after the merge, so requiring it would wait on a job that cannot
+start until the merge it is blocking has happened.
+
 ## Commits and PRs
 
 Commit subject `type(scope): subject`, imperative, lowercase, 72 characters.
