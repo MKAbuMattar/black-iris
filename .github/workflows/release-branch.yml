@@ -1,0 +1,107 @@
+name: release branch
+
+# Push `release/v1.2.0` and this prepares the release: it bumps every
+# versioned manifest, stamps the `## Unreleased` changelog heading with the
+# version and the date, and opens the pull request. Merging that pull request
+# is what publishes, in release.yml.
+#
+# The merge has to be yours. A push made with GITHUB_TOKEN does not start
+# another workflow run, so if this job pushed to main itself, nothing would
+# publish and nothing would say why.
+
+on:
+  push:
+    branches:
+      - 'release/v*'
+      - 'rc/v*'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Version from the branch name
+        id: ver
+        run: |
+          VER="${GITHUB_REF_NAME#*/v}"
+          case "$GITHUB_REF_NAME" in
+            rc/v*) PRE=true ;;
+            *)     PRE=false ;;
+          esac
+          echo "$VER" | grep -qE '^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.]+)?$' || {
+            echo "branch $GITHUB_REF_NAME does not name a semver after the v"
+            echo "expected release/v1.2.0 or rc/v1.2.0-rc.1"
+            exit 1
+          }
+          echo "ver=$VER"  >> "$GITHUB_OUTPUT"
+          echo "pre=$PRE"  >> "$GITHUB_OUTPUT"
+          echo "preparing $VER (prerelease: $PRE)"
+
+      - name: Lint
+        run: python3 skills/black-iris/scripts/universal/check.py
+
+      - name: Bump the manifests and stamp the changelog
+        run: python3 .github/scripts/prepare-release.py "${{ steps.ver.outputs.ver }}"
+
+      - name: Release readiness
+        run: python3 .github/scripts/release-ready.py "${{ steps.ver.outputs.ver }}"
+
+      - name: Commit the preparation
+        id: commit
+        run: |
+          if git diff --quiet; then
+            echo "already prepared, nothing to commit"
+            echo "pushed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git config user.name  'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m "chore(release): bump manifests and changelog to ${{ steps.ver.outputs.ver }}"
+          git push origin "HEAD:$GITHUB_REF_NAME"
+          echo "pushed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Open or update the pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          VER='${{ steps.ver.outputs.ver }}'
+          if gh pr view "$GITHUB_REF_NAME" --json number >/dev/null 2>&1; then
+            echo "pull request already open for $GITHUB_REF_NAME"
+            exit 0
+          fi
+          {
+            echo "## What changed"
+            echo
+            echo "Every versioned manifest goes to $VER and the changelog's"
+            echo "\`## Unreleased\` heading becomes \`## $VER\`. No skill text changes."
+            echo
+            echo "## Why"
+            echo
+            echo "Cutting $VER. Merging this publishes the release, because"
+            echo "release.yml tags and publishes a version on main that has no tag yet."
+            echo
+            echo "## How to verify"
+            echo
+            echo '```bash'
+            echo "python3 .github/scripts/release-ready.py $VER"
+            echo 'python3 skills/black-iris/scripts/universal/check.py'
+            echo '```'
+            echo
+            echo "The release notes below are the changelog section verbatim."
+            echo
+            echo "---"
+            echo
+            awk -v v="$VER" '
+              $0 ~ "^## \\[?"v"\\]?" {p=1; next}
+              p && /^## / {exit}
+              p {print}
+            ' .github/CHANGELOG.md
+          } > body.md
+          gh pr create --base main --head "$GITHUB_REF_NAME" \
+            --title "chore(release): $VER" --body-file body.md
