@@ -378,6 +378,7 @@ pyrightconfig.json
 # >>> Start of custom patterns (edit freely; igntui preserves this block) <<<
 
 __TMP__
+evals/out/
 .serena
 REPOS.md
 

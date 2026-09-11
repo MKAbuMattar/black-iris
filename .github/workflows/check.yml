@@ -51,6 +51,15 @@ jobs:
           echo "$out" | grep -q 'black-iris skill root' || { echo "script-relative root failed"; exit 1; }
           echo "$out" | grep -q '\[fb\](b.md)' || { echo "git-toplevel slug failed"; exit 1; }
 
+  evals:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Eval cases parse, ids are unique, coverage is reported
+        run: python3 evals/cases.py stats
+      - name: Runner syntax
+        run: bash -n evals/run.sh
+
   release-ready:
     runs-on: ubuntu-latest
     steps:

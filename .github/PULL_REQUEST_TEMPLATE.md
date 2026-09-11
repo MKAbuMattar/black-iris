@@ -20,4 +20,4 @@ python3 skills/black-iris/scripts/universal/check.py
 
 <!-- What this visibly leaves unfinished, so nobody files the follow-up you already planned. Delete the section if nothing. -->
 
-<!-- If SKILL.md gained a line, name the line you cut. No AI attribution trailer on the commits. -->
+<!-- If SKILL.md grew, say what it costs now against the 16,000 byte budget. No AI attribution trailer on the commits. -->

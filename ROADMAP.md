@@ -33,14 +33,18 @@ as the notes.
 
 Goal: retire "no benchmark is claimed" with numbers a skeptic can check.
 
-1. **Run the eval.** Build `evals/cases/` and `evals/RESULTS.md` by
-   following `skills/black-iris/references/evals.md`: 8 to 12 cases per
-   measured mode, 6 to 8 should-not-trigger prompts, a judge from another
-   model family, judge markers, randomized order.
+1. **Run the eval.** The harness exists: `evals/cases.jsonl` has 54 cases,
+   `evals/rubric.md` says what the judge may see, `evals/run.sh` collects one
+   condition. What is left is the run, with a judge from another model family
+   and a randomized order.
    Done when `evals/RESULTS.md` carries the model, date, n, and every
    failed case by name. A zero-failure file triggers the harness audit the
    eval doc requires, not a celebration.
-2. **Point the claim at the result.** Edit the "Not measured" bullet in
+2. **Raise memory and ship to the case floor.** Both sit at 2 cases against
+   the 8 `references/evals.md` asks for, so neither is measurable. Write six
+   more each, or say in `RESULTS.md` that those two modes are unmeasured.
+   Done when `python3 evals/cases.py stats` prints no mode under the floor.
+3. **Point the claim at the result.** Edit the "Not measured" bullet in
    `PRODUCT.md` to cite `evals/RESULTS.md` with its n and judge family.
    Done when `PRODUCT.md` makes no claim `evals/RESULTS.md` does not
    support.
