@@ -39,9 +39,14 @@ the work has to prove itself before it is called done.
 | Review a diff or PR someone else wrote | Review | `references/review.md` |
 | Diagram a system, workflow, sequence, or state machine | Diagram | Nothing. Use a diagram skill if one is installed. Else Mermaid in a fenced block: pick the diagram type deliberately, one main path with side branches, and never claim it was validated. |
 
-Bare `/black-iris` reads every reference once before the first reply, so all
-modes are on. `/black-iris <mode>`, or an ask naming one mode, loads only that
-reference. Per-project files live in `~/.BLACK_IRIS_AGENTS/projects/<slug>/`, slug from the one command in memory.md. Nothing goes in `~/.claude` or `/tmp`.
+Bare `/black-iris` reads every reference named in the table once before the
+first reply, so all modes are on. `/black-iris <mode>`, or an ask naming one
+mode, loads only that reference. The always-on hook injects this router and
+nothing else; read a reference when its mode fires.
+
+Per-project files live in the store, `~/.BLACK_IRIS_AGENTS/projects/<slug>/`,
+where `<slug>` is the project root path with `/` as `-`. The one command that
+derives it is in memory.md. Nothing goes in `~/.claude` or `/tmp`.
 
 ## Persistence and the dial
 

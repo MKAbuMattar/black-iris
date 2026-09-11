@@ -7,7 +7,8 @@ the network.
 
 - `hooks/reinject.sh` runs at Claude Code session start when the plugin is
   loaded and `~/.BLACK_IRIS_AGENTS/always-on` exists. It reads the skill
-  file, its ten references, and the project's memory index, and prints them.
+  file and the project's memory index, and prints them. It does not read the
+  references.
   It exits 0 on every path and never writes.
 - `skills/black-iris/scripts/*/install.*` create a symlink, junction, or copy
   under `~/.claude/skills` and may touch the flag file. `--uninstall` removes

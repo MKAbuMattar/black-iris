@@ -5,11 +5,19 @@
 `SKILL.md` is a routing table plus the rules that must be true on every reply:
 Shape, Build, the Cut list, the Pre-send check, and one paragraph per mode
 with the hard rule the model needs before it opens the file. Everything else
-is a reference. On invocation the model reads all ten references at once, so
-every mode is fully loaded for the session; the table then says which mode
-owns which ask. The 200-line cap on `SKILL.md` keeps the always-on core
-cheap; the references are the one-time cost of a full load, about 1,700
-lines, paid when the skill is invoked rather than on every reply.
+is a reference. On a bare `/black-iris` the model reads every reference named
+in the table, so all modes are loaded for that session; otherwise the table
+says which one file to open when a mode fires.
+
+The always-on hook injects the router and nothing else. It used to cat every
+reference too, which cost 94 KB against the router's 11 KB, and it fires on
+compact, so the event that exists to free the window spent a fifth of it again
+before the first reply. A skill with a mode about keeping bulk data out of
+context should not open every session by dumping 82 KB of its own prose. CI
+asserts the payload carries no reference block and stays under 20 KB.
+
+The 16,000-byte cap on `SKILL.md` keeps the always-on core cheap. It replaced
+a 200-line cap that had started buying compression at the cost of clarity.
 The Ship, Name, and Review handoffs were cut for space because those modes
 always load their reference anyway. Diagram has no handoff and no reference
 because its table row is the whole contract.

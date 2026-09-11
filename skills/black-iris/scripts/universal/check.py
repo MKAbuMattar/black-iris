@@ -61,9 +61,16 @@ if ids != sorted(set(ids)):
 ideate = (SKILL / "references/ideate.md").read_text(encoding="utf-8")
 want("ideate frames", 15, count(r"^\| \*\*", section(ideate, "## Frames", "## Output")))
 
-lines = skill.count("\n")
-if lines > 200:
-    hit(f"SKILL.md is {lines} lines, over the 200 budget")
+# The router's cost is bytes, not lines. A line budget was the old rule and it
+# bought compression that cost clarity: prose got folded into 156-character
+# lines to buy room for a table row. Bytes measure what the window actually
+# pays, and the length cap below stops a long line from gaming it.
+size = len(skill.encode("utf-8"))
+if size > 16000:
+    hit(f"SKILL.md is {size} bytes, over the 16000 budget (about 4k tokens)")
+for i, line in enumerate(skill.splitlines(), 1):
+    if len(line) > 100 and not line.startswith("|") and not line.startswith("   "):
+        hit(f"SKILL.md:{i}: prose line is {len(line)} chars, over 100 (tables and indented blocks are exempt)")
 m = re.search(r"^description: >\n(.*?)^license:", skill, re.S | re.M)
 desc = " ".join(m.group(1).split()) if m else ""
 if len(desc) > 1024:

@@ -7,16 +7,20 @@ packaging.
 ## Before you edit
 
 1. Read `skills/black-iris/SKILL.md` in full. It is 200 lines by design.
-2. Read the one reference file your change touches, not all nine.
+2. Read the one reference file your change touches, not all ten.
 3. Invoke the skill on yourself. Its Shape, Build, and Cut list rules apply to
    every reply and every file you write here.
 
 ## Hard constraints
 
-- `SKILL.md` stays at or under 200 lines and about 5,000 tokens. To add a
-  line, cut a line. Mode detail belongs in a reference file with a row in the
-  routing table; `references/evals.md` is the one maintainer document there
-  and is reached from the closing line instead.
+- `SKILL.md` stays at or under 16,000 bytes, about 4,000 tokens, and no prose
+  line runs past 100 characters. Table rows and indented blocks are exempt
+  from the length cap. The budget was a 200-line cap until it started buying
+  compression that cost clarity: prose folded into 156-character lines to pay
+  for a table row. Bytes measure what the window actually pays; the length cap
+  stops a long line from gaming the budget. Mode detail belongs in a reference
+  file with a row in the routing table; `references/evals.md` is the one
+  maintainer document there and is reached from the closing line instead.
 - Every file under `skills/` and `hooks/` is pure ASCII. No em or en dash, no
   curly quote. The lint fails otherwise.
 - Deslop pattern numbers are stable ids. Never renumber or reuse one; a

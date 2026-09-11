@@ -23,8 +23,11 @@ ids=$(grep -oE '^### [0-9]+\. ' references/deslop.md | tr -dc '0-9\n')
 want "ideate frames"   15 "$(awk '/^## Frames/,/^## Output/' references/ideate.md | grep -cE '^\| \*\*' | num)"
 
 # Spec budgets.
-n=$(wc -l < SKILL.md | num)
-[ "$n" -le 200 ] || hit "SKILL.md is $n lines, over the 200 budget"
+# The router's cost is bytes, not lines. A line budget bought compression that
+# cost clarity; the length cap stops a long line from gaming the byte budget.
+n=$(wc -c < SKILL.md | num)
+[ "$n" -le 16000 ] || hit "SKILL.md is $n bytes, over the 16000 budget (about 4k tokens)"
+awk 'length($0) > 100 && $0 !~ /^\|/ && $0 !~ /^   / { print FILENAME":"NR": prose line is "length($0)" chars, over 100" }' SKILL.md | while read -r l; do hit "$l"; done
 d=$(awk '/^description: >/,/^license:/' SKILL.md | sed '1d;$d' | tr -d '\n' | tr -s ' ' | wc -c | num)
 [ "$d" -le 1024 ] || hit "description is $d chars, over the 1024 cap"
 
