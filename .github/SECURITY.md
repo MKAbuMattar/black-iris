@@ -16,6 +16,11 @@ the network.
   it cannot block the same ledger state twice in a session. It exits 0 on
   every path but one: exit 2, which refuses the stop and prints the unmet gate
   ids to stderr. It touches nothing in your repo.
+- `hooks/memory-stop.sh` runs when Claude Code is about to stop, only when
+  `~/.BLACK_IRIS_AGENTS/memory-nudge` exists. It reads whether the project has
+  uncommitted changes and whether the store holds a memory index, and writes
+  one empty marker under the store's `tmp/` so it speaks at most once per
+  session. It never blocks and always exits 0. It touches nothing in your repo.
 - `skills/black-iris/scripts/*/install.*` create a symlink, junction, or copy
   under `~/.claude/skills` and may touch the flag file. `--uninstall` removes
   exactly those.
