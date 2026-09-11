@@ -12,8 +12,21 @@ Nothing. Every unblocked item is done.
 
 ## Ready
 
-- [ ] Verify two install routes on a clean machine. Needs a machine with no
-      prior copy of the skill.
+- [ ] Verify two install routes on a clean machine. Two of the three parts are
+      done, against an isolated `HOME` rather than a clean machine:
+      - Skill-only Claude Code route (`scripts/universal/install.py`): installs,
+        lands all 10 references, sets the flag, the hook then emits 11,392
+        bytes, and `--uninstall` removes both. The real home was byte-identical
+        before and after. On Windows it correctly falls back to a copy and says
+        why, since a symlink needs Developer Mode.
+      - Codex route (`npx skills add -a codex`): pulls the published repo into
+        `.agents/skills/black-iris`, all 10 references and all 4 script
+        directories present, `SKILL.md` byte-identical to `main`.
+      - Not done: the Claude Code **plugin marketplace** route, which writes to
+        the real Claude Code config and cannot be isolated the same way. And
+        neither install was exercised by invoking the skill in a live session,
+        which is what the "Verify it works" step in `INSTALL.md` actually asks
+        for. That last part needs a person or a clean machine.
 
 ## Blocked
 
