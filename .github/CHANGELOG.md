@@ -3,6 +3,16 @@
 Format follows Keep a Changelog. Entries are written for someone deciding
 whether to upgrade.
 
+## Unreleased
+
+### Added
+
+- Install routes for three more agents: Oh My Pi (`omp`), Kiro, and GitHub
+  Copilot in JetBrains. Each names the vendor doc it came from. Copilot in
+  JetBrains is a snippet route, because GitHub documents instruction files
+  there and not Agent Skills, so the modes needing a reference file do not
+  work in it.
+
 ## 1.3.0 - 2026-09-11
 
 ### Changed

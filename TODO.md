@@ -8,14 +8,12 @@ One item is worked at a time: pull request, merge, release, then the next.
 
 ## In flight
 
-- [ ] Close the three install-route gaps. `omp` (Oh My Pi), a full Kiro
-      section, GitHub Copilot inside JetBrains. Needs each agent's own docs.
-
-## Ready
-
 - [ ] An opt-in brake for Gates. Starts with confirming in the Claude Code
       hooks reference that a Stop hook's block decision reaches the model.
       Writing the hook before that check is how it ships as a no-op.
+
+## Ready
+
 - [ ] Verify two install routes on a clean machine. Needs a machine with no
       prior copy of the skill.
 
@@ -41,3 +39,5 @@ Building one unasked contradicts the rule that put it there.
 - [x] Release-readiness checked on every pull request.
 - [x] The always-on hook injects the router only, 94 KB down to 11 KB.
 - [x] Every eval mode meets the case floor of 8.
+- [x] Roadmap headings stopped encoding versions; TODO.md added.
+- [x] Install routes for Oh My Pi, Kiro, and Copilot in JetBrains.
