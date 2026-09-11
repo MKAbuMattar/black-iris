@@ -3,6 +3,25 @@
 Format follows Keep a Changelog. Entries are written for someone deciding
 whether to upgrade.
 
+## Unreleased
+
+### Fixed
+
+- Replies to an acknowledgement no longer end with a closing offer. "Thanks,
+  that worked." used to draw "Noted. Anything else?", which the skill's own Cut
+  list forbids. Shape rule 10 demanded an action for the reader, an
+  acknowledgement leaves none, and the empty slot got filled with a closer. The
+  rule now says to end on what changed and stop.
+- The Codex and OpenAI interface description said "Eleven disciplines". It says
+  twelve, matching every other manifest since the Context mode shipped.
+
+### Changed
+
+- The README names all three hooks rather than only the session-start one, and
+  links the roadmap, the contributing guide, and the Arabic and Spanish install
+  guides. Both translated READMEs now point at their own translated install
+  guide instead of the English one.
+
 ## 1.6.1 - 2026-09-11
 
 ### Fixed
