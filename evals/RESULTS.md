@@ -11,7 +11,7 @@ not a result.
 
 | Piece | State |
 |---|---|
-| `cases.jsonl` | 54 cases, 46 should-trigger and 8 should-not-trigger |
+| `cases.jsonl` | 66 cases, 58 should-trigger and 8 should-not-trigger |
 | `cases.py` | parser and coverage report, shared by runner and judge |
 | `run.sh` | collects responses for one condition into `out/<condition>/` |
 | `rubric.md` | what the judge is told, and what it is not shown |
@@ -22,10 +22,10 @@ not a result.
 `references/evals.md` asks for 8 to 12 prompts per measured mode. Run
 `python3 evals/cases.py stats` for the live count. At the time of writing:
 
-- Measurable: shape 10, build 8, context 8, deslop 8, gates 8, should-not-trigger 8.
-- **Not measurable: memory 2, ship 2.** Below the floor. Either write six more
-  cases each or say plainly that those two modes are unmeasured. Do not
-  publish a number for them off 2 cases.
+Every mode meets it: shape 10, and 8 each for build, context, deslop, gates,
+memory, ship, and should-not-trigger. `cases.py stats` prints nothing under
+the floor. Meeting the floor makes a mode measurable; it does not make it
+measured.
 
 ## How to run it
 
