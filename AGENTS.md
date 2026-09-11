@@ -58,9 +58,14 @@ HOME=$H CLAUDE_PLUGIN_ROOT=$PWD sh hooks/reinject.sh | head -5
 - A new mode needs: a routing-table row, a reference file named in that row,
   and a handoff paragraph only if the mode has a hard rule the model must
   know before reading the file.
-- A new agent install route goes in `INSTALL.md` with install, invoke,
-  verify, update, uninstall, and where the always-on snippet goes. Cite the
-  agent's own docs; do not infer commands.
+- A new agent install route goes in `docs/en/INSTALL.md` with install, invoke,
+  verify, update, uninstall, and where the always-on snippet goes, and its
+  update command goes in `docs/en/UPDATE.md`. Cite the agent's own docs; do not
+  infer commands.
+- Docs live under `docs/<lang>/`, one of `en`, `es`, `ar`. Only `README.md`,
+  `AGENTS.md`, `CLAUDE.md` and `GEMINI.md` stay at the root, because GitHub and
+  the agents read them there and `gemini-extension.json` names `GEMINI.md`
+  directly. A link from inside `docs/` to a repo-root path needs `../../`.
 
 ## Releases
 
