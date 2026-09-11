@@ -19,6 +19,7 @@ Run from anywhere:  python3 .github/scripts/release-ready.py [version]
 Exit 0 on clean, 1 on any hit.
 """
 import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -54,6 +55,21 @@ ver = found.get("package.json", distinct[0])
 if expected and expected != ver:
     hit(f"manifests say {ver}, the release asks for {expected}")
     ver = expected
+
+# A tracked text file must not carry a carriage return in the committed blob.
+# One got in when an editing script detected CRLF and then wrote CRLF into
+# content that already had it, leaving \r\r\n. Git normalises CRLF but not that,
+# so 75 stray bytes reached main and the next edit could not match its own text.
+text_exts = {".md", ".py", ".sh", ".ps1", ".json", ".yml", ".yaml", ".toml", ".txt"}
+tracked = subprocess.run(["git", "-C", str(ROOT), "ls-files"],
+                         capture_output=True, text=True).stdout.split()
+for rel in tracked:
+    if Path(rel).suffix not in text_exts:
+        continue
+    blob = subprocess.run(["git", "-C", str(ROOT), "show", f"HEAD:{rel}"],
+                          capture_output=True).stdout
+    if b"\r" in blob:
+        hit(f"{rel}: {blob.count(bytes([13]))} carriage returns in the committed blob")
 
 changelog = ROOT / ".github/CHANGELOG.md"
 if not changelog.exists():
