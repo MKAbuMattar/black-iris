@@ -3,6 +3,23 @@
 Format follows Keep a Changelog. Entries are written for someone deciding
 whether to upgrade.
 
+## Unreleased
+
+### Added
+
+- An opt-in nudge to harvest memory, Claude Code only. Create
+  `~/.BLACK_IRIS_AGENTS/memory-nudge` and, once per session, a stop where the
+  project has uncommitted work and the store has no memory index adds one line
+  asking whether anything is worth recording. It never blocks and says nothing
+  once an index exists.
+
+### Changed
+
+- The skill description now says when black-iris should stay out: small talk, a
+  one-line answer, a trivial edit, fiction and verse. The description is the
+  only text an agent reads before deciding whether to load the skill, so this
+  is what stops it firing on an unrelated turn.
+
 ## 1.5.0 - 2026-09-11
 
 ### Added

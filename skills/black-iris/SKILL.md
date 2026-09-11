@@ -7,12 +7,14 @@ description: >
   work and refuse a false done. Fan out isolated ideation branches for an open
   design question. Humanize, deslop, or audit text. Write or fix a prompt for a
   named AI tool. Autodream: harvest episodic, semantic, and procedural memory,
-  consolidate it, find what went stale. Keep bulk data out of the context
-  window; derive, do not dump. Write a commit message, PR body, or changelog
-  entry. Name or rename an identifier. Review a diff. Use when the user says
-  "black-iris", "shape this", "deslop", "humanize", "gates", "ideate",
-  "brainstorm", "write a prompt for", "autodream", "episodic memory", "clean
-  up my memory", "analyze this log", "commit message", "rename", "review this".
+  find what went stale. Keep bulk data out of the context window; derive, do
+  not dump. Write a commit message, PR body, or changelog entry. Name or
+  rename an identifier. Review a diff. Use when the user says "black-iris",
+  "shape this", "deslop", "humanize", "gates", "ideate", "brainstorm", "write
+  a prompt for", "autodream", "episodic memory", "clean up my memory",
+  "analyze this log", "commit message", "rename", "review this". Not for small
+  talk, a one-line answer, a trivial edit, or fiction and verse. A mode fires
+  on the ask, never on every message.
 license: GPL-2.0-only
 compatibility: any agent that reads Agent Skills; the hook is Claude Code only
 allowed-tools: [Read, Grep, Glob, Agent]
