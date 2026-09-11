@@ -33,8 +33,17 @@ if (($ids -join ',') -ne (($ids | Sort-Object -Unique) -join ',')) { Hit 'deslop
 $ideate = Get-Content references/ideate.md -Raw -Encoding UTF8
 Want 'ideate frames'   15 (Count '^\| \*\*' (Section $ideate '## Frames' '## Output'))
 
-$lines = (Get-Content SKILL.md -Encoding UTF8).Count
-if ($lines -gt 200) { Hit "SKILL.md is $lines lines, over the 200 budget" }
+# The router's cost is bytes, not lines. A line budget bought compression that
+# cost clarity; the length cap stops a long line from gaming the byte budget.
+$bytes = [System.Text.Encoding]::UTF8.GetByteCount($s)
+if ($bytes -gt 16000) { Hit "SKILL.md is $bytes bytes, over the 16000 budget (about 4k tokens)" }
+$i = 0
+foreach ($line in ($s -split "\r?\n")) {
+  $i++
+  if ($line.Length -gt 100 -and -not $line.StartsWith('|') -and -not $line.StartsWith('   ')) {
+    Hit "SKILL.md:${i}: prose line is $($line.Length) chars, over 100"
+  }
+}
 $m = [regex]::Match($s, '(?ms)^description: >\r?\n(.*?)^license:')
 $desc = if ($m.Success) { ($m.Groups[1].Value -split '\s+' | Where-Object { $_ }) -join ' ' } else { '' }
 if (-not $desc) { Hit 'description block not found' }
