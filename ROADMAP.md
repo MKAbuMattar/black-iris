@@ -23,19 +23,20 @@ as the notes.
    identical before and after. The Codex route pulls the published repo into
    `.agents/skills/black-iris`, references and scripts intact, `SKILL.md`
    byte-identical to `main`.
-   What is left needs the `claude` CLI, which is absent from the machine this
-   was attempted on: the plugin marketplace route, and the "Verify it works"
-   step, which means invoking the skill in a live session and reading the
-   reply.
-   Done when those two pass on a machine with the CLI and no prior copy, and
-   the result is a line in `.github/CHANGELOG.md` for whatever version carries
-   it.
+   Done. The plugin marketplace route was installed on a throwaway config and
+   found the duplicate-hooks bug that had stopped it loading since 1.0.0, fixed
+   in 1.6.1 and re-verified against the published artifact. The live "Verify it
+   works" step ran through `claude -p --plugin-dir`: the skill loaded, answered
+   with the command on line one, and stayed out of two should-not-trigger
+   prompts. Recorded in `evals/RESULTS.md`.
 
 ## Then: measured
 
 Goal: retire "no benchmark is claimed" with numbers a skeptic can check.
 
-1. **Run the eval.** The harness exists and every mode meets the case floor:
+1. **Run the eval.** A smoke test of 8 cases ran on 2026-09-11 and is written
+   up in `evals/RESULTS.md`. It found one real defect, a closing offer on an
+   acknowledgement, and no number worth publishing. The real run is still open:
    `evals/cases.jsonl` has 66, `evals/rubric.md` says what the judge may see,
    `evals/run.sh` collects one condition. What is left is the run itself, with
    a judge from a different model family and a randomized order. Two things
