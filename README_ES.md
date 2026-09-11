@@ -40,7 +40,7 @@ npx skills add MKAbuMattar/black-iris -g
 
 El resto de agentes, incluidos Codex, Kimi, Gemini CLI, OpenCode, Z Code,
 DeepSeek Harness, Copilot, Zed, Hermes, Pi, Antigravity y Cursor, esta en
-[INSTALL.md](INSTALL.md).
+[INSTALL_ES.md](INSTALL_ES.md).
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/assets/readme/section-use-es-dark.svg">

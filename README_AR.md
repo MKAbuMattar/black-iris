@@ -39,7 +39,7 @@ npx skills add MKAbuMattar/black-iris -g
 ```
 
 بقية الوكلاء، ومنهم Codex وKimi وGemini CLI وOpenCode وZ Code وDeepSeek Harness
-وCopilot وZed وHermes وPi وAntigravity وCursor، في [INSTALL.md](INSTALL.md).
+وCopilot وZed وHermes وPi وAntigravity وCursor، في [INSTALL_AR.md](INSTALL_AR.md).
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/assets/readme/section-use-ar-dark.svg">
