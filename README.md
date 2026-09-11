@@ -40,7 +40,8 @@ npx skills add MKAbuMattar/black-iris -g
 
 Every other agent, including Codex, Kimi, Gemini CLI, OpenCode, Z Code,
 DeepSeek Harness, Copilot, Zed, Hermes, Pi, Antigravity, and Cursor, is in
-[INSTALL.md](INSTALL.md).
+[INSTALL.md](INSTALL.md), also in
+[Arabic](INSTALL_AR.md) and [Spanish](INSTALL_ES.md).
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/assets/readme/section-use-en-dark.svg">
@@ -81,9 +82,17 @@ every session start.
 </picture>
 
 - `skills/black-iris/` is the skill: `SKILL.md`, `references/`, `scripts/`.
-- `hooks/` is the Claude Code SessionStart hook.
+- `hooks/` holds three Claude Code hooks on two events. `reinject.sh` re-injects
+  the router at session start. `gates-stop.sh` refuses a stop while gates are
+  unmet, and `memory-stop.sh` asks whether a session is worth harvesting. Both
+  Stop hooks are off until you create their flag file; `INSTALL.md` has each.
 - Root manifests package the same skill for Codex (plugin and marketplace),
   Kimi, Qwen, Gemini, Antigravity, and Pi.
+- `evals/` is the case set and runner. `evals/RESULTS.md` claims no benchmark.
+
+Where things are going: [ROADMAP.md](ROADMAP.md). How to contribute:
+[.github/CONTRIBUTING.md](.github/CONTRIBUTING.md). Why it is built this way:
+[DESIGN.md](DESIGN.md) and [PRODUCT.md](PRODUCT.md).
 
 Lint before committing: `python3 skills/black-iris/scripts/universal/check.py`.
 
