@@ -22,9 +22,12 @@ that can live in a prompt in one folder and drops the rest.
 
 ## What it is not
 
-- Not a checker. Gates are a discipline the model follows, not a program that
-  blocks it. The one enforcement is Claude Code's permission prompt, which the
-  skill deliberately does not pre-approve.
+- Not a checker. Gates are a discipline the model follows; no program decides
+  whether a gate is met. Two things enforce anything. Claude Code's permission
+  prompt, which the skill deliberately does not pre-approve. And, only if you
+  switch it on, a Stop hook that refuses the stop while the ledger still lists
+  unmet gates. It reads the ledger you wrote and names the ids; it never
+  judges whether a gate should have passed.
 - Not an output style. It is a skill, so it costs nothing until invoked, and
   it works in every harness that reads `SKILL.md`.
 - Not a diagram tool, a linter, or a memory database. It defers to a diagram

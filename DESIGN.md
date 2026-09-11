@@ -46,13 +46,28 @@ reaches the model; PreCompact is not one of them, and the autodream recipe
 that used it was a no-op. The hook prints its own root path so an always-on
 session can resolve `references/`. It exits 0 on every path.
 
-## Enforcement is the permission prompt
+## Enforcement is the permission prompt, plus one opt-in brake
 
 The frontmatter grants Read, Grep, Glob, and Agent only. Bash, Write, and Edit
 go through the harness prompt, which is the confirm step the destructive-action
 rule relies on. An earlier draft pre-approved them, and a reviewer pointed out
 that one `/black-iris` would then have changed the permission posture of the
 whole session.
+
+`hooks/gates-stop.sh` is the second and last one, off unless you create
+`~/.BLACK_IRIS_AGENTS/gates-stop`. It refuses a stop while the ledger lists
+unmet gates. It was written against the hooks reference rather than from
+memory: the "Exit code 2 behavior per event" table is what says a Stop hook
+can block and that stderr carries the reason to the model, and exit 2 plus
+stderr is the whole mechanism. No JSON output field is involved, because a
+recipe built on the wrong field is a silent no-op, which is exactly what
+happened to the PreCompact autodream recipe this project shipped and then
+retracted.
+
+Two things it deliberately does not do. It never decides whether a gate
+should have passed; it reads the ids you wrote. And it blocks at most once per
+ledger state per session, so a model that changes nothing stops on the second
+try and can never be trapped in a loop.
 
 ## Gates without a checker
 
@@ -78,9 +93,8 @@ recorded above. The review prompt lives in `references/evals.md`.
 
 ## What was left out on purpose
 
-- A Stop hook that blocks exit while gates are unmet, plus any depth tree,
-  lease, or dispatch machinery. The Stop hook is the one omission that
-  changes behavior; it is a 30-line addition if wanted.
+- Any depth tree, lease, or dispatch machinery. The Stop hook that was
+  listed here is now `hooks/gates-stop.sh`, off by default.
 - A diagram renderer. Diagram mode defers to a dedicated skill.
 - Per-model prompt slugs and parameters. They rot monthly; routing is by
   tool class.

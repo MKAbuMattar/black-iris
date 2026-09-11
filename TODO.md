@@ -8,9 +8,7 @@ One item is worked at a time: pull request, merge, release, then the next.
 
 ## In flight
 
-- [ ] An opt-in brake for Gates. Starts with confirming in the Claude Code
-      hooks reference that a Stop hook's block decision reaches the model.
-      Writing the hook before that check is how it ships as a no-op.
+Nothing. Every unblocked item is done.
 
 ## Ready
 
@@ -41,3 +39,4 @@ Building one unasked contradicts the rule that put it there.
 - [x] Every eval mode meets the case floor of 8.
 - [x] Roadmap headings stopped encoding versions; TODO.md added.
 - [x] Install routes for Oh My Pi, Kiro, and Copilot in JetBrains.
+- [x] An opt-in Stop hook that refuses a stop while gates are unmet.
