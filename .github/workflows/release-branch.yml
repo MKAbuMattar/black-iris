@@ -103,5 +103,21 @@ jobs:
               p {print}
             ' .github/CHANGELOG.md
           } > body.md
-          gh pr create --base main --head "$GITHUB_REF_NAME" \
-            --title "chore(release): $VER" --body-file body.md
+          # Creating a pull request from Actions needs the repository setting
+          # "Allow GitHub Actions to create and approve pull requests", which is
+          # off by default and which many orgs forbid outright. The release is
+          # already prepared and pushed by the step above, so a blocked pull
+          # request is a link to hand over, never a failed release.
+          if gh pr create --base main --head "$GITHUB_REF_NAME" \
+               --title "chore(release): $VER" --body-file body.md; then
+            exit 0
+          fi
+          echo
+          echo "Could not open the pull request from Actions."
+          echo "Settings > Actions > General > Workflow permissions >"
+          echo "  Allow GitHub Actions to create and approve pull requests"
+          echo "is off. That setting also lets a workflow approve a review, so"
+          echo "leaving it off is a defensible choice."
+          echo
+          echo "$VER is prepared and pushed. Open the pull request here:"
+          echo "  https://github.com/$GITHUB_REPOSITORY/compare/main...$GITHUB_REF_NAME?expand=1"
