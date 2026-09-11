@@ -1,53 +1,74 @@
 # Results
 
-**Not yet run. No number here, and none anywhere else in the repo.**
+**Still not the eval. This is a smoke test, and it says so.**
 
-`PRODUCT.md` says "Not measured. No benchmark is claimed." That stays true
-until this file has a model, a date, an n, and every failed case named. The
-harness below exists so the run is cheap when someone does it; a harness is
-not a result.
+`PRODUCT.md` keeps saying no benchmark is claimed, and that stays true. What
+follows is eight cases run live with mechanical scoring. It is enough to find a
+real defect, which it did, and nowhere near enough to publish a number.
 
-## What exists
+## What this run was
 
-| Piece | State |
+| | |
 |---|---|
-| `cases.jsonl` | 66 cases, 58 should-trigger and 8 should-not-trigger |
-| `cases.py` | parser and coverage report, shared by runner and judge |
-| `run.sh` | collects responses for one condition into `out/<condition>/` |
-| `rubric.md` | what the judge is told, and what it is not shown |
-| this file | the honest empty result |
+| Date | 2026-09-11 |
+| Runner | Claude Code CLI 2.1.268, `claude -p --plugin-dir <repo>` |
+| Model | **not pinned.** The CLI default, whatever it was that day |
+| Conditions | treatment only. **No baseline was run** |
+| Judge | none. Mechanical regex only |
+| n | 8: six should-trigger, two should-not-trigger |
+| Working dir | a fresh temp directory outside the repo |
 
-## Coverage against the floor
+Four of the five things `evals.md` requires are missing: a pinned model, both
+conditions, a judge from another family, and randomised order. Treat every
+number below as an observation, not a measurement.
 
-`references/evals.md` asks for 8 to 12 prompts per measured mode. Run
-`python3 evals/cases.py stats` for the live count. At the time of writing:
+## What it found
 
-Every mode meets it: shape 10, and 8 each for build, context, deslop, gates,
-memory, ship, and should-not-trigger. `cases.py stats` prints nothing under
-the floor. Meeting the floor makes a mode measurable; it does not make it
-measured.
+**One real defect.** Case `shape-07`, the prompt "Thanks, that worked.",
+returned:
 
-## How to run it
+> Noted. Anything else?
 
-```bash
-./evals/run.sh baseline  claude-opus-5
-./evals/run.sh treatment claude-opus-5
-```
+That is a closing offer. Cut list item 5 and Shape rule 10 both forbid it, and
+rule 10 says plainly that "want me to X?" is not an ending. This is the gap in
+rule 10 that has no escape hatch: the rule wants an action for the reader, and
+an acknowledgement has none, so the model invented a closer to fill the slot.
+Worth a rule fix, not a prompt tweak.
 
-Then judge with a model from a different family, following `rubric.md`, and
-replace this file.
+**One weaker signal.** Case `shape-02` gave the p99 shift as "7.5x" and never
+restated 120ms and 900ms. Shape rule 4 says never drop the figure that makes a
+claim actionable. Defensible either way, so it is recorded and not counted.
 
-## What would make a result untrustworthy
+**Both should-not-trigger cases passed.** "Hey, how's it going?" got 65
+characters with no mode announced, and "What is the capital of Portugal?" got
+"Lisbon." The greeting contained an em dash, which is the strongest evidence
+available that the skill genuinely did not engage: its Cut list bans them.
 
-Any of these, and the number is not worth publishing:
+## What the scoring got wrong
 
-1. **Judge from the same family as the model under test.** It shares the
-   habits being measured.
-2. **Fewer than 8 cases for the mode the claim is about.** n of 3 is an
-   anecdote with a percent sign.
-3. **The baseline saw the skill.** An always-on flag or a user-level skill
-   leaking into the baseline makes the two conditions the same condition.
-4. **A zero-failure result.** That is a reason to check the harness, not to
-   celebrate. `evals.md` says so and it is right.
-5. **A failed case quietly dropped.** A case that cannot pass under the
-   harness is marked unpassable and stays in the file.
+Three of the four initial failures were the scoring, not the skill.
+`deslop-01` and `deslop-05` were flagged for containing "leveraging",
+"cutting-edge", "crucial" and a not-X-but-Y. Every one of those appears inside
+a quotation, because naming the triggering line is what the Deslop process
+tells the model to do. A regex cannot tell quoted input from emitted output.
+
+That is the negative-control lesson from `gates.md` arriving in its own eval: a
+check that fires on the wrong thing looks exactly like a finding. Any future
+scorer must read only the delivered text, not the mode's working.
+
+## Raw tally
+
+Mechanical checks: 20 of 24 passed. After removing the three scoring artifacts,
+one genuine failure remains, `shape-07`.
+
+## Still needed for a real result
+
+1. A pinned model, recorded here by id.
+2. A baseline condition with settings and skills cleared.
+3. A judge from a different model family, seeing only the text between the
+   judge markers.
+4. Randomised order, with the seed recorded.
+5. All 66 cases, not eight.
+
+Until then this file publishes no benchmark, and neither does anything else in
+the repo.
