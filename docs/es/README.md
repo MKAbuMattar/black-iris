@@ -16,7 +16,7 @@
 <p align="center"><em>السوسنة السوداء</em></p>
 <p align="center">Una habilidad, doce disciplinas para un agente de programacion.</p>
 
-<p align="center"><a href="README.md">English</a> | <a href="README_ES.md">Espanol</a> | <a href="README_AR.md">العربية</a></p>
+<p align="center"><a href="README.md">English</a> | <a href="README.md">Espanol</a> | <a href="../../docs/ar/README.md">العربية</a></p>
 
 <p align="center">Una sola habilidad para un agente de programacion, doce disciplinas. Da forma a cada respuesta para un lector con TDAH, elimina las marcas de texto generado por IA de todo lo que el agente escribe, mantiene los cambios de codigo quirurgicos, escribe puertas de finalizacion antes de trabajos largos, lanza ramas de ideacion aisladas, redacta prompts para otras herramientas, consolida la memoria de la sesion, mantiene los datos masivos fuera de la ventana de contexto y se ocupa de los mensajes de commit, los nombres y la revision de diffs. Un enrutador de 200 lineas mas diez archivos de referencia.</p>
 
@@ -40,7 +40,7 @@ npx skills add MKAbuMattar/black-iris -g
 
 El resto de agentes, incluidos Codex, Kimi, Gemini CLI, OpenCode, Z Code,
 DeepSeek Harness, Copilot, Zed, Hermes, Pi, Antigravity y Cursor, esta en
-[INSTALL_ES.md](INSTALL_ES.md).
+[INSTALL.md](INSTALL.md).
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/assets/readme/section-use-es-dark.svg">
@@ -88,4 +88,4 @@ memoria de tu proyecto en cada inicio de sesion.
 
 Pasa el lint antes de hacer commit: `python3 skills/black-iris/scripts/universal/check.py`.
 
-Licencia: GPL-2.0-only para la habilidad y todo el repositorio. Ver [.github/LICENSE](.github/LICENSE).
+Licencia: GPL-2.0-only para la habilidad y todo el repositorio. Ver [.github/LICENSE](../../.github/LICENSE).

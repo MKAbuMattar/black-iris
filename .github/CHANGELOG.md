@@ -3,6 +3,24 @@
 Format follows Keep a Changelog. Entries are written for someone deciding
 whether to upgrade.
 
+## Unreleased
+
+### Added
+
+- An update guide, in English, Spanish and Arabic. It covers every install
+  route and says plainly that `claude plugin marketplace add` and
+  `claude plugin install` will not update an existing install: they print
+  "already installed", fetch nothing, and leave you on the old version. The
+  Claude Code answer is `claude plugin marketplace update black-iris`, then
+  `claude plugin update black-iris`, then restart.
+
+### Changed
+
+- Documentation moved to `docs/en/`, `docs/es/` and `docs/ar/`, with an index
+  at `docs/`. `README.md`, `AGENTS.md`, `CLAUDE.md` and `GEMINI.md` stay at the
+  repository root because GitHub and the agents read them there. Old links such
+  as `INSTALL_ES.md` no longer resolve; use `docs/es/INSTALL.md`.
+
 ## 1.7.0 - 2026-09-11
 
 ### Fixed

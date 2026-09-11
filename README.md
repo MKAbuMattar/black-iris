@@ -16,7 +16,7 @@
 <p align="center"><em>السوسنة السوداء</em></p>
 <p align="center">One skill, twelve disciplines for a coding agent.</p>
 
-<p align="center"><a href="README.md">English</a> | <a href="README_ES.md">Espanol</a> | <a href="README_AR.md">العربية</a></p>
+<p align="center"><a href="README.md">English</a> | <a href="docs/es/README.md">Espanol</a> | <a href="docs/ar/README.md">العربية</a></p>
 
 <p align="center">One skill for a coding agent, twelve disciplines. It shapes every reply for a reader with ADHD, cuts AI tells from anything the agent writes, keeps code changes surgical, writes completion gates before long work, fans out isolated ideation branches, writes prompts for other tools, consolidates session memory, keeps bulk data out of the context window, and handles commit text, naming, and diff review. One 200-line router plus ten reference files.</p>
 
@@ -40,8 +40,13 @@ npx skills add MKAbuMattar/black-iris -g
 
 Every other agent, including Codex, Kimi, Gemini CLI, OpenCode, Z Code,
 DeepSeek Harness, Copilot, Zed, Hermes, Pi, Antigravity, and Cursor, is in
-[INSTALL.md](INSTALL.md), also in
-[Arabic](INSTALL_AR.md) and [Spanish](INSTALL_ES.md).
+[docs/en/INSTALL.md](docs/en/INSTALL.md), also in
+[Arabic](docs/ar/INSTALL.md) and [Spanish](docs/es/INSTALL.md).
+
+Already installed? Updating is its own page, because `add` and `install` will
+not move you to a new version: [docs/en/UPDATE.md](docs/en/UPDATE.md), also in
+[Arabic](docs/ar/UPDATE.md) and [Spanish](docs/es/UPDATE.md). Every page is
+indexed at [docs/](docs/README.md).
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/assets/readme/section-use-en-dark.svg">
@@ -85,14 +90,14 @@ every session start.
 - `hooks/` holds three Claude Code hooks on two events. `reinject.sh` re-injects
   the router at session start. `gates-stop.sh` refuses a stop while gates are
   unmet, and `memory-stop.sh` asks whether a session is worth harvesting. Both
-  Stop hooks are off until you create their flag file; `INSTALL.md` has each.
+  Stop hooks are off until you create their flag file; `docs/en/INSTALL.md` has each.
 - Root manifests package the same skill for Codex (plugin and marketplace),
   Kimi, Qwen, Gemini, Antigravity, and Pi.
 - `evals/` is the case set and runner. `evals/RESULTS.md` claims no benchmark.
 
-Where things are going: [ROADMAP.md](ROADMAP.md). How to contribute:
+Where things are going: [docs/en/ROADMAP.md](docs/en/ROADMAP.md). How to contribute:
 [.github/CONTRIBUTING.md](.github/CONTRIBUTING.md). Why it is built this way:
-[DESIGN.md](DESIGN.md) and [PRODUCT.md](PRODUCT.md).
+[docs/en/DESIGN.md](docs/en/DESIGN.md) and [docs/en/PRODUCT.md](docs/en/PRODUCT.md).
 
 Lint before committing: `python3 skills/black-iris/scripts/universal/check.py`.
 

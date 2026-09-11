@@ -16,7 +16,7 @@
 <p align="center"><em>السوسنة السوداء</em></p>
 <p align="center">مهارة واحدة، اثنتا عشرة قاعدة عمل لوكيل البرمجة.</p>
 
-<p align="center"><a href="README.md">English</a> | <a href="README_ES.md">Espanol</a> | <a href="README_AR.md">العربية</a></p>
+<p align="center"><a href="README.md">English</a> | <a href="../../docs/es/README.md">Espanol</a> | <a href="README.md">العربية</a></p>
 
 <p align="center">مهارة واحدة لوكيل البرمجة، اثنتا عشرة قاعدة عمل. تُشكّل كل رد لقارئ لديه فرط الحركة ونقص الانتباه، وتحذف علامات النص المولَّد بالذكاء الاصطناعي من كل ما يكتبه الوكيل، وتُبقي تغييرات الكود دقيقة ومحدودة، وتكتب بوابات إنجاز قبل العمل الطويل، وتُطلق فروع أفكار معزولة، وتكتب أوامر لأدوات أخرى، وتُرتّب ذاكرة الجلسة، وتُبقي البيانات الضخمة خارج نافذة السياق، وتتولى رسائل الالتزام والتسمية ومراجعة الفروقات. موجّه من 200 سطر مع عشرة ملفات مرجعية.</p>
 
@@ -39,7 +39,7 @@ npx skills add MKAbuMattar/black-iris -g
 ```
 
 بقية الوكلاء، ومنهم Codex وKimi وGemini CLI وOpenCode وZ Code وDeepSeek Harness
-وCopilot وZed وHermes وPi وAntigravity وCursor، في [INSTALL_AR.md](INSTALL_AR.md).
+وCopilot وZed وHermes وPi وAntigravity وCursor، في [INSTALL.md](INSTALL.md).
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/assets/readme/section-use-ar-dark.svg">
@@ -85,4 +85,4 @@ npx skills add MKAbuMattar/black-iris -g
 
 افحص قبل الالتزام: `python3 skills/black-iris/scripts/universal/check.py`.
 
-الرخصة: GPL-2.0-only للمهارة وللمستودع كله. انظر [.github/LICENSE](.github/LICENSE).
+الرخصة: GPL-2.0-only للمهارة وللمستودع كله. انظر [.github/LICENSE](../../.github/LICENSE).

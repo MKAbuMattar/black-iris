@@ -2,7 +2,7 @@
 
 **Still not the eval. This is a smoke test, and it says so.**
 
-`PRODUCT.md` keeps saying no benchmark is claimed, and that stays true. What
+`../docs/en/PRODUCT.md` keeps saying no benchmark is claimed, and that stays true. What
 follows is eight cases run live with mechanical scoring. It is enough to find a
 real defect, which it did, and nowhere near enough to publish a number.
 

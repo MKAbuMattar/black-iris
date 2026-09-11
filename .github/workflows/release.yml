@@ -67,7 +67,7 @@ jobs:
             p {print}
           ' .github/CHANGELOG.md > notes.md
           [ -s notes.md ] || { echo "empty notes"; exit 1; }
-          printf '\nInstall: see [INSTALL.md](https://github.com/%s/blob/v%s/INSTALL.md). License: GPL-2.0-only.\n' "$GITHUB_REPOSITORY" "$VER" >> notes.md
+          printf '\nInstall: see [INSTALL.md](https://github.com/%s/blob/v%s/docs/en/INSTALL.md). License: GPL-2.0-only.\n' "$GITHUB_REPOSITORY" "$VER" >> notes.md
           cat notes.md
 
       - name: Build the skill archive

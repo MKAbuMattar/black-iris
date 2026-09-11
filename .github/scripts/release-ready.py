@@ -78,8 +78,9 @@ if plugin_manifest.exists():
 # that sells and explains the project was never held to the rules it sells.
 # Full ASCII cannot extend here: the Arabic and Spanish files need their own
 # alphabets. Dashes and curly quotes are alphabet-independent, so those do.
-PROSE = ["README.md", "INSTALL.md", "DESIGN.md", "PRODUCT.md", "ROADMAP.md",
-         "AGENTS.md", "CLAUDE.md", "GEMINI.md", ".github/CHANGELOG.md",
+PROSE = ["README.md", "AGENTS.md", "CLAUDE.md", "GEMINI.md",
+         "docs/en/INSTALL.md", "docs/en/UPDATE.md", "docs/en/DESIGN.md",
+         "docs/en/PRODUCT.md", "docs/en/ROADMAP.md", ".github/CHANGELOG.md",
          ".github/CONTRIBUTING.md", ".github/SECURITY.md",
          ".github/PULL_REQUEST_TEMPLATE.md"]
 BANNED = {"—": "em dash", "–": "en dash", "‘": "curly quote",
