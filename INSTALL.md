@@ -565,6 +565,25 @@ through rather than trapping the turn in a loop.
 Verify: with the flag set and a ledger holding an unmet gate, ask for a stop
 and you get the gate ids back. Without a ledger there is nothing to block.
 
+## Optional: a nudge to harvest memory
+
+Claude Code plugin route only, off unless you ask for it.
+
+```bash
+mkdir -p ~/.BLACK_IRIS_AGENTS && touch ~/.BLACK_IRIS_AGENTS/memory-nudge   # on
+rm ~/.BLACK_IRIS_AGENTS/memory-nudge                                       # off
+```
+
+With the flag set, `hooks/memory-stop.sh` speaks up once per session when the
+project has uncommitted work and the store still has no memory index, which is
+the state where a session's traps and decisions are about to be lost. It never
+blocks; it adds one line of context asking whether anything is worth writing.
+
+It stays quiet in every other case: no flag, a clean tree, a session that
+already has an index, and any session it has already spoken in. Memory's own
+rule is to write when the knowledge appears, so this is a backstop for the
+store that was never started, not a sweep at the end.
+
 ## Always-on snippet for agents without the hook
 
 Paste into the agent's persistent rules file. It carries the always-on core

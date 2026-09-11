@@ -20,6 +20,11 @@
             "type": "command",
             "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/gates-stop.sh\"",
             "timeout": 5
+          },
+          {
+            "type": "command",
+            "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/memory-stop.sh\"",
+            "timeout": 5
           }
         ]
       }

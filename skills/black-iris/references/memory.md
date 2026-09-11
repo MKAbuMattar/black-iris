@@ -299,10 +299,18 @@ when the decision closes. When the user says they are about to compact or
 clear context, run Phase 1 first; the detail they are about to discard is the
 harvest.
 
+**This plugin ships one.** `hooks/memory-stop.sh`, off unless
+`~/.BLACK_IRIS_AGENTS/memory-nudge` exists, speaks once per session when the
+project has uncommitted work and the store still has no index. That is the
+state this mode kept losing to: a store nobody ever started. It never blocks.
+Turn it on if a session's traps keep dying with the transcript.
+
 **Option A: Stop hook with JSON output.** Plain stdout from Stop goes to the
-debug log, so use the JSON form. The hook's stdin JSON carries
-`stop_hook_active`; when it is true the model is already continuing because of
-a Stop hook, so print nothing, or the reminder repeats every stop.
+debug log, confirmed in the hooks reference under "Exit code 0", where the
+exceptions are UserPromptSubmit, UserPromptExpansion, SessionStart, and
+PostModelSwitch. Stop is not one, so use the JSON form. Guard against
+repeating: keep a marker keyed on `session_id` from the hook's stdin, which is
+what the shipped hook does.
 
 ```json
 {

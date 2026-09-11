@@ -61,6 +61,23 @@ jobs:
           want "$(run)" 0 "handoff is a valid stop"
           echo "gates-stop: all seven paths correct"
 
+      - name: Memory Stop hook nudges only when it should
+        run: |
+          H=$(mktemp -d); P=$(mktemp -d); git -C "$P" init -q
+          git -C "$P" config user.email c@i; git -C "$P" config user.name ci
+          S="$H/.BLACK_IRIS_AGENTS/projects/$(printf '%s' "$P" | tr '/' '-')"
+          out() { printf '{"session_id":"%s"}' "$1" | HOME=$H CLAUDE_PROJECT_DIR=$P sh hooks/memory-stop.sh; }
+          [ -z "$(out s1)" ] || { echo "nudged without the flag"; exit 1; }
+          mkdir -p "$H/.BLACK_IRIS_AGENTS"; touch "$H/.BLACK_IRIS_AGENTS/memory-nudge"
+          [ -z "$(out s1)" ] || { echo "nudged on a clean tree"; exit 1; }
+          echo dirty > "$P/f.txt"
+          out s1 | python3 -c "import json,sys; d=json.load(sys.stdin); assert d['hookSpecificOutput']['hookEventName']=='Stop'" \
+            || { echo "dirty tree with no index should emit valid Stop JSON"; exit 1; }
+          [ -z "$(out s1)" ] || { echo "nudged twice in one session"; exit 1; }
+          mkdir -p "$S/memory"; echo '- [t](a.md) - h' > "$S/memory/MEMORY.md"
+          [ -z "$(out s2)" ] || { echo "nudged when an index already exists"; exit 1; }
+          echo "memory-stop: all five paths correct"
+
       - name: Hook fallbacks (no plugin root, no project dir)
         run: |
           H=$(mktemp -d); mkdir -p "$H/.BLACK_IRIS_AGENTS"; touch "$H/.BLACK_IRIS_AGENTS/always-on"
