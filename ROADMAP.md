@@ -1,10 +1,12 @@
 # Roadmap
 
-Versions, not dates. Every item names its files and ends in a done-when that
-a script or a person can check. What shipped is in `.github/CHANGELOG.md`;
-this file only looks forward.
+Ordered, not dated, and not numbered. A version number in a heading here went
+stale twice in one day, because it assumed roadmap items are the only things
+that ship. Every item names its files and ends in a done-when a script or a
+person can check. What shipped is in `.github/CHANGELOG.md` and where each item
+stands is in `TODO.md`; this file only looks forward.
 
-## 1.1.1: the release a clean machine installs is the release CI tested
+## Next: the release a clean machine installs is the release CI tested
 
 CI is green on ubuntu, macos, and windows, and `.github/workflows/release.yml`
 publishes on a tag push: it lints, checks that all six versioned manifests
@@ -16,7 +18,7 @@ as the notes.
    routes wait for the users who file issues; `INSTALL.md` cites each agent's
    own docs, not a test.
    Done when both routes install, the "Verify it works" step passes, and the
-   result is a line in `.github/CHANGELOG.md` under 1.1.1.
+   result is a line in `.github/CHANGELOG.md` for whatever version carries it.
 2. **Close the three install-route gaps.** A sweep against another project's
    platform list found `INSTALL.md` already covers 15 of its 18. The rest:
    `omp` (Oh My Pi) has no section at all; Kiro is one line under "Other
@@ -29,7 +31,7 @@ as the notes.
    Done when each of the three has a section in `INSTALL.md` naming the doc
    it was taken from.
 
-## 1.3.0: measured
+## Then: measured
 
 Goal: retire "no benchmark is claimed" with numbers a skeptic can check.
 
@@ -45,7 +47,7 @@ Goal: retire "no benchmark is claimed" with numbers a skeptic can check.
    Done when `PRODUCT.md` makes no claim `evals/RESULTS.md` does not
    support.
 
-## 1.4.0: an opt-in brake for Gates
+## Then: an opt-in brake for Gates
 
 Goal: an unchecked gate can stop a false "done", Claude Code only, for users
 who turn it on.
