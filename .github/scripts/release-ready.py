@@ -18,6 +18,7 @@ a manifest with a version enrolls it here and in the bump at the same time.
 Run from anywhere:  python3 .github/scripts/release-ready.py [version]
 Exit 0 on clean, 1 on any hit.
 """
+import json
 import re
 import subprocess
 import sys
@@ -55,6 +56,22 @@ ver = found.get("package.json", distinct[0])
 if expected and expected != ver:
     hit(f"manifests say {ver}, the release asks for {expected}")
     ver = expected
+
+# Claude Code loads hooks/hooks.json automatically. A plugin manifest that also
+# declares it is a duplicate, and the whole plugin fails to load with no hook,
+# no always-on flag and no skill. That shipped in every release from 1.0.0 to
+# 1.6.0 and was only caught by installing the plugin on a clean config.
+plugin_manifest = ROOT / ".claude-plugin/plugin.json"
+if plugin_manifest.exists():
+    try:
+        pm = json.loads(plugin_manifest.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as e:
+        hit(f".claude-plugin/plugin.json is not valid JSON: {e}")
+    else:
+        declared = pm.get("hooks")
+        if declared in ("./hooks/hooks.json", "hooks/hooks.json"):
+            hit(".claude-plugin/plugin.json declares the standard hooks/hooks.json; "
+                "Claude Code loads it automatically and the duplicate stops the plugin loading")
 
 # A tracked text file must not carry a carriage return in the committed blob.
 # One got in when an editing script detected CRLF and then wrote CRLF into

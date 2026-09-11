@@ -3,6 +3,18 @@
 Format follows Keep a Changelog. Entries are written for someone deciding
 whether to upgrade.
 
+## Unreleased
+
+### Fixed
+
+- The Claude Code plugin route works. Since 1.0.0 the plugin installed and
+  then failed to load with "Duplicate hooks file detected", because the
+  manifest declared `hooks/hooks.json`, which Claude Code already loads on its
+  own. Anyone on the plugin route got no hook, no always-on injection, and no
+  skill. Reinstall with `claude plugin marketplace update black-iris` then
+  remove and add the plugin. `claude plugin list` should say enabled, not
+  failed to load. The skill-only and other agent routes were never affected.
+
 ## 1.6.0 - 2026-09-11
 
 ### Added
