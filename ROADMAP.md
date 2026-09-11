@@ -36,26 +36,6 @@ Goal: retire "no benchmark is claimed" with numbers a skeptic can check.
    Done when `PRODUCT.md` makes no claim `evals/RESULTS.md` does not
    support.
 
-## Then: an opt-in brake for Gates
-
-Goal: an unchecked gate can stop a false "done", Claude Code only, for users
-who turn it on.
-
-1. **Check the channel before writing the hook.** Confirm in the Claude Code
-   hooks reference that a Stop hook's block decision and reason reach the
-   model. Hook recipes written from memory have shipped as no-ops before
-   because nobody checked the event's output channel.
-   Done when the header of `hooks/gates-stop.sh` cites the doc section and
-   the output field it relies on.
-2. **Ship it off by default.** Add `hooks/gates-stop.sh`, gated by
-   `~/.BLACK_IRIS_AGENTS/gates-stop`, exit 0 on every path, reading the
-   project's `GATES.md` from the store. Wire it in `hooks/hooks.json`,
-   document it in `INSTALL.md`, and fix the enforcement wording in
-   `PRODUCT.md` and `DESIGN.md`, which both say the permission prompt is
-   the only enforcement.
-   Done when the flag absent leaves a session unchanged, and the flag
-   present blocks the stop and names the unchecked gate ids.
-
 ## On request
 
 Each item waits for its trigger and ships as a minor version.

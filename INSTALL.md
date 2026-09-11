@@ -541,6 +541,30 @@ User Rules, or a project rule under `.cursor/rules/` with `alwaysApply: true`.
    the `references/` folder lives so the mode table's paths resolve.
 3. Invoke by name in the first message of a session.
 
+## Optional: refuse a stop while gates are unmet
+
+Claude Code plugin route only, and off unless you ask for it.
+
+```bash
+mkdir -p ~/.BLACK_IRIS_AGENTS && touch ~/.BLACK_IRIS_AGENTS/gates-stop   # on
+rm ~/.BLACK_IRIS_AGENTS/gates-stop                                       # off
+```
+
+With the flag set, `hooks/gates-stop.sh` runs when Claude Code is about to
+stop. If the project's `GATES.md` in the store still lists unmet gates, it
+refuses the stop and names their ids, so a "done" cannot land on top of an
+unchecked ledger. Without the flag it exits immediately and your sessions are
+unchanged.
+
+What it does not do. It never judges whether a gate should have passed; it
+reads the ids you wrote. An `ABANDON:` line is a decision, so an abandoned
+gate never counts as unmet and a handoff stop goes through. And it blocks at
+most once per ledger state per session, so changing nothing lets the next stop
+through rather than trapping the turn in a loop.
+
+Verify: with the flag set and a ledger holding an unmet gate, ask for a stop
+and you get the gate ids back. Without a ledger there is nothing to block.
+
 ## Always-on snippet for agents without the hook
 
 Paste into the agent's persistent rules file. It carries the always-on core

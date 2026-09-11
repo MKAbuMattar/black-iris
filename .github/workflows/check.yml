@@ -40,6 +40,27 @@ jobs:
           n=$(printf '%s' "$out" | wc -c)
           echo "hook payload: $n bytes"
           [ "$n" -lt 20000 ] || { echo "hook payload $n over the 20000 byte ceiling"; exit 1; }
+      - name: Gates Stop hook blocks only when it should
+        run: |
+          H=$(mktemp -d); P=/proj; S="$H/.BLACK_IRIS_AGENTS/projects/-proj"; mkdir -p "$S"
+          run() { printf '{"session_id":"s1"}' | HOME=$H CLAUDE_PROJECT_DIR=$P sh hooks/gates-stop.sh 2>"$H/e"; echo $?; }
+          want() { [ "$1" = "$2" ] || { echo "$3: wanted exit $2, got $1"; exit 1; }; }
+          want "$(run)" 0 "flag absent"
+          mkdir -p "$H/.BLACK_IRIS_AGENTS"; touch "$H/.BLACK_IRIS_AGENTS/gates-stop"
+          want "$(run)" 0 "no ledger"
+          printf -- '- [x] G1: done\n' > "$S/GATES.md"
+          want "$(run)" 0 "all met"
+          printf -- '- [x] G1: done\n- [ ] G2: no\n- [ ] G3: no\n' > "$S/GATES.md"
+          want "$(run)" 2 "unmet gates must block"
+          grep -q 'G2 G3' "$H/e" || { echo "block did not name the unmet ids"; exit 1; }
+          want "$(run)" 0 "same ledger state must not block twice"
+          printf -- '- [x] G1: done\n- [ ] G2: no\nABANDON: G3 gone\n' > "$S/GATES.md"
+          want "$(run)" 2 "unmet gate beside an abandoned one still blocks"
+          grep -q 'unmet gates: G2$' "$H/e" || { echo "abandoned id should not be listed"; exit 1; }
+          printf -- '- [x] G1: done\n- [x] G2: done\nABANDON: G3 gone\n' > "$S/GATES.md"
+          want "$(run)" 0 "handoff is a valid stop"
+          echo "gates-stop: all seven paths correct"
+
       - name: Hook fallbacks (no plugin root, no project dir)
         run: |
           H=$(mktemp -d); mkdir -p "$H/.BLACK_IRIS_AGENTS"; touch "$H/.BLACK_IRIS_AGENTS/always-on"

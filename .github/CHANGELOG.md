@@ -3,6 +3,17 @@
 Format follows Keep a Changelog. Entries are written for someone deciding
 whether to upgrade.
 
+## Unreleased
+
+### Added
+
+- An opt-in brake for gates, Claude Code only. Create
+  `~/.BLACK_IRIS_AGENTS/gates-stop` and a stop is refused while the project's
+  gate ledger still lists unmet gates, with their ids named. Without the flag
+  nothing changes. It never judges whether a gate should have passed, an
+  abandoned gate never counts as unmet so a handoff still stops cleanly, and it
+  blocks at most once per ledger state per session, so it cannot trap a turn.
+
 ## 1.4.0 - 2026-09-11
 
 ### Added
