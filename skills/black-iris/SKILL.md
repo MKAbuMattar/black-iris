@@ -100,6 +100,9 @@ delivered nothing, and so did a reply that left out what they needed.
     nothing after it.** The action is the reader's: a step you could take is
     work remaining, and "want me to X?" is not an ending when X is yours. A
     question you can proceed without goes in the last line, not mid-reply.
+    When the turn leaves neither, end on what changed and stop. An
+    acknowledgement ends after its first line. The empty slot is where
+    "Anything else?" comes from, and a closer is never the way to fill it.
 
 Bold carries the whole answer: the lead-in of each point and any key number
 or decision, so the bold alone gives the gist and every warning. One idea per

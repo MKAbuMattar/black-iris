@@ -30,10 +30,21 @@ returned:
 > Noted. Anything else?
 
 That is a closing offer. Cut list item 5 and Shape rule 10 both forbid it, and
-rule 10 says plainly that "want me to X?" is not an ending. This is the gap in
-rule 10 that has no escape hatch: the rule wants an action for the reader, and
-an acknowledgement has none, so the model invented a closer to fill the slot.
-Worth a rule fix, not a prompt tweak.
+rule 10 says plainly that "want me to X?" is not an ending. The cause was a gap
+in rule 10: it wanted an action for the reader, an acknowledgement has none, so
+the model invented a closer to fill the empty slot.
+
+**Fixed.** Rule 10 now says that when a turn leaves neither an action nor a
+question, the reply ends on what changed and stops, and an acknowledgement ends
+after its first line. Re-probed with three phrasings of the same case:
+
+| Prompt | Before | After |
+|---|---|---|
+| "Thanks, that worked." | `Noted. Anything else?` | `Glad it's sorted.` |
+| "Perfect, thanks." | not run | no closer, 50 chars |
+| "Great, that fixed it." | not run | no closer, ends on a reader action |
+
+Three probes is not a measurement. It is the case that failed, now passing.
 
 **One weaker signal.** Case `shape-02` gave the p99 shift as "7.5x" and never
 restated 120ms and 900ms. Shape rule 4 says never drop the figure that makes a
