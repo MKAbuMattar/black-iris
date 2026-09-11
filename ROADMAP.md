@@ -4,21 +4,21 @@ Versions, not dates. Every item names its files and ends in a done-when that
 a script or a person can check. What shipped is in `.github/CHANGELOG.md`;
 this file only looks forward.
 
-## 1.0.1: the release a clean machine installs is the release CI tested
+## 1.1.1: the release a clean machine installs is the release CI tested
 
-CI is green on ubuntu, macos, and windows, and `v1.0.0` is tagged and
-released by `.github/workflows/release.yml`, which lints, checks that every
-manifest carries the tag's version, zips the skill, and publishes the
-changelog section as the notes.
+CI is green on ubuntu, macos, and windows, and `.github/workflows/release.yml`
+publishes on a tag push: it lints, checks that all six versioned manifests
+carry the tag's version, zips the skill, and publishes the changelog section
+as the notes.
 
 1. **Verify two routes on a clean machine.** With no prior copy, install the
    Claude Code plugin route and the Codex route from `INSTALL.md`. The other
    routes wait for the users who file issues; `INSTALL.md` cites each agent's
    own docs, not a test.
    Done when both routes install, the "Verify it works" step passes, and the
-   result is a line in `.github/CHANGELOG.md` under 1.0.1.
+   result is a line in `.github/CHANGELOG.md` under 1.1.1.
 
-## 1.1.0: measured
+## 1.2.0: measured
 
 Goal: retire "no benchmark is claimed" with numbers a skeptic can check.
 
@@ -34,7 +34,7 @@ Goal: retire "no benchmark is claimed" with numbers a skeptic can check.
    Done when `PRODUCT.md` makes no claim `evals/RESULTS.md` does not
    support.
 
-## 1.2.0: an opt-in brake for Gates
+## 1.3.0: an opt-in brake for Gates
 
 Goal: an unchecked gate can stop a false "done", Claude Code only, for users
 who turn it on.
