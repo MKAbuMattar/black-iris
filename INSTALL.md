@@ -179,6 +179,73 @@ it scans `~/.claude/skills/`. Update: `npx skills update black-iris`.
 Uninstall: `npx skills remove black-iris`. Always-on: the snippet below in
 `.github/copilot-instructions.md`.
 
+## GitHub Copilot in JetBrains
+
+A different route from the one above, and from Junie and JetBrains AI
+Assistant. GitHub's docs list repository-wide instructions
+(`.github/copilot-instructions.md`) and path-specific instructions
+(`.github/instructions/**/*.instructions.md`) as supported for Copilot Chat in
+JetBrains IDEs. They do not document Agent Skills loading there, so this is a
+snippet route: the always-on core works, and the modes that need a reference
+file do not.
+
+Put the snippet below in `.github/copilot-instructions.md`. It is the same
+file the VS Code route uses, so a repository set up for one is already set up
+for the other. Verify by asking Copilot Chat in the IDE what its first rule
+for shaping a reply is. Update and uninstall are edits to that file.
+
+For Copilot coding agent in JetBrains, GitHub's docs also list `AGENTS.md`,
+`CLAUDE.md`, and `GEMINI.md`; the snippet works in any of them. Source:
+GitHub Docs, "Adding repository custom instructions for GitHub Copilot",
+JetBrains tool tab, and "Custom instructions support".
+
+## Kiro
+
+Kiro reads Agent Skills from `.kiro/skills/` in the workspace and
+`~/.kiro/skills/` for every project, one skill per directory as
+`<skills-root>/<skill-name>/SKILL.md`.
+
+```bash
+npx skills add MKAbuMattar/black-iris -a kiro          # this workspace
+cp -R skills/black-iris ~/.kiro/skills/                # all projects
+```
+
+Invoke by typing `/` in chat and picking it, or let Kiro match your request
+against the skill description. Verify in the Kiro panel under **Agent Steering
+& Skills**; Kiro's docs document no CLI command to list skills, so the panel
+is the check. Update: re-copy the folder, or `npx skills update black-iris`.
+Uninstall: delete the directory.
+
+Always-on: the snippet below in `.kiro/steering/`, which is where Kiro keeps
+instructions that apply to every session.
+
+One trap. Kiro's docs say a custom agent does not load skills by default. If
+you run black-iris under a custom agent rather than the default one, add it to
+that agent's `resources` field with the `skill://` URI scheme, or the folder
+will sit there unread. Source: Kiro docs, "Agent Skills", "Steering", and
+"Creating custom agents".
+
+## Oh My Pi (omp)
+
+OMP discovers skills one level under a `skills/` root: `.agents/skills/` is
+the canonical project location and `.github/skills/` is also read.
+
+```bash
+mkdir -p .agents/skills && cp -R skills/black-iris .agents/skills/
+```
+
+Invoke with `/skill:black-iris`. OMP's docs recognise that token both at the
+start of a message and inside ordinary prose. Update: re-copy the folder.
+Uninstall: delete `.agents/skills/black-iris`.
+
+Verify by invoking it, because OMP's skills documentation lists no command to
+enumerate loaded skills. Do not trust a silent install.
+
+Always-on: the snippet below in `AGENTS.md` at the project root. OMP walks
+ancestor directories from the working directory to find `AGENTS.md` files and
+merges them as persistent context. Source: `can1357/oh-my-pi`,
+`docs/skills.md`.
+
 ## Zed
 
 Zed's Agent reads Agent Skills. Copy the whole folder, because the URL import
@@ -425,7 +492,6 @@ npx skills add MKAbuMattar/black-iris -a augment       # .augment/skills, ~/.aug
 npx skills add MKAbuMattar/black-iris -a continue      # .continue/skills, ~/.continue/skills
 npx skills add MKAbuMattar/black-iris -a devin         # .devin/skills, ~/.config/devin/skills (Devin for Terminal)
 npx skills add MKAbuMattar/black-iris -a tabnine       # .tabnine/agent/skills
-npx skills add MKAbuMattar/black-iris -a kiro          # .kiro/skills; the IDE's snippet home is .kiro/steering/
 npx skills add MKAbuMattar/black-iris -a replit        # .agents/skills
 npx skills add MKAbuMattar/black-iris -a grok          # .grok/skills
 npx skills add MKAbuMattar/black-iris --all            # every agent the CLI detects on this machine

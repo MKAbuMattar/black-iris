@@ -19,17 +19,6 @@ as the notes.
    own docs, not a test.
    Done when both routes install, the "Verify it works" step passes, and the
    result is a line in `.github/CHANGELOG.md` for whatever version carries it.
-2. **Close the three install-route gaps.** A sweep against another project's
-   platform list found `INSTALL.md` already covers 15 of its 18. The rest:
-   `omp` (Oh My Pi) has no section at all; Kiro is one line under "Other
-   skills-CLI targets" and has its own `.kiro/steering/` snippet home;
-   GitHub Copilot inside JetBrains is a different route from Junie and from
-   JetBrains AI Assistant. Each needs install, invoke, verify, update,
-   uninstall, and where the always-on snippet goes, cited from that agent's
-   own documentation. Do not lift the commands from another project's config
-   files; that is inference, and those files carry their own license.
-   Done when each of the three has a section in `INSTALL.md` naming the doc
-   it was taken from.
 
 ## Then: measured
 
