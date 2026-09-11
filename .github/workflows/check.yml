@@ -43,6 +43,13 @@ jobs:
           echo "$out" | grep -q 'black-iris skill root' || { echo "script-relative root failed"; exit 1; }
           echo "$out" | grep -q '\[fb\](b.md)' || { echo "git-toplevel slug failed"; exit 1; }
 
+  release-ready:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Manifests agree, changelog has the section, release gate covers them
+        run: python3 .github/scripts/release-ready.py
+
   windows:
     runs-on: windows-latest
     steps:
