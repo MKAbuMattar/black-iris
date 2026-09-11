@@ -50,7 +50,7 @@ Update: `claude plugin marketplace update black-iris`. Uninstall:
 `claude plugin uninstall black-iris` then `claude plugin marketplace remove black-iris`.
 
 With the flag set and the plugin loaded, every session start, resume, clear,
-and compaction re-injects the skill body, all nine references, and the
+and compaction re-injects the skill body, all ten references, and the
 project's `MEMORY.md`, about 1,700 lines.
 Without the plugin the flag does nothing.
 

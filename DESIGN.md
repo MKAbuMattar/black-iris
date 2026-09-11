@@ -1,11 +1,11 @@
 # Design
 
-## One router, nine references
+## One router, ten references
 
 `SKILL.md` is a routing table plus the rules that must be true on every reply:
 Shape, Build, the Cut list, the Pre-send check, and one paragraph per mode
 with the hard rule the model needs before it opens the file. Everything else
-is a reference. On invocation the model reads all nine references at once, so
+is a reference. On invocation the model reads all ten references at once, so
 every mode is fully loaded for the session; the table then says which mode
 owns which ask. The 200-line cap on `SKILL.md` keeps the always-on core
 cheap; the references are the one-time cost of a full load, about 1,700

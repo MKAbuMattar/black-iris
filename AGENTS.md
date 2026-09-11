@@ -1,7 +1,7 @@
 # Working on black-iris
 
 This repo is a prompt-only skill. The product is `skills/black-iris/SKILL.md`
-and the nine files under `skills/black-iris/references/`. Everything else is
+and the ten files under `skills/black-iris/references/`. Everything else is
 packaging.
 
 ## Before you edit

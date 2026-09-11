@@ -1,13 +1,13 @@
 {
   "name": "black-iris",
   "version": "1.1.0",
-  "description": "ADHD-shaped responses, AI-tell removal, surgical builds, completion gates, isolated ideation, prompt writing, memory consolidation, commit text, naming, and diff review in one skill.",
+  "description": "ADHD-shaped responses, AI-tell removal, surgical builds, completion gates, isolated ideation, prompt writing, memory consolidation, context routing, commit text, naming, and diff review in one skill.",
   "license": "GPL-2.0-only",
   "homepage": "https://github.com/MKAbuMattar/black-iris",
   "skills": "./skills/",
   "interface": {
     "displayName": "Black Iris",
-    "shortDescription": "Eleven disciplines for a coding agent in one skill",
+    "shortDescription": "Twelve disciplines for a coding agent in one skill",
     "logo": "./.github/assets/readme/logo.png"
   }
 }
