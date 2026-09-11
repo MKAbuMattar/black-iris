@@ -3,6 +3,17 @@
 Format follows Keep a Changelog. Entries are written for someone deciding
 whether to upgrade.
 
+## Unreleased
+
+### Changed
+
+- The always-on hook costs about 11 KB per session instead of about 94 KB. It
+  injects the router and your project's memory index, and no longer pastes all
+  ten reference files into every session start, resume, clear, and compaction.
+  The model opens a reference when the mode that needs it fires. If you relied
+  on every mode being pre-loaded without invoking the skill, run
+  `/black-iris` once in a session to get the old behaviour.
+
 ## 1.2.0 - 2026-09-11
 
 ### Added
