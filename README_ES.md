@@ -1,7 +1,7 @@
 <p align="center">
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/assets/readme/hero-es-dark.svg">
-  <img src=".github/assets/readme/hero-es-light.svg" width="100%" alt="black-iris: una habilidad, once disciplinas para un agente de programacion, con su tabla de modos">
+  <img src=".github/assets/readme/hero-es-light.svg" width="100%" alt="black-iris: una habilidad, doce disciplinas para un agente de programacion, con su tabla de modos">
 </picture>
 </p>
 
@@ -14,11 +14,11 @@
 
 <h1 align="center">black-iris</h1>
 <p align="center"><em>السوسنة السوداء</em></p>
-<p align="center">Una habilidad, once disciplinas para un agente de programacion.</p>
+<p align="center">Una habilidad, doce disciplinas para un agente de programacion.</p>
 
 <p align="center"><a href="README.md">English</a> | <a href="README_ES.md">Espanol</a> | <a href="README_AR.md">العربية</a></p>
 
-<p align="center">Una sola habilidad para un agente de programacion, once disciplinas. Da forma a cada respuesta para un lector con TDAH, elimina las marcas de texto generado por IA de todo lo que el agente escribe, mantiene los cambios de codigo quirurgicos, escribe puertas de finalizacion antes de trabajos largos, lanza ramas de ideacion aisladas, redacta prompts para otras herramientas, consolida la memoria de la sesion y se ocupa de los mensajes de commit, los nombres y la revision de diffs. Un enrutador de 200 lineas mas nueve archivos de referencia.</p>
+<p align="center">Una sola habilidad para un agente de programacion, doce disciplinas. Da forma a cada respuesta para un lector con TDAH, elimina las marcas de texto generado por IA de todo lo que el agente escribe, mantiene los cambios de codigo quirurgicos, escribe puertas de finalizacion antes de trabajos largos, lanza ramas de ideacion aisladas, redacta prompts para otras herramientas, consolida la memoria de la sesion, mantiene los datos masivos fuera de la ventana de contexto y se ocupa de los mensajes de commit, los nombres y la revision de diffs. Un enrutador de 200 lineas mas diez archivos de referencia.</p>
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/assets/readme/section-install-es-dark.svg">
