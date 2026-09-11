@@ -60,10 +60,31 @@ HOME=$H CLAUDE_PLUGIN_ROOT=$PWD sh hooks/reinject.sh | head -5
 
 ## Releases
 
-Bump `version` in every root manifest and add a `## x.y.z - date` section to
-`.github/CHANGELOG.md`, then tag: `git tag -a vx.y.z -m "black-iris x.y.z" &&
-git push origin vx.y.z`. The release workflow refuses a tag whose version is
-missing from any manifest or from the changelog.
+Write the entries under a `## Unreleased` heading in `.github/CHANGELOG.md`
+as the work happens, in the language of someone deciding whether to upgrade.
+Then push a branch named for the version:
+
+```bash
+git switch -c release/v1.2.0 && git push -u origin release/v1.2.0
+```
+
+`release-branch.yml` bumps every versioned manifest, renames the `Unreleased`
+heading to `## 1.2.0 - <date>`, and opens the pull request. Merge it and
+`release.yml` tags `v1.2.0` and publishes, using the changelog section as the
+release body. An `rc/v1.2.0-rc.1` branch publishes as a prerelease.
+
+The merge has to be a human push. A push made with `GITHUB_TOKEN` never
+starts another workflow run, so nothing publishes if a job pushes to main for
+you. For the same reason the release pull request gets no `check.yml` run,
+which is why `release-branch.yml` lints and checks readiness itself before it
+commits anything.
+
+Nothing here invents changelog prose. `prepare-release.py` refuses when there
+is no `Unreleased` heading and no section for the version, and it decides
+every refusal before writing a byte. A hand-pushed `v*` tag still works as
+the escape hatch. The manifest list is discovered by
+`.github/scripts/manifests.py`, so a new manifest is enrolled in the bump and
+the check when it gains a `version` field.
 
 ## Commits and PRs
 

@@ -1,59 +1,94 @@
 name: release
 
+# Two entry points, one publisher.
+#
+# 1. Merge a release branch. Main then carries a version with no tag, and this
+#    creates the tag and publishes. This is the normal path, started by
+#    release-branch.yml.
+# 2. Push a `v*` tag by hand. The escape hatch, for a release the branch flow
+#    cannot express.
+#
+# A version that already has a tag publishes nothing, so an ordinary push to
+# main is a no-op here.
+
 on:
   push:
     tags: ['v*']
+    branches: [main]
 
 permissions:
   contents: write
 
 jobs:
-  release:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Decide whether there is anything to publish
+        id: ver
+        run: |
+          if [ "$GITHUB_REF_TYPE" = "tag" ]; then
+            VER="${GITHUB_REF_NAME#v}"
+            echo "tag $GITHUB_REF_NAME asks for $VER"
+          else
+            VER=$(python3 -c "import json;print(json.load(open('package.json'))['version'])")
+            if git rev-parse -q --verify "refs/tags/v$VER" >/dev/null; then
+              echo "v$VER is already tagged; nothing to publish"
+              echo "go=false" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            echo "main carries $VER with no tag; publishing"
+          fi
+          case "$VER" in
+            *-*) echo "pre=true"  >> "$GITHUB_OUTPUT" ;;
+            *)   echo "pre=false" >> "$GITHUB_OUTPUT" ;;
+          esac
+          echo "go=true"    >> "$GITHUB_OUTPUT"
+          echo "ver=$VER"   >> "$GITHUB_OUTPUT"
 
       - name: Lint
+        if: steps.ver.outputs.go == 'true'
         run: python3 skills/black-iris/scripts/universal/check.py
 
-      - name: Version matches the tag everywhere
-        run: |
-          VER="${GITHUB_REF_NAME#v}"
-          echo "tag version: $VER"
-          fail=0
-          for f in .claude-plugin/plugin.json .codex-plugin/plugin.json kimi.plugin.json qwen-extension.json gemini-extension.json package.json; do
-            v=$(python3 -c "import json,sys; print(json.load(open(sys.argv[1]))['version'])" "$f")
-            [ "$v" = "$VER" ] || { echo "$f says $v"; fail=1; }
-          done
-          grep -qE "^## \[?$VER\]?( |$)" .github/CHANGELOG.md || { echo "no ## $VER section in .github/CHANGELOG.md"; fail=1; }
-          exit $fail
+      - name: Manifests and changelog agree with the version
+        if: steps.ver.outputs.go == 'true'
+        run: python3 .github/scripts/release-ready.py "${{ steps.ver.outputs.ver }}"
 
       - name: Release notes from the changelog
+        if: steps.ver.outputs.go == 'true'
         run: |
-          VER="${GITHUB_REF_NAME#v}"
+          VER='${{ steps.ver.outputs.ver }}'
           awk -v v="$VER" '
             $0 ~ "^## \\[?"v"\\]?" {p=1; next}
             p && /^## / {exit}
             p {print}
           ' .github/CHANGELOG.md > notes.md
           [ -s notes.md ] || { echo "empty notes"; exit 1; }
-          printf '\nInstall: see [INSTALL.md](https://github.com/%s/blob/%s/INSTALL.md). License: GPL-2.0-only.\n' "$GITHUB_REPOSITORY" "$GITHUB_REF_NAME" >> notes.md
+          printf '\nInstall: see [INSTALL.md](https://github.com/%s/blob/v%s/INSTALL.md). License: GPL-2.0-only.\n' "$GITHUB_REPOSITORY" "$VER" >> notes.md
           cat notes.md
 
       - name: Build the skill archive
+        if: steps.ver.outputs.go == 'true'
         run: |
-          VER="${GITHUB_REF_NAME#v}"
+          VER='${{ steps.ver.outputs.ver }}'
           (cd skills && zip -qr "../black-iris-skill-$VER.zip" black-iris -x '*/__pycache__/*')
           sha256sum "black-iris-skill-$VER.zip" | tee "black-iris-skill-$VER.zip.sha256"
 
       - name: Publish the GitHub release
+        if: steps.ver.outputs.go == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          VER="${GITHUB_REF_NAME#v}"
-          gh release create "$GITHUB_REF_NAME" \
+          VER='${{ steps.ver.outputs.ver }}'
+          PRE=''
+          [ '${{ steps.ver.outputs.pre }}' = 'true' ] && PRE='--prerelease'
+          gh release create "v$VER" \
             --title "black-iris $VER" \
             --notes-file notes.md \
-            --verify-tag \
+            --target "$GITHUB_SHA" \
+            $PRE \
             "black-iris-skill-$VER.zip" "black-iris-skill-$VER.zip.sha256" \
             .github/assets/readme/logo.png
