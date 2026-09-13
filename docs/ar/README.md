@@ -1,7 +1,7 @@
 <p align="center">
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/assets/readme/hero-ar-dark.svg">
-  <img src=".github/assets/readme/hero-ar-light.svg" width="100%" alt="black-iris: مهارة واحدة، اثنتا عشرة قاعدة عمل لوكيل البرمجة، مع جدول الأنماط">
+  <img src=".github/assets/readme/hero-ar-light.svg" width="100%" alt="black-iris: مهارة واحدة، ثلاث عشرة قاعدة عمل لوكيل البرمجة، مع جدول الأنماط">
 </picture>
 </p>
 
@@ -14,11 +14,11 @@
 
 <h1 align="center">black-iris</h1>
 <p align="center"><em>السوسنة السوداء</em></p>
-<p align="center">مهارة واحدة، اثنتا عشرة قاعدة عمل لوكيل البرمجة.</p>
+<p align="center">مهارة واحدة، ثلاث عشرة قاعدة عمل لوكيل البرمجة.</p>
 
 <p align="center"><a href="README.md">English</a> | <a href="../../docs/es/README.md">Espanol</a> | <a href="README.md">العربية</a></p>
 
-<p align="center">مهارة واحدة لوكيل البرمجة، اثنتا عشرة قاعدة عمل. تُشكّل كل رد لقارئ لديه فرط الحركة ونقص الانتباه، وتحذف علامات النص المولَّد بالذكاء الاصطناعي من كل ما يكتبه الوكيل، وتُبقي تغييرات الكود دقيقة ومحدودة، وتكتب بوابات إنجاز قبل العمل الطويل، وتُطلق فروع أفكار معزولة، وتكتب أوامر لأدوات أخرى، وتُرتّب ذاكرة الجلسة، وتُبقي البيانات الضخمة خارج نافذة السياق، وتتولى رسائل الالتزام والتسمية ومراجعة الفروقات. موجّه من 200 سطر مع عشرة ملفات مرجعية.</p>
+<p align="center">مهارة واحدة لوكيل البرمجة، ثلاث عشرة قاعدة عمل. تُشكّل كل رد لقارئ لديه فرط الحركة ونقص الانتباه، وتحذف علامات النص المولَّد بالذكاء الاصطناعي من كل ما يكتبه الوكيل، وتُبقي تغييرات الكود دقيقة ومحدودة، وتكتب بوابات إنجاز قبل العمل الطويل، وتُطلق فروع أفكار معزولة، وتكتب أوامر لأدوات أخرى، وتُرتّب ذاكرة الجلسة، وتُبقي البيانات الضخمة خارج نافذة السياق، وتتولى رسائل الالتزام والتسمية ومراجعة الفروقات. موجّه من 200 سطر مع عشرة ملفات مرجعية.</p>
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/assets/readme/section-install-ar-dark.svg">
@@ -56,6 +56,7 @@ npx skills add MKAbuMattar/black-iris -g
 | `/black-iris gates` | "gates"، "do not stop until done" | سجل قابل للتحقق قبل العمل الطويل |
 | `/black-iris ideate` | "ideate"، "brainstorm" | فروع متوازية معزولة ثم حكم نهائي |
 | `/black-iris prompt` | "write a prompt for X" | أمر واحد جاهز للصق في أداة محددة |
+| `/black-iris council` | "council this"، "pressure-test this" | خمسة مستشارين معزولين، مراجعة مجهولة، حكم واحد |
 | `/black-iris memory` | "autodream"، "consolidate memory" | حصاد معرفة الجلسة والتحقق منها |
 | `/black-iris ship` | "commit message"، "PR body" | التزامات اصطلاحية مع سبب حقيقي |
 | `/black-iris name` | "rename"، "name this" | معرّفات صادقة في القراءة |

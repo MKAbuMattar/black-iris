@@ -28,7 +28,7 @@ STRIP = ["wadi-rum-sand", "dead-sea-blue", "black-iris", "olive-green", "keffiye
 MODE_TONE = {
     "Shape": "black-iris", "Build": "black-iris", "Deslop": "petra-rose",
     "Gates": "keffiyeh-red", "Ideate": "dead-sea-blue", "Prompt": "olive-green",
-    "Memory": "desert-camel", "Ship": "amman-stone", "Name": "amman-stone",
+    "Memory": "desert-camel", "Council": "dead-sea-blue", "Context": "basalt-black", "Ship": "amman-stone", "Name": "amman-stone",
     "Review": "amman-stone", "Diagram": "wadi-rum-sand",
 }
 SANS = "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', 'Noto Naskh Arabic', sans-serif"
@@ -37,7 +37,8 @@ MONO = "ui-monospace, SFMono-Regular, Menlo, monospace"
 MODES = [
     ("Shape", "always on"), ("Build", "always on"), ("Deslop", "humanize"),
     ("Gates", "do not stop until done"), ("Ideate", "brainstorm"),
-    ("Prompt", "write a prompt for"), ("Memory", "autodream"),
+    ("Prompt", "write a prompt for"), ("Council", "council this"), ("Memory", "autodream"),
+    ("Context", "analyze this log"),
     ("Ship", "commit message"), ("Name", "rename"), ("Review", "review this diff"),
     ("Diagram", "diagram this"),
 ]
@@ -45,11 +46,11 @@ MODES = [
 LANGS = {
     "en": dict(
         eyebrow="AGENT SKILL FOR CLAUDE CODE, CODEX, AND FRIENDS",
-        promise1="One skill, twelve disciplines for a coding agent.",
+        promise1="One skill, thirteen disciplines for a coding agent.",
         promise2="Answer first. Exact numbers. Warnings kept. Done means checked.",
         promise3="", rtl=False,
         table="ROUTING TABLE", table_sub="say it, get the mode",
-        desc="One Claude Code skill with twelve disciplines for a coding agent. The routing table of modes is shown beside the name.",
+        desc="One Claude Code skill with thirteen disciplines for a coding agent. The routing table of modes is shown beside the name.",
         sections=[("01", "install", "Install", "one command per agent"),
                   ("02", "use", "Use", "say the trigger, get the mode"),
                   ("03", "store", "Where it writes", "~/.BLACK_IRIS_AGENTS, never your repo"),
@@ -57,11 +58,11 @@ LANGS = {
     ),
     "es": dict(
         eyebrow="HABILIDAD DE AGENTE PARA CLAUDE CODE, CODEX Y MAS",
-        promise1="Una habilidad, doce disciplinas para un agente de programacion.",
+        promise1="Una habilidad, trece disciplinas para un agente de programacion.",
         promise2="Respuesta primero. Numeros exactos. Avisos intactos.",
         promise3="Hecho significa comprobado.", rtl=False,
         table="TABLA DE MODOS", table_sub="dilo, activa el modo",
-        desc="Una habilidad de Claude Code con doce disciplinas para un agente de programacion. La tabla de modos aparece junto al nombre.",
+        desc="Una habilidad de Claude Code con trece disciplinas para un agente de programacion. La tabla de modos aparece junto al nombre.",
         sections=[("01", "install", "Instalacion", "un comando por agente"),
                   ("02", "use", "Uso", "di el disparador, activa el modo"),
                   ("03", "store", "Donde escribe", "~/.BLACK_IRIS_AGENTS, nunca tu repo"),
@@ -69,11 +70,11 @@ LANGS = {
     ),
     "ar": dict(
         eyebrow="مهارة وكيل لـ Claude Code وCodex وغيرهما",
-        promise1="مهارة واحدة، اثنتا عشرة قاعدة عمل لوكيل البرمجة.",
+        promise1="مهارة واحدة، ثلاث عشرة قاعدة عمل لوكيل البرمجة.",
         promise2="الجواب أولاً. أرقام دقيقة. التحذيرات باقية. المنجَز هو المُتحقَّق منه.",
         promise3="", rtl=True,
         table="جدول الأنماط", table_sub="قلها، يعمل النمط",
-        desc="مهارة واحدة لـ Claude Code باثنتي عشرة قاعدة عمل لوكيل البرمجة. جدول الأنماط بجانب الاسم.",
+        desc="مهارة واحدة لـ Claude Code بثلاث عشرة قاعدة عمل لوكيل البرمجة. جدول الأنماط بجانب الاسم.",
         sections=[("01", "install", "التثبيت", "أمر واحد لكل وكيل"),
                   ("02", "use", "الاستخدام", "قل المحفّز، يعمل النمط"),
                   ("03", "store", "أين تكتب", "~/.BLACK_IRIS_AGENTS، لا مستودعك"),
@@ -114,10 +115,10 @@ def hero(t, L):
         rows.append(f'<rect x="24" y="{y - 11}" width="10" height="10" rx="2" fill="{tone}"/>')
         rows.append(f'<text x="44" y="{y}" font-family="{SANS}" font-size="16" font-weight="{weight}" fill="{t["fg"]}">{mode}</text>')
         rows.append(f'<text x="160" y="{y}" font-family="{MONO}" font-size="14" fill="{t["muted"]}">{trig}</text>')
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400" viewBox="0 0 1200 400" role="img" aria-labelledby="title desc">
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="424" viewBox="0 0 1200 424" role="img" aria-labelledby="title desc">
   <title id="title">black-iris</title>
   <desc id="desc">{L["desc"]}</desc>
-  <rect width="1200" height="400" rx="24" fill="{t["bg"]}"/>
+  <rect width="1200" height="424" rx="24" fill="{t["bg"]}"/>
   <rect x="56" y="48" width="1088" height="3" fill="{t["line"]}"/>
   <g id="identity-strip" transform="translate(56 26)">{strip}</g>
   {iris_mark(72, 92, t["fg"], 1.0)}
@@ -131,7 +132,7 @@ def hero(t, L):
     <text x="0" y="292" xml:space="preserve" font-family="{MONO}" font-size="14" fill="{t["muted"]}">{IRIS}    Jordanian Identity Colors    GPL-2.0-only    /black-iris</text>
   </g>
   <g id="project-proof" transform="translate(760 40)">
-    <rect x="0" y="0" width="384" height="316" rx="14" fill="{t["bg"]}" stroke="{t["line"]}" stroke-width="2"/>
+    <rect x="0" y="0" width="384" height="364" rx="14" fill="{t["bg"]}" stroke="{t["line"]}" stroke-width="2"/>
     <rect x="0" y="0" width="384" height="40" rx="14" fill="{t["line"]}"/>
     <rect x="0" y="26" width="384" height="14" fill="{t["line"]}"/>
     <text x="24" y="26" font-family="{ui_font}" font-size="14"{table_ls} fill="{t["bg"]}">{L["table"]}</text>

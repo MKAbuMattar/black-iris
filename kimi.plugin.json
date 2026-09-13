@@ -7,7 +7,7 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Black Iris",
-    "shortDescription": "Twelve disciplines for a coding agent in one skill",
+    "shortDescription": "Thirteen disciplines for a coding agent in one skill",
     "logo": "./.github/assets/readme/logo.png"
   }
 }
