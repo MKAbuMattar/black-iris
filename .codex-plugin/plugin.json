@@ -23,7 +23,7 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Black Iris",
-    "shortDescription": "Twelve disciplines for a coding agent in one skill",
+    "shortDescription": "Thirteen disciplines for a coding agent in one skill",
     "longDescription": "ADHD-shaped responses, AI-tell removal, surgical builds, completion gates, isolated ideation, prompt writing, memory consolidation, context routing, commit text, naming, and diff review in one skill.",
     "developerName": "Mohammad Abu Mattar",
     "category": "Productivity",

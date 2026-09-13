@@ -1,7 +1,7 @@
 <p align="center">
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/assets/readme/hero-es-dark.svg">
-  <img src=".github/assets/readme/hero-es-light.svg" width="100%" alt="black-iris: una habilidad, doce disciplinas para un agente de programacion, con su tabla de modos">
+  <img src=".github/assets/readme/hero-es-light.svg" width="100%" alt="black-iris: una habilidad, trece disciplinas para un agente de programacion, con su tabla de modos">
 </picture>
 </p>
 
@@ -14,11 +14,11 @@
 
 <h1 align="center">black-iris</h1>
 <p align="center"><em>السوسنة السوداء</em></p>
-<p align="center">Una habilidad, doce disciplinas para un agente de programacion.</p>
+<p align="center">Una habilidad, trece disciplinas para un agente de programacion.</p>
 
 <p align="center"><a href="README.md">English</a> | <a href="README.md">Espanol</a> | <a href="../../docs/ar/README.md">العربية</a></p>
 
-<p align="center">Una sola habilidad para un agente de programacion, doce disciplinas. Da forma a cada respuesta para un lector con TDAH, elimina las marcas de texto generado por IA de todo lo que el agente escribe, mantiene los cambios de codigo quirurgicos, escribe puertas de finalizacion antes de trabajos largos, lanza ramas de ideacion aisladas, redacta prompts para otras herramientas, consolida la memoria de la sesion, mantiene los datos masivos fuera de la ventana de contexto y se ocupa de los mensajes de commit, los nombres y la revision de diffs. Un enrutador de 200 lineas mas diez archivos de referencia.</p>
+<p align="center">Una sola habilidad para un agente de programacion, trece disciplinas. Da forma a cada respuesta para un lector con TDAH, elimina las marcas de texto generado por IA de todo lo que el agente escribe, mantiene los cambios de codigo quirurgicos, escribe puertas de finalizacion antes de trabajos largos, lanza ramas de ideacion aisladas, redacta prompts para otras herramientas, consolida la memoria de la sesion, mantiene los datos masivos fuera de la ventana de contexto y se ocupa de los mensajes de commit, los nombres y la revision de diffs. Un enrutador de 200 lineas mas diez archivos de referencia.</p>
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/assets/readme/section-install-es-dark.svg">
@@ -58,6 +58,7 @@ palabras disparadoras.
 | `/black-iris gates` | "gates", "do not stop until done" | Un registro comprobable antes de un trabajo largo |
 | `/black-iris ideate` | "ideate", "brainstorm" | Ramas paralelas aisladas y luego un veredicto |
 | `/black-iris prompt` | "write a prompt for X" | Un prompt listo para pegar en una herramienta concreta |
+| `/black-iris council` | "council this", "pressure-test this" | Cinco asesores aislados, revision anonima, un veredicto |
 | `/black-iris memory` | "autodream", "consolidate memory" | Cosecha y verifica el conocimiento de la sesion |
 | `/black-iris ship` | "commit message", "PR body" | Commits convencionales con un porque real |
 | `/black-iris name` | "rename", "name this" | Identificadores que dicen la verdad |

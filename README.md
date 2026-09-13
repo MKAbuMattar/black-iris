@@ -1,7 +1,7 @@
 <p align="center">
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/assets/readme/hero-en-dark.svg">
-  <img src=".github/assets/readme/hero-en-light.svg" width="100%" alt="black-iris: one skill, twelve disciplines for a coding agent, with its routing table of modes">
+  <img src=".github/assets/readme/hero-en-light.svg" width="100%" alt="black-iris: one skill, thirteen disciplines for a coding agent, with its routing table of modes">
 </picture>
 </p>
 
@@ -14,11 +14,11 @@
 
 <h1 align="center">black-iris</h1>
 <p align="center"><em>السوسنة السوداء</em></p>
-<p align="center">One skill, twelve disciplines for a coding agent.</p>
+<p align="center">One skill, thirteen disciplines for a coding agent.</p>
 
 <p align="center"><a href="README.md">English</a> | <a href="docs/es/README.md">Espanol</a> | <a href="docs/ar/README.md">العربية</a></p>
 
-<p align="center">One skill for a coding agent, twelve disciplines. It shapes every reply for a reader with ADHD, cuts AI tells from anything the agent writes, keeps code changes surgical, writes completion gates before long work, fans out isolated ideation branches, writes prompts for other tools, consolidates session memory, keeps bulk data out of the context window, and handles commit text, naming, and diff review. One 200-line router plus ten reference files.</p>
+<p align="center">One skill for a coding agent, thirteen disciplines. It shapes every reply for a reader with ADHD, cuts AI tells from anything the agent writes, keeps code changes surgical, writes completion gates before long work, fans out isolated ideation branches, writes prompts for other tools, consolidates session memory, keeps bulk data out of the context window, and handles commit text, naming, and diff review. One 200-line router plus ten reference files.</p>
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/assets/readme/section-install-en-dark.svg">
@@ -63,6 +63,7 @@ it: `/black-iris deslop`, or ask with its trigger words.
 | `/black-iris gates` | "gates", "do not stop until done" | A checkable ledger before long work |
 | `/black-iris ideate` | "ideate", "brainstorm" | Isolated parallel branches, then a verdict |
 | `/black-iris prompt` | "write a prompt for X" | One paste-ready prompt for a named tool |
+| `/black-iris council` | "council this", "pressure-test this" | Five isolated advisors, anonymous review, one verdict |
 | `/black-iris memory` | "autodream", "consolidate memory" | Harvest and verify session knowledge |
 | `/black-iris ship` | "commit message", "PR body" | Conventional commits with a real why |
 | `/black-iris name` | "rename", "name this" | Identifiers that read true |

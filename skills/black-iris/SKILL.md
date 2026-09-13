@@ -4,16 +4,16 @@ description: >
   Shape every response for a reader with ADHD at a lite, full, or deep dial.
   Cut AI tells from anything you write. Build code with surfaced assumptions,
   surgical diffs, and a check stated first. Write completion gates before long
-  work and refuse a false done. Fan out isolated ideation branches for an open
-  design question. Humanize, deslop, or audit text. Write or fix a prompt for a
-  named AI tool. Autodream: harvest episodic, semantic, and procedural memory,
-  find what went stale. Keep bulk data out of the context window; derive, do
-  not dump. Write a commit message, PR body, or changelog entry. Name or
-  rename an identifier. Review a diff. Use when the user says "black-iris",
-  "shape this", "deslop", "humanize", "gates", "ideate", "brainstorm", "write
-  a prompt for", "autodream", "episodic memory", "clean up my memory",
-  "analyze this log", "commit message", "rename", "review this". Not for small
-  talk, a one-line answer, a trivial edit, or fiction and verse. A mode fires
+  work and refuse a false done. Ideate in isolated parallel branches. Council
+  a decision with five isolated advisors, anonymous peer review, and one
+  committed verdict. Write or fix a prompt for a named AI tool. Autodream:
+  harvest and verify memory. Keep bulk data out of the context window. Write a
+  commit message, PR body, or changelog entry. Name or rename an identifier.
+  Review a diff. Use when the user says "black-iris", "shape this", "deslop",
+  "humanize", "gates", "ideate", "brainstorm", "write a prompt for", "council
+  this", "pressure-test this", "debate this", "autodream", "clean up my
+  memory", "analyze this log", "commit message", "rename", "review this". Not
+  for small talk, a one-line answer, a trivial edit, or fiction. A mode fires
   on the ask, never on every message.
 license: GPL-2.0-only
 compatibility: any agent that reads Agent Skills; the hook is Claude Code only
@@ -34,6 +34,7 @@ the work has to prove itself before it is called done.
 | Long or multi-part task, "gates", "do not stop until done", work that came back half-done | Gates | `references/gates.md` |
 | "ideate", "brainstorm", an open design or architecture question with no canonical answer | Ideate | `references/ideate.md` |
 | Write, fix, adapt, or split a prompt for a named AI tool | Prompt | `references/prompt.md` |
+| "council this", "war room this", "pressure-test this", "debate this", or a decision with named options, stakes, and no single right answer ("should I X or Y", "I am torn between") | Council | `references/council.md` |
 | "autodream" (all three phases), "consolidate memory", "clean up my memory", "episodic", "semantic", or "procedural" memory, "what is stale", "save what we learned", "remember how we did this", why a new session did not know something, end of a session | Memory | `references/memory.md` |
 | Analyze, count, filter, parse, or search bulk data: logs, test output, a large file, an API response, many files at once | Context | `references/context.md` |
 | Commit message, PR title or body, changelog entry | Ship | `references/ship.md` |
@@ -190,6 +191,13 @@ impossible gate gets `ABANDON: <id> <reason>` and ends in handoff, not "done".
 abort unless open-ended, high-stakes, and phrased without "quick" or "just".
 Diverge in isolated parallel subagents that never see each other. Then score,
 cluster, prune traps, deepen the top 3, and commit to a recommendation.
+
+**Council.** About 11 Agent calls. "council this", "war room", "pressure-test",
+"debate this", or `/black-iris council` skips the gate; otherwise run it only for
+a decision with named options, real stakes, and no single right answer. Five
+isolated advisors in parallel, then anonymous shuffled peer review, then a
+chairman who commits; line one of the reply is the recommendation. Ideate makes
+options; Council judges them.
 
 **Deslop.** Read all of it, mark tells strongest first, rewrite, self-audit,
 deliver. Never add a fact, name, number, or citation the source lacks; a

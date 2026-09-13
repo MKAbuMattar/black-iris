@@ -3,6 +3,19 @@
 Format follows Keep a Changelog. Entries are written for someone deciding
 whether to upgrade.
 
+## Unreleased
+
+### Added
+
+- Council mode. "council this", "war room this", "pressure-test this",
+  "debate this", or a decision with named options and real stakes runs five
+  isolated advisors (Contrarian, First Principles, Expansionist, Outsider,
+  Executor) in parallel, then an anonymous shuffled peer review, then a
+  chairman who commits to one recommendation and one first step. About 11
+  Agent calls; the cost is disclosed up front when the mode fires without an
+  explicit trigger. After Andrej Karpathy's LLM Council. Ideate makes options;
+  Council judges them.
+
 ## 1.8.0 - 2026-09-11
 
 ### Added
