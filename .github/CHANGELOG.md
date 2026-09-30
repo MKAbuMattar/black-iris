@@ -3,6 +3,17 @@
 Format follows Keep a Changelog. Entries are written for someone deciding
 whether to upgrade.
 
+## Unreleased
+
+### Added
+
+- Mizan, a routing eval that needs no judge. `python3 evals/mizan.py`
+  runs each eval case with only this plugin loaded and records which mode
+  reference the model opened before its first answer: hit, extra, wrong,
+  miss, or false fire, per mode. `--per-mode 2` is a smoke run. The first
+  smoke routed 18 of 26 right, with no false fire; deslop and context missed
+  both cases. `evals/RESULTS.md` names every miss.
+
 ## 1.15.0 - 2026-09-30
 
 ### Added

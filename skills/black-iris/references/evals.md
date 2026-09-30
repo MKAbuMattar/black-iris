@@ -32,6 +32,16 @@ expected shape a rubric can check, not a golden answer:
 Also write 6 to 8 should-not-trigger prompts: casual questions where the
 skill loading, or the mode firing, would be wrong.
 
+## Routing first, no judge needed
+
+Before judging quality, weigh the routing: did each case open the mode it
+should? `python3 evals/mizan.py` runs every case with only this plugin
+loaded, records which `references/<mode>.md` the model opened before its
+first written answer, and stops that session there. It scores hit, extra,
+wrong, miss, and false fire per mode. `--per-mode 2` is a smoke run. A mode
+that routes badly is the first candidate to cut or merge, before any new
+mode is added.
+
 ## Judging
 
 - Judge with a model from a different family than the one under test.

@@ -21,6 +21,8 @@ jobs:
         run: python3 tests/test_siq.py
       - name: Dabke loop hook
         run: python3 tests/test_dabke.py
+      - name: Mizan scoring
+        run: python3 tests/test_mizan.py
       - name: Bash lint
         run: bash skills/black-iris/scripts/${{ matrix.os == 'macos-latest' && 'mac' || 'linux' }}/check.sh
       - name: Manifests parse
