@@ -5,8 +5,8 @@ description: >
   Cut AI tells from anything you write. Build code with surfaced assumptions,
   surgical diffs, and a check stated first. Write completion gates before long
   work and refuse a false done. Ideate in isolated parallel branches. Council
-  a decision: five isolated advisors, one committed verdict. Jerash: rematch
-  an answer you rejected. Write or fix a prompt for a named AI tool.
+  a decision: five isolated advisors, one committed verdict. Jerash: race 100
+  entrants for one answer. Write or fix a prompt for a named AI tool.
   Autodream: harvest and verify memory. Keep bulk data out of the context
   window. Write a commit message, PR body, or changelog entry. Name or rename
   an identifier. Review a diff. Use when the user says "black-iris", "shape
@@ -34,7 +34,7 @@ the work has to prove itself before it is called done.
 | Long or multi-part task, "gates", "do not stop until done", work that came back half-done | Gates | `references/gates.md` |
 | "ideate", "brainstorm", an open design or architecture question with no canonical answer | Ideate | `references/ideate.md` |
 | Write, fix, adapt, or split a prompt for a named AI tool | Prompt | `references/prompt.md` |
-| `/black-iris:jerash`, or a rematch against an answer the user rejected; "try again" only gets a one-line offer | Jerash | `references/jerash.md` |
+| `/black-iris:jerash`, "race this", or a bad answer the user wants beaten ("try again", "bad answer" ask first) | Jerash | `references/jerash.md` |
 | "council this", "war room this", "pressure-test this", "debate this", or a decision with named options, stakes, and no single right answer ("should I X or Y", "I am torn between") | Council | `references/council.md` |
 | "autodream" (all three phases), "consolidate memory", "clean up my memory", "episodic", "semantic", or "procedural" memory, "what is stale", "save what we learned", "remember how we did this", why a new session did not know something, end of a session | Memory | `references/memory.md` |
 | Analyze, count, filter, parse, or search bulk data: logs, test output, a large file, an API response, many files at once | Context | `references/context.md` |
@@ -200,11 +200,11 @@ isolated advisors in parallel, then anonymous shuffled peer review, then a
 chairman who commits; line one of the reply is the recommendation. Ideate makes
 options; Council judges them.
 
-**Jerash.** Typed only; "try again" earns a one-line offer, never a spawn. The
-rejected answer holds the title, the reason it was rejected is required, and
-each challenge is one challenger plus two order-swapped blind judges. The title
-moves only when both judges agree. Stop after two defenses in a row or 6
-challengers, at most 18 Agent calls.
+**Jerash.** A race: 100 entrants by default, `--quick` 16, each with its own
+lane card, then heats of critique, reply, and one judge until one entry holds
+the lane. 100 entrants is 595 Agent calls. Typed starts it; "try again" or "bad
+answer" asks consent first. `jerash/hippodrome.py` keeps the race on disk; you
+never read entries and never pick a winner.
 
 **Deslop.** Read all of it, mark tells strongest first, rewrite, self-audit,
 deliver. Never add a fact, name, number, or citation the source lacks; a

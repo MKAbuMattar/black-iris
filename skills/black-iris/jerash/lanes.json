@@ -1,0 +1,40 @@
+{
+  "about": "Jerash lane cards. Every entrant draws one card from each deck, and no two entrants share a full card. Each card is named for a place in Jordan; the name is a handle, the 'how' is the instruction.",
+  "approach": [
+    {"id": "petra",    "name": "Petra",      "how": "Carve the answer out of what already exists. Before adding anything, list what the task already gives you and build only from that."},
+    {"id": "wadi-rum", "name": "Wadi Rum",   "how": "Start wide. Map the whole problem and every party it touches before choosing where to stand."},
+    {"id": "dead-sea", "name": "Dead Sea",   "how": "Go to the lowest point first. Find the worst case the answer must survive and design for it before the common case."},
+    {"id": "karak",    "name": "Karak",      "how": "Think like the castle wall. Assume someone will attack this answer and fortify the weakest point first."},
+    {"id": "madaba",   "name": "Madaba",     "how": "Work like a mosaic. Split the task into small tiles, get each one exactly right, then set them together."},
+    {"id": "nebo",     "name": "Mount Nebo", "how": "Look from the far end. Describe the finished result in detail, then walk back to the first step."},
+    {"id": "azraq",    "name": "Azraq",      "how": "Find the oasis. Look for the one thing already known to work and grow the answer outward from it."},
+    {"id": "aqaba",    "name": "Aqaba",      "how": "Think at the port. Focus on the edges where this answer meets other systems, people, and formats."},
+    {"id": "ajloun",   "name": "Ajloun",     "how": "Stand watch. Name what could go wrong after the answer ships, and how anyone would notice."},
+    {"id": "umm-qais", "name": "Umm Qais",   "how": "Look over three borders. Answer from the view of the user, the maintainer, and the person who pays."},
+    {"id": "as-salt",  "name": "As-Salt",    "how": "Respect the old town. Keep what already works in place and change the least you can."},
+    {"id": "jerash",   "name": "Jerash",     "how": "Build on columns. Fix the structure first, the skeleton of the answer, then fill the space between."}
+  ],
+  "route": [
+    {"id": "caravan",  "name": "Caravan",       "how": "Draft the whole answer, stop, read it as a critic, then rewrite it once."},
+    {"id": "survey",   "name": "Survey",        "how": "Write the outline and the acceptance checks first. Fill the answer in only after both exist."},
+    {"id": "well",     "name": "Well",          "how": "Dig one vertical slice to the bottom, working end to end, then widen it."},
+    {"id": "market",   "name": "Souq",          "how": "Lay out three candidate answers side by side, compare them on the task's terms, and keep the best."},
+    {"id": "ledger",   "name": "Ledger",        "how": "List every requirement the task states, then tick each one off against the answer before you finish."},
+    {"id": "trench",   "name": "Trench",        "how": "Write the check first, a test or a worked example, then make the answer pass it."},
+    {"id": "terrace",  "name": "Terrace",       "how": "Answer in levels: the one-line answer, then the working answer, then the detail, each complete on its own."},
+    {"id": "loom",     "name": "Loom",          "how": "Weave two passes: one for correctness, then one for how it reads to the person who asked."},
+    {"id": "cistern",  "name": "Cistern",       "how": "Collect every fact and file the task points to before you write a single line of the answer."},
+    {"id": "arch",     "name": "Arch",          "how": "Build the answer, then try to break it with three hostile inputs, then fix what broke."}
+  ],
+  "priority": [
+    {"id": "keffiyeh", "name": "Keffiyeh",   "how": "Where a choice is close, choose what the person who asked would recognise as theirs: their words, their stack, their constraints."},
+    {"id": "basalt",   "name": "Basalt",     "how": "Where a choice is close, choose what lasts: the option still right in a year."},
+    {"id": "salt",     "name": "Salt White", "how": "Where a choice is close, choose the plainest option: fewest parts, fewest words."},
+    {"id": "olive",    "name": "Olive",      "how": "Where a choice is close, choose what is safest to run today, even if it is slower."},
+    {"id": "camel",    "name": "Desert Camel","how": "Where a choice is close, choose what survives the longest haul with the least upkeep."},
+    {"id": "rose",     "name": "Petra Rose", "how": "Where a choice is close, choose the answer that is easiest to read and hand to someone else."},
+    {"id": "sand",     "name": "Wadi Sand",  "how": "Where a choice is close, choose the most concrete option: exact values, names, and commands over advice."},
+    {"id": "stone",    "name": "Amman Stone","how": "Where a choice is close, choose what fits the existing structure over what would be ideal from scratch."},
+    {"id": "blue",     "name": "Dead Sea Blue","how": "Where a choice is close, choose the option whose trade-offs you can state in one line each, and state them."}
+  ]
+}
