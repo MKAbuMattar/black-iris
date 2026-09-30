@@ -54,7 +54,7 @@ rule relies on. An earlier draft pre-approved them, and a reviewer pointed out
 that one `/black-iris` would then have changed the permission posture of the
 whole session.
 
-`hooks/gates-stop.sh` is the second and last one, off unless you create
+`hooks/gates-stop.sh` is the second one, off unless you create
 `~/.BLACK_IRIS_AGENTS/gates-stop`. It refuses a stop while the ledger lists
 unmet gates. It was written against the hooks reference rather than from
 memory: the "Exit code 2 behavior per event" table is what says a Stop hook
@@ -69,7 +69,7 @@ should have passed; it reads the ids you wrote. And it blocks at most once per
 ledger state per session, so a model that changes nothing stops on the second
 try and can never be trapped in a loop.
 
-## Jerash carries the one script
+## Jerash and Siq carry the only scripts
 
 Jerash races 100 entrants by default, 595 Agent calls in 70 waves, and that
 size cannot live in a context window or a markdown ledger. So it is the one
@@ -81,6 +81,15 @@ lane cards in `jerash/lanes.json` are named for places in Jordan; the names
 are handles and the `how` lines are the instructions. A tie the rubric
 cannot break goes to the run's seeded coin, recorded, so a replayed seed
 gives the same race.
+
+Siq is the other one, because no prompt can see its own context size.
+`siq/siq.py` reads the fill from the transcript's usage records, infers the
+window per model, and asks from the Stop hook once per compaction cycle at
+about 70 percent, while the model still holds the session. It asks for the
+three sections the built-in summary lacks, Decisions, Verified, and
+Corrections, and writes Open gates itself. SessionStart reads the file back
+after compaction, capped at 4096 bytes, and falls back to an extract from
+the transcript when nothing was written. Full design: `SIQ.md`.
 
 ## Gates without a checker
 

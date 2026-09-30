@@ -1,13 +1,13 @@
 # Working on black-iris
 
 This repo is a prompt-only skill. The product is `skills/black-iris/SKILL.md`
-and the twelve files under `skills/black-iris/references/`. Everything else is
+and the thirteen files under `skills/black-iris/references/`. Everything else is
 packaging.
 
 ## Before you edit
 
 1. Read `skills/black-iris/SKILL.md` in full.
-2. Read the one reference file your change touches, not all twelve.
+2. Read the one reference file your change touches, not all thirteen.
 3. Invoke the skill on yourself. Its Shape, Build, and Cut list rules apply to
    every reply and every file you write here.
 
@@ -28,9 +28,12 @@ packaging.
 - Per-project files go under `~/.BLACK_IRIS_AGENTS/projects/<slug>/`. Never
   write to `~/.claude` or `/tmp` from the skill or the hook.
 - The hooks stay fail-open: each runs only when its own flag file exists
-  (`always-on`, `gates-stop`, `memory-nudge`) and exits 0 on every path but
-  one. That one is deliberate: `gates-stop.sh` exits 2 to block a stop while
-  the ledger has unmet gates.
+  (`always-on`, `gates-stop`, `memory-nudge`; Siq reads `siq-on`, the
+  project's `siq-on`, or `siq/on-<session>`, which `siq-arm` becomes at the
+  next Stop) and exits 0 on every path but two. Both are deliberate:
+  `gates-stop.sh` exits 2 to block a stop while the ledger has unmet gates,
+  and `siq-stop.sh` exits 2 once per compaction cycle to ask for the handoff.
+  Any error in `siq.py` still exits 0.
 - No AI attribution anywhere: no Co-Authored-By naming a model, no "Generated
   with", in commits, PRs, or docs. This is Cut list rule 10 and it applies to
   this repo's own history.

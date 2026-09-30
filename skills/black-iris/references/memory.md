@@ -93,6 +93,11 @@ is plain from the code, the git history, or `CLAUDE.md`.
 
 Four things qualify. Each enters as an episode and earns its way up.
 
+Read `handoffs/` in the store first when it exists. Each file is one chat's
+Siq handoff: its Decisions, Verified, and Corrections sections are items 3,
+1, and 4 below, already written while the context was whole. A decision or
+correction found in two handoffs counts as the second sighting.
+
 1. **A procedure that worked.** The real command sequence, in order, plus the
    check that proved it. Episodic on the first run, procedural on the second.
 2. **A trap, symptom first.** A future session searches by symptom. "plan

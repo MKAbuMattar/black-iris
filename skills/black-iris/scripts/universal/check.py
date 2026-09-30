@@ -78,6 +78,11 @@ if len(desc) > 1024:
 if not desc:
     hit("description block not found")
 
+# The Siq read-back cap is stated to the model and enforced by the script.
+cap = re.search(r"^CAP = (\d+)", (SKILL / "siq/siq.py").read_text(encoding="utf-8"), re.M)
+if not cap or f"{cap.group(1)} bytes" not in (SKILL / "references/siq.md").read_text(encoding="utf-8"):
+    hit("siq cap in siq.py and references/siq.md disagree")
+
 named = set(re.findall(r"`references/([a-z-]+\.md)`", skill))
 on_disk = {p.name for p in (SKILL / "references").glob("*.md")}
 for f in sorted(named - on_disk):

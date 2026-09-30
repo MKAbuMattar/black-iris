@@ -9,7 +9,7 @@ metadata: {author: MKAbuMattar, part-of: black-iris, logo: ../black-iris/assets/
 
 # black-iris: Ideate
 
-One mode of black-iris, without loading the other thirteen.
+One mode of black-iris, without loading the other fourteen.
 
 1. Read `../black-iris/references/ideate.md` and follow it for this request.
 2. Apply the Cut list and the Pre-send check from `../black-iris/SKILL.md` to

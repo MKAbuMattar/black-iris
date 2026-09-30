@@ -30,6 +30,9 @@ n=$(wc -c < SKILL.md | num)
 awk 'length($0) > 100 && $0 !~ /^\|/ && $0 !~ /^   / { print FILENAME":"NR": prose line is "length($0)" chars, over 100" }' SKILL.md | while read -r l; do hit "$l"; done
 d=$(awk '/^description: >/,/^license:/' SKILL.md | sed '1d;$d' | tr -d '\n' | tr -s ' ' | wc -c | num)
 [ "$d" -le 1024 ] || hit "description is $d chars, over the 1024 cap"
+# The Siq read-back cap is stated to the model and enforced by the script.
+cap=$(sed -n 's/^CAP = \([0-9]*\).*/\1/p' siq/siq.py)
+[ -n "$cap" ] && grep -q "$cap bytes" references/siq.md || hit "siq cap in siq.py and references/siq.md disagree"
 
 # References named in the table exist, and every reference is named.
 for f in $(grep -oE '`references/[a-z-]+\.md`' SKILL.md | sed 's#`references/##; s#`##' | sort -u); do

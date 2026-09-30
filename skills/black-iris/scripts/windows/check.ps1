@@ -48,6 +48,9 @@ $m = [regex]::Match($s, '(?ms)^description: >\r?\n(.*?)^license:')
 $desc = if ($m.Success) { ($m.Groups[1].Value -split '\s+' | Where-Object { $_ }) -join ' ' } else { '' }
 if (-not $desc) { Hit 'description block not found' }
 if ($desc.Length -gt 1024) { Hit "description is $($desc.Length) chars, over the 1024 cap" }
+# The Siq read-back cap is stated to the model and enforced by the script.
+$cap = [regex]::Match((Get-Content -Raw 'siq/siq.py'), '(?m)^CAP = (\d+)')
+if (-not $cap.Success -or -not (Get-Content -Raw 'references/siq.md').Contains("$($cap.Groups[1].Value) bytes")) { Hit "siq cap in siq.py and references/siq.md disagree" }
 
 $named  = [regex]::Matches($s, '`references/([a-z-]+\.md)`') | ForEach-Object { $_.Groups[1].Value } | Sort-Object -Unique
 $onDisk = Get-ChildItem references -Filter *.md | ForEach-Object Name

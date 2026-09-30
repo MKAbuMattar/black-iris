@@ -584,6 +584,29 @@ already has an index, and any session it has already spoken in. Memory's own
 rule is to write when the knowledge appears, so this is a backstop for the
 store that was never started, not a sweep at the end.
 
+## Optional: Siq, a handoff that survives compaction
+
+Claude Code plugin route only, off unless you ask for it. Pick the scope:
+
+```bash
+S=~/.claude/plugins/cache/black-iris/black-iris/<version>/skills/black-iris/siq/siq.py
+python3 "$S" arm            # this chat: type /black-iris:siq arm inside it instead
+python3 "$S" on --project   # every chat in the current project
+python3 "$S" on             # every chat everywhere
+python3 "$S" off            # or: off --project
+```
+
+With it on, `hooks/siq-stop.sh` asks the model once per compaction cycle, at
+about 70 percent of the context window, to write the handoff into
+`~/.BLACK_IRIS_AGENTS/projects/<slug>/handoffs/<session>.md`.
+`hooks/siq-start.sh` prints it after compaction or on resume, and names the
+newest one when a new chat starts. Design and failure modes:
+[SIQ.md](SIQ.md).
+
+Verify: `python3 "$S" meter <transcript.jsonl>` prints the fill, the inferred
+window, and the threshold for any session transcript under
+`~/.claude/projects/`.
+
 ## Always-on snippet for agents without the hook
 
 Paste into the agent's persistent rules file. It carries the always-on core

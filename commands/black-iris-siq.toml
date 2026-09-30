@@ -1,0 +1,9 @@
+description = "black-iris Siq: write the handoff before compaction and read it back after"
+prompt = """
+Use the black-iris-siq skill from this extension for the request below. It
+loads references/siq.md from the black-iris skill; follow that reference,
+and apply the black-iris Cut list and Pre-send check to everything you write.
+With no request, write this session's handoff now.
+
+Request: {{args}}
+"""

@@ -17,6 +17,8 @@ jobs:
         run: python3 skills/black-iris/scripts/universal/check.py
       - name: Jerash race state
         run: python3 tests/test_hippodrome.py
+      - name: Siq handoff hooks
+        run: python3 tests/test_siq.py
       - name: Bash lint
         run: bash skills/black-iris/scripts/${{ matrix.os == 'macos-latest' && 'mac' || 'linux' }}/check.sh
       - name: Manifests parse
