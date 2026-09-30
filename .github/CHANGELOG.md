@@ -3,6 +3,23 @@
 Format follows Keep a Changelog. Entries are written for someone deciding
 whether to upgrade.
 
+## Unreleased
+
+### Added
+
+- Athar, root-cause debugging. `/black-iris:athar <the failure>`, or say
+  "debug this" or "why is this failing". The model writes no fix before a
+  repro it ran and read in full, then shrinks the failing case, finds the
+  breaking change with `git bisect run`, tests one hypothesis at a time in
+  an `ATHAR.md` ledger in the store, fixes where every caller routes
+  through, and keeps the repro as a regression test. Dabke hands a stalled
+  bug gate to Athar.
+
+### Changed
+
+- The docs, manifests, and hero no longer state how many disciplines the
+  skill has, so the number cannot drift between languages again.
+
 ## 1.14.0 - 2026-09-30
 
 ### Added

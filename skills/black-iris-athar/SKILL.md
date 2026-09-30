@@ -1,17 +1,17 @@
 ---
-name: black-iris-ideate
-description: Isolated parallel ideas, then one pick. black-iris mode, typed only.
+name: black-iris-athar
+description: Trace a bug to its root cause, repro first. black-iris mode, typed only.
 license: GPL-2.0-only
 disable-model-invocation: true
-allowed-tools: [Read, Grep, Glob, Agent]
-metadata: {author: MKAbuMattar, part-of: black-iris, logo: ../black-iris/assets/modes/ideate.svg}
+allowed-tools: [Read, Write, Edit, Bash, Grep, Glob]
+metadata: {author: MKAbuMattar, part-of: black-iris, logo: ../black-iris/assets/modes/athar.svg}
 ---
 
-# black-iris: Ideate
+# black-iris: Athar
 
 One mode of black-iris, without loading the other modes.
 
-1. Read `../black-iris/references/ideate.md` and follow it for this request.
+1. Read `../black-iris/references/athar.md` and follow it for this request.
 2. Apply the Cut list and the Pre-send check from `../black-iris/SKILL.md` to
    everything you write, including commits and comments.
 3. Read nothing else from black-iris unless that reference points at it.
@@ -21,5 +21,5 @@ this folder was installed alone: say so in one line and point the user at
 the whole set, which `npx skills add MKAbuMattar/black-iris` or the plugin
 installs together.
 
-Text after the command is the input for this mode. With no input, ask for it
-in one line.
+Text after the command is the task and its flags. With no task in the input
+or the conversation, ask for it in one line.

@@ -62,8 +62,10 @@ missing proof is found:
    config, per Name mode. Grep before renaming.
 
 Two investigations on one gate without reaching High: act only if the
-change is small, reversible, and its check runs at once. Otherwise add
-`ABANDON: <id> <reason>` to the ledger and move to the next gate. A guess
+change is small, reversible, and its check runs at once. If the gate is a
+bug, hand it to Athar mode (`references/athar.md`) for the root cause.
+Otherwise add `ABANDON: <id> <reason>` to the ledger and move to the next
+gate. A guess
 is never logged as High.
 
 ## What ends the loop

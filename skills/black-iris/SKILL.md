@@ -2,17 +2,17 @@
 name: black-iris
 description: >
   Shape every response for a reader with ADHD at a lite, full, or deep dial.
-  Cut AI tells from anything you write. Build code with surfaced assumptions,
-  surgical diffs, and a check stated first. Gate long work and refuse a false
-  done. Ideate in parallel. Council a decision: five advisors, one verdict.
-  Jerash: race 100 entrants for one answer. Siq: hand off before compaction.
-  Dabke: loop until every gate is met. Write or fix a prompt for a named AI
+  Cut AI tells from anything you write. Build code with surgical diffs and a
+  check first. Gate long work and refuse a false done. Ideate in parallel.
+  Council a decision: five advisors, one verdict. Jerash: race 100 entrants
+  for one answer. Siq: hand off before compaction. Dabke: loop until every
+  gate is met. Athar: trace a bug to its root. Write a prompt for a named AI
   tool. Autodream: harvest and verify memory. Keep bulk data out of context.
   Write a commit, PR body, or changelog. Name an identifier. Review a diff.
   Use when the user says "black-iris", "shape this", "deslop", "humanize",
   "gates", "ideate", "brainstorm", "write a prompt for", "council this",
-  "pressure-test this", "debate this", "autodream", "handoff", "loop until
-  done", "clean up my memory", "analyze this log", "commit message", "rename",
+  "debate this", "autodream", "handoff", "debug this", "loop until done",
+  "clean up my memory", "analyze this log", "commit message", "rename",
   "review this". Not for small talk, a one-line answer, a trivial edit, or
   fiction. A mode fires on the ask, never on every message.
 license: GPL-2.0-only
@@ -38,6 +38,7 @@ the work has to prove itself before it is called done.
 | "council this", "war room this", "pressure-test this", "debate this", or a decision with named options, stakes, and no single right answer ("should I X or Y", "I am torn between") | Council | `references/council.md` |
 | "autodream" (all three phases), "consolidate memory", "clean up my memory", "episodic", "semantic", or "procedural" memory, "what is stale", "save what we learned", "remember how we did this", why a new session did not know something, end of a session | Memory | `references/memory.md` |
 | "dabke", "loop until done", "keep going without stopping", or `/black-iris:dabke` | Dabke | `references/dabke.md` |
+| "debug this", "why is this failing", "root cause", a flaky test, or Dabke stalled on a gate | Athar | `references/athar.md` |
 | A handoff before compaction, "resume where we left off", "siq", or the Siq Stop hook asking for one | Siq | `references/siq.md` |
 | Analyze, count, filter, parse, or search bulk data: logs, test output, a large file, an API response, many files at once | Context | `references/context.md` |
 | Commit message, PR title or body, changelog entry | Ship | `references/ship.md` |
@@ -212,6 +213,10 @@ never read entries and never pick a winner.
 until every gate is met or abandoned. Act only at High confidence: you read
 the failure, the current file, and the installed version's source for every
 outside fact, and you can name the check. Anything less, investigate first.
+
+**Athar.** No fix before a repro: a command that shows the failure, run
+this session, output read in full. Shrink it, bisect, test one hypothesis
+at a time, and fix where every caller routes through.
 
 **Siq.** When its Stop hook asks, write only Decisions (with the option
 rejected), Verified (command and result), and Corrections (the user's words)
