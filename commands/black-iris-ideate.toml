@@ -1,0 +1,9 @@
+description = "black-iris Ideate: Isolated parallel ideas, then one pick"
+prompt = """
+Use the black-iris-ideate skill from this extension for the request below. It
+loads references/ideate.md from the black-iris skill; follow that reference, and
+apply the black-iris Cut list and Pre-send check to everything you write. With
+no request, ask for it in one line.
+
+Request: {{args}}
+"""

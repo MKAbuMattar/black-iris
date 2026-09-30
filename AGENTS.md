@@ -56,8 +56,13 @@ HOME=$H CLAUDE_PLUGIN_ROOT=$PWD sh hooks/reinject.sh | head -5
 - A change to the skill's description goes to `SKILL.md` only. The root
   manifests carry a one-line summary, not the trigger list.
 - A new mode needs: a routing-table row, a reference file named in that row,
-  and a handoff paragraph only if the mode has a hard rule the model must
-  know before reading the file.
+  a handoff paragraph only if the mode has a hard rule the model must know
+  before reading the file, and its commands: `skills/black-iris-<mode>/`
+  (read by every Agent Skills harness), `commands/<mode>.md` (Claude Code,
+  `/black-iris:<mode>`), and `commands/black-iris-<mode>.toml` (Gemini CLI).
+  All three set `disable-model-invocation` where the format has it, so they
+  cost no context until typed. The lint fails a routed reference with no
+  mode folder.
 - A new agent install route goes in `docs/en/INSTALL.md` with install, invoke,
   verify, update, uninstall, and where the always-on snippet goes, and its
   update command goes in `docs/en/UPDATE.md`. Cite the agent's own docs; do not

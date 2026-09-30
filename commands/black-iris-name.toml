@@ -1,0 +1,9 @@
+description = "black-iris Name: Name or rename an identifier so it reads true"
+prompt = """
+Use the black-iris-name skill from this extension for the request below. It
+loads references/naming.md from the black-iris skill; follow that reference, and
+apply the black-iris Cut list and Pre-send check to everything you write. With
+no request, ask for it in one line.
+
+Request: {{args}}
+"""

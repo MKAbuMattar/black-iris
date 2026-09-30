@@ -39,6 +39,22 @@ for f in references/*.md; do
   grep -q "\`references/$(basename "$f")\`" SKILL.md || hit "$f exists but SKILL.md never points at it"
 done
 
+# Mode commands: every routed reference has a skills/black-iris-<mode>/ folder
+# that names it, and every such folder points at a reference that exists.
+for d in ../black-iris-*/; do
+  d=${d%/}; n=$(basename "$d")
+  [ -f "$d/SKILL.md" ] || { hit "$n/ has no SKILL.md"; continue; }
+  grep -q "^name: $n\$" "$d/SKILL.md" || hit "$n/SKILL.md name does not match its folder"
+  grep -q 'disable-model-invocation: true' "$d/SKILL.md" || hit "$n/SKILL.md must set disable-model-invocation: true"
+  for f in $(grep -oE '`\.\./black-iris/references/[a-z-]+\.md`' "$d/SKILL.md" | sed 's#.*/##; s#`##'); do
+    [ -f "references/$f" ] || hit "$n/SKILL.md points at missing references/$f"
+  done
+done
+for f in $(grep -oE '`references/[a-z-]+\.md`' SKILL.md | sed 's#`references/##; s#`##' | sort -u); do
+  [ "$f" = evals.md ] && continue
+  grep -lq "\`\.\./black-iris/references/$f\`" ../black-iris-*/SKILL.md 2>/dev/null || hit "references/$f is routed but has no skills/black-iris-<mode>/ command"
+done
+
 # Hook files parse.
 h=../../hooks
 [ -f "$h/hooks.json" ] && { python3 -c 'import json,sys;json.load(open(sys.argv[1]))' "$h/hooks.json" 2>/dev/null || hit "hooks.json is not valid JSON"; }

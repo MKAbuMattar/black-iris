@@ -8,6 +8,10 @@
   python3 scripts/universal/install.py --always-on   also inject at every session start
   python3 scripts/universal/install.py --uninstall   remove link and flag
 
+Installs every folder under skills/: black-iris itself and one
+black-iris-<mode> folder per mode, which the mode folders need because they
+read their reference from ../black-iris/.
+
 Symlinks on POSIX. On Windows a symlink needs Developer Mode or admin, so it
 falls back to a directory copy and says so. The always-on flag only has
 effect when the plugin's SessionStart hook is loaded (plugin install), not
@@ -19,7 +23,9 @@ from pathlib import Path
 
 SKILL = Path(__file__).resolve().parents[2]
 HOME = Path.home()
-DEST = HOME / ".claude" / "skills" / SKILL.name
+SKILLS_DIR = HOME / ".claude" / "skills"
+# black-iris first, then every sibling mode folder.
+SOURCES = [SKILL] + sorted(p for p in SKILL.parent.glob("black-iris-*") if (p / "SKILL.md").is_file())
 FLAG = HOME / ".BLACK_IRIS_AGENTS" / "always-on"
 
 
@@ -32,18 +38,21 @@ def remove(path):
 
 def main(argv):
     if "--uninstall" in argv:
-        remove(DEST)
+        for src in SOURCES:
+            remove(SKILLS_DIR / src.name)
         FLAG.unlink(missing_ok=True)
-        print(f"removed {DEST} and {FLAG.name}")
+        print(f"removed {len(SOURCES)} skill folders and {FLAG.name}")
         return 0
-    DEST.parent.mkdir(parents=True, exist_ok=True)
-    remove(DEST)
-    try:
-        DEST.symlink_to(SKILL, target_is_directory=True)
-        print(f"linked {DEST} -> {SKILL}")
-    except OSError as e:
-        shutil.copytree(SKILL, DEST)
-        print(f"copied {SKILL} -> {DEST} (symlink failed: {e}). Re-run after editing the skill.")
+    SKILLS_DIR.mkdir(parents=True, exist_ok=True)
+    for src in SOURCES:
+        dest = SKILLS_DIR / src.name
+        remove(dest)
+        try:
+            dest.symlink_to(src, target_is_directory=True)
+            print(f"linked {dest} -> {src}")
+        except OSError as e:
+            shutil.copytree(src, dest)
+            print(f"copied {src} -> {dest} (symlink failed: {e}). Re-run after editing the skill.")
     if "--always-on" in argv:
         FLAG.parent.mkdir(parents=True, exist_ok=True)
         FLAG.touch()
