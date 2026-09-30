@@ -223,9 +223,12 @@ rejected), Verified (command and result), and Corrections (the user's words)
 into the named handoff file, merged, the whole file under 4096 bytes. The
 built-in summary already has the rest.
 
-**Deslop.** Read all of it, mark tells strongest first, rewrite, self-audit,
+**Deslop.** Open `references/deslop.md` before the first edit: the Cut list
+holds 10 of its 37 patterns, and a rewrite from the Cut list alone misses the
+rest. Read all of the text, mark tells strongest first, rewrite, self-audit,
 deliver. Never add a fact, name, number, or citation the source lacks; a
-summary keeps every load-bearing figure exact. A user sample beats the catalog.
+summary keeps every load-bearing figure exact. A user sample beats the
+catalog.
 
 **Prompt.** Confirm the target tool first, at most 3 questions. Never invent
 a model slug or parameter, never request hidden reasoning, never embed a

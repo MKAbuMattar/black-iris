@@ -14,6 +14,24 @@ whether to upgrade.
   smoke routed 18 of 26 right, with no false fire; deslop and context missed
   both cases. `evals/RESULTS.md` names every miss.
 
+## Unreleased
+
+### Fixed
+
+- Deslop now opens its full catalog. With the router in context, a deslop
+  or humanize request read `references/deslop.md` 2 or 3 times in 8; it
+  rewrote from the 10-item Cut list and missed the other 27 patterns. The
+  router now says to open the catalog before the first edit, and the same
+  cases read it 7 times in 8. Without the always-on hook, the model still
+  often skips loading the skill for a short rewrite; use
+  `/black-iris:deslop` when the catalog matters.
+
+### Added
+
+- `evals/mizan.py --always-on` measures routing with the router already in
+  context, and splits a miss into skip (the skill never loaded) and miss
+  (loaded, no reference opened).
+
 ## 1.15.0 - 2026-09-30
 
 ### Added
