@@ -1,0 +1,9 @@
+description = "black-iris Athar: trace a bug to its root cause, repro first"
+prompt = """
+Use the black-iris-athar skill from this extension for the request below. It
+loads references/athar.md from the black-iris skill; follow that reference,
+and apply the black-iris Cut list and Pre-send check to everything you write.
+With no failure in the request or the conversation, ask for it in one line.
+
+Request: {{args}}
+"""

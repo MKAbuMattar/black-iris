@@ -1,7 +1,7 @@
 <p align="center">
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="../../.github/assets/readme/hero-ar-dark.svg">
-  <img src="../../.github/assets/readme/hero-ar-light.svg" width="100%" alt="black-iris: مهارة واحدة، ست عشرة قاعدة عمل لوكيل البرمجة، مع جدول الأنماط">
+  <img src="../../.github/assets/readme/hero-ar-light.svg" width="100%" alt="black-iris: قواعد عمل لوكيل البرمجة في مهارة واحدة، مع جدول الأنماط">
 </picture>
 </p>
 
@@ -14,11 +14,11 @@
 
 <h1 align="center">black-iris</h1>
 <p align="center"><em>السوسنة السوداء</em></p>
-<p align="center">مهارة واحدة، ست عشرة قاعدة عمل لوكيل البرمجة.</p>
+<p align="center">قواعد عمل لوكيل البرمجة، في مهارة واحدة.</p>
 
 <p align="center"><a href="README.md">English</a> | <a href="../../docs/es/README.md">Espanol</a> | <a href="README.md">العربية</a></p>
 
-<p align="center">مهارة واحدة لوكيل البرمجة، ست عشرة قاعدة عمل. تُشكّل كل رد لقارئ لديه فرط الحركة ونقص الانتباه، وتحذف علامات النص المولَّد بالذكاء الاصطناعي من كل ما يكتبه الوكيل، وتُبقي تغييرات الكود دقيقة ومحدودة، وتكتب بوابات إنجاز قبل العمل الطويل، وتُطلق فروع أفكار معزولة، وتكتب أوامر لأدوات أخرى، وتُرتّب ذاكرة الجلسة، وتنقل الجلسة عبر الضغط، وتكرر المهمة حتى تتحقق كل البوابات، وتُبقي البيانات الضخمة خارج نافذة السياق، وتتولى رسائل الالتزام والتسمية ومراجعة الفروقات. موجّه من 200 سطر مع عشرة ملفات مرجعية.</p>
+<p align="center">مهارة واحدة من قواعد العمل لوكيل البرمجة. تُشكّل كل رد لقارئ لديه فرط الحركة ونقص الانتباه، وتحذف علامات النص المولَّد بالذكاء الاصطناعي من كل ما يكتبه الوكيل، وتُبقي تغييرات الكود دقيقة ومحدودة، وتكتب بوابات إنجاز قبل العمل الطويل، وتُطلق فروع أفكار معزولة، وتكتب أوامر لأدوات أخرى، وتُرتّب ذاكرة الجلسة، وتنقل الجلسة عبر الضغط، وتكرر المهمة حتى تتحقق كل البوابات، وتُبقي البيانات الضخمة خارج نافذة السياق، وتتولى رسائل الالتزام والتسمية ومراجعة الفروقات. موجّه من 200 سطر مع عشرة ملفات مرجعية.</p>
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="../../.github/assets/readme/section-install-ar-dark.svg">
@@ -62,6 +62,7 @@ Agent Skills، أو اطلبه بكلماته المحفّزة. `/black-iris:bla
 | <img src="../../skills/black-iris/assets/modes/jerash.svg" width="80" alt="jerash"> | `/black-iris:jerash` | `/black-iris-jerash` | "race this"، "try again" | مئة متسابق في جولات من النقد والتحكيم حتى تبقى إجابة واحدة |
 | <img src="../../skills/black-iris/assets/modes/siq.svg" width="80" alt="siq"> | `/black-iris:siq` | `/black-iris-siq` | "handoff"، "resume where we left off" | تكتب القرارات والأدلة والتصحيحات قبل الضغط وتقرؤها بعده |
 | <img src="../../skills/black-iris/assets/modes/dabke.svg" width="80" alt="dabke"> | `/black-iris:dabke` | `/black-iris-dabke` | "loop until done"، "keep going without stopping" | تكرر المهمة خطوة بخطوة حتى تتحقق كل البوابات؛ لا تتصرف إلا بثقة عالية، وإلا تحقق أولاً |
+| <img src="../../skills/black-iris/assets/modes/athar.svg" width="80" alt="athar"> | `/black-iris:athar` | `/black-iris-athar` | "debug this"، "why is this failing" | تتبع الخلل حتى سببه الجذري: إعادة إنتاجه أولاً، ثم تصغيره، ثم التنصيف، وفرضية واحدة في كل مرة |
 | <img src="../../skills/black-iris/assets/modes/memory.svg" width="80" alt="memory"> | `/black-iris:memory` | `/black-iris-memory` | "autodream"، "consolidate memory" | حصاد معرفة الجلسة والتحقق منها |
 | <img src="../../skills/black-iris/assets/modes/context.svg" width="80" alt="context"> | `/black-iris:context` | `/black-iris-context` | "analyze this log" | استخلاص الإجابة من البيانات الكبيرة دون إغراق السياق |
 | <img src="../../skills/black-iris/assets/modes/ship.svg" width="80" alt="ship"> | `/black-iris:ship` | `/black-iris-ship` | "commit message"، "PR body" | التزامات اصطلاحية مع سبب حقيقي |

@@ -9,7 +9,7 @@ metadata: {author: MKAbuMattar, part-of: black-iris, logo: ../black-iris/assets/
 
 # black-iris: Jerash
 
-One mode of black-iris, without loading the other fifteen.
+One mode of black-iris, without loading the other modes.
 
 1. Read `../black-iris/references/jerash.md` and follow it for this request.
 2. Apply the Cut list and the Pre-send check from `../black-iris/SKILL.md` to
