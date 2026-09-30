@@ -5,16 +5,16 @@ description: >
   Cut AI tells from anything you write. Build code with surfaced assumptions,
   surgical diffs, and a check stated first. Write completion gates before long
   work and refuse a false done. Ideate in isolated parallel branches. Council
-  a decision: five isolated advisors, one committed verdict. Jerash: race 100
-  entrants for one answer. Write or fix a prompt for a named AI tool.
-  Autodream: harvest and verify memory. Keep bulk data out of the context
-  window. Write a commit message, PR body, or changelog entry. Name or rename
-  an identifier. Review a diff. Use when the user says "black-iris", "shape
+  a decision: five advisors, one verdict. Jerash: race 100 entrants for one
+  answer. Siq: hand off before compaction. Write or fix a prompt for a named
+  AI tool. Autodream: harvest and verify memory. Keep bulk data out of
+  context. Write a commit, PR body, or changelog. Name or rename an
+  identifier. Review a diff. Use when the user says "black-iris", "shape
   this", "deslop", "humanize", "gates", "ideate", "brainstorm", "write a
   prompt for", "council this", "pressure-test this", "debate this",
-  "autodream", "clean up my memory", "analyze this log", "commit message",
-  "rename", "review this". Not for small talk, a one-line answer, a trivial
-  edit, or fiction. A mode fires on the ask, never on every message.
+  "autodream", "handoff", "clean up my memory", "analyze this log", "commit
+  message", "rename", "review this". Not for small talk, a one-line answer, a
+  trivial edit, or fiction. A mode fires on the ask, never on every message.
 license: GPL-2.0-only
 compatibility: any agent that reads Agent Skills; the hook is Claude Code only
 allowed-tools: [Read, Grep, Glob, Agent]
@@ -37,6 +37,7 @@ the work has to prove itself before it is called done.
 | `/black-iris:jerash`, "race this", or a bad answer the user wants beaten ("try again", "bad answer" ask first) | Jerash | `references/jerash.md` |
 | "council this", "war room this", "pressure-test this", "debate this", or a decision with named options, stakes, and no single right answer ("should I X or Y", "I am torn between") | Council | `references/council.md` |
 | "autodream" (all three phases), "consolidate memory", "clean up my memory", "episodic", "semantic", or "procedural" memory, "what is stale", "save what we learned", "remember how we did this", why a new session did not know something, end of a session | Memory | `references/memory.md` |
+| A handoff before compaction, "resume where we left off", "siq", or the Siq Stop hook asking for one | Siq | `references/siq.md` |
 | Analyze, count, filter, parse, or search bulk data: logs, test output, a large file, an API response, many files at once | Context | `references/context.md` |
 | Commit message, PR title or body, changelog entry | Ship | `references/ship.md` |
 | Name or rename a variable, function, file, or module | Name | `references/naming.md` |
@@ -205,6 +206,11 @@ lane card, then heats of critique, reply, and one judge until one entry holds
 the lane. 100 entrants is 595 Agent calls. Typed starts it; "try again" or "bad
 answer" asks consent first. `jerash/hippodrome.py` keeps the race on disk; you
 never read entries and never pick a winner.
+
+**Siq.** When its Stop hook asks, write only Decisions (with the option
+rejected), Verified (command and result), and Corrections (the user's words)
+into the named handoff file, merged, the whole file under 4096 bytes. The
+built-in summary already has the rest.
 
 **Deslop.** Read all of it, mark tells strongest first, rewrite, self-audit,
 deliver. Never add a fact, name, number, or citation the source lacks; a

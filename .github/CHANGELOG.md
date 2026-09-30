@@ -3,6 +3,21 @@
 Format follows Keep a Changelog. Entries are written for someone deciding
 whether to upgrade.
 
+## Unreleased
+
+### Added
+
+- Siq, a handoff that survives compaction. Turn it on with
+  `/black-iris:siq arm` for one chat, or `siq.py on --project` for every chat
+  in a project. At about 70 percent of the context window the Stop hook asks
+  the model, once per compaction cycle, to write what the built-in summary
+  drops: decisions with the option each one beat, the commands that proved
+  the work, and your corrections in your own words. After compaction the
+  SessionStart hook reads it back, capped at 4096 bytes. If compaction came
+  first, it prints an extract from the transcript instead. One file per chat
+  under `~/.BLACK_IRIS_AGENTS/projects/<slug>/handoffs/`, and Memory's harvest
+  reads it. Off by default; the hooks stay fail-open.
+
 ## 1.12.0 - 2026-09-30
 
 ### Changed
