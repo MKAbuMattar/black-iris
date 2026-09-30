@@ -61,20 +61,20 @@ loads everything.
 
 | | Claude Code | Other agents | Or say | What it does |
 |---|---|---|---|---|
-| <img src="skills/black-iris/assets/logo.svg" width="80" hight="80" alt="black-iris"> | `/black-iris:black-iris` | `/black-iris` | "black-iris" | Every mode, Shape, Build, and the Cut list |
-| <img src="skills/black-iris/assets/modes/deslop.svg" width="80" hight="80" alt="deslop"> | `/black-iris:deslop` | `/black-iris-deslop` | "deslop", "humanize" | Remove AI tells, keep every fact |
-| <img src="skills/black-iris/assets/modes/gates.svg" width="80" hight="80" alt="gates"> | `/black-iris:gates` | `/black-iris-gates` | "gates", "do not stop until done" | A checkable ledger before long work |
-| <img src="skills/black-iris/assets/modes/ideate.svg" width="80" hight="80" alt="ideate"> | `/black-iris:ideate` | `/black-iris-ideate` | "ideate", "brainstorm" | Isolated parallel branches, then a verdict |
-| <img src="skills/black-iris/assets/modes/prompt.svg" width="80" hight="80" alt="prompt"> | `/black-iris:prompt` | `/black-iris-prompt` | "write a prompt for X" | One paste-ready prompt for a named tool |
-| <img src="skills/black-iris/assets/modes/council.svg" width="80" hight="80" alt="council"> | `/black-iris:council` | `/black-iris-council` | "council this", "pressure-test this" | Five isolated advisors, anonymous review, one verdict |
-| <img src="skills/black-iris/assets/modes/jerash.svg" width="80" hight="80" alt="jerash"> | `/black-iris:jerash` | `/black-iris-jerash` | "race this", "try again" | 100 entrants race in heats of critique and judging; one entry holds the lane |
-| <img src="skills/black-iris/assets/modes/siq.svg" width="80" hight="80" alt="siq"> | `/black-iris:siq` | `/black-iris-siq` | "handoff", "resume where we left off" | Writes decisions, proof, and corrections before compaction and reads them back after |
-| <img src="skills/black-iris/assets/modes/dabke.svg" width="80" hight="80" alt="dabke"> | `/black-iris:dabke` | `/black-iris-dabke` | "loop until done", "keep going without stopping" | Loops the task step by step until every gate is met; acts only at high confidence, investigates first otherwise |
-| <img src="skills/black-iris/assets/modes/memory.svg" width="80" hight="80" alt="memory"> | `/black-iris:memory` | `/black-iris-memory` | "autodream", "consolidate memory" | Harvest and verify session knowledge |
-| <img src="skills/black-iris/assets/modes/context.svg" width="80" hight="80" alt="context"> | `/black-iris:context` | `/black-iris-context` | "analyze this log" | Derive answers from bulk data, never dump it |
-| <img src="skills/black-iris/assets/modes/ship.svg" width="80" hight="80" alt="ship"> | `/black-iris:ship` | `/black-iris-ship` | "commit message", "PR body" | Conventional commits with a real why |
-| <img src="skills/black-iris/assets/modes/name.svg" width="80" hight="80" alt="name"> | `/black-iris:name` | `/black-iris-name` | "rename", "name this" | Identifiers that read true |
-| <img src="skills/black-iris/assets/modes/review.svg" width="80" hight="80" alt="review"> | `/black-iris:review` | `/black-iris-review` | "review this diff" | Five ranked findings, no rewrites |
+| <img src="skills/black-iris/assets/logo.svg" width="80" height="80" alt="black-iris"> | `/black-iris:black-iris` | `/black-iris` | "black-iris" | Every mode, Shape, Build, and the Cut list |
+| <img src="skills/black-iris/assets/modes/deslop.svg" width="80" height="80" alt="deslop"> | `/black-iris:deslop` | `/black-iris-deslop` | "deslop", "humanize" | Remove AI tells, keep every fact |
+| <img src="skills/black-iris/assets/modes/gates.svg" width="80" height="80" alt="gates"> | `/black-iris:gates` | `/black-iris-gates` | "gates", "do not stop until done" | A checkable ledger before long work |
+| <img src="skills/black-iris/assets/modes/ideate.svg" width="80" height="80" alt="ideate"> | `/black-iris:ideate` | `/black-iris-ideate` | "ideate", "brainstorm" | Isolated parallel branches, then a verdict |
+| <img src="skills/black-iris/assets/modes/prompt.svg" width="80" height="80" alt="prompt"> | `/black-iris:prompt` | `/black-iris-prompt` | "write a prompt for X" | One paste-ready prompt for a named tool |
+| <img src="skills/black-iris/assets/modes/council.svg" width="80" height="80" alt="council"> | `/black-iris:council` | `/black-iris-council` | "council this", "pressure-test this" | Five isolated advisors, anonymous review, one verdict |
+| <img src="skills/black-iris/assets/modes/jerash.svg" width="80" height="80" alt="jerash"> | `/black-iris:jerash` | `/black-iris-jerash` | "race this", "try again" | 100 entrants race in heats of critique and judging; one entry holds the lane |
+| <img src="skills/black-iris/assets/modes/siq.svg" width="80" height="80" alt="siq"> | `/black-iris:siq` | `/black-iris-siq` | "handoff", "resume where we left off" | Writes decisions, proof, and corrections before compaction and reads them back after |
+| <img src="skills/black-iris/assets/modes/dabke.svg" width="80" height="80" alt="dabke"> | `/black-iris:dabke` | `/black-iris-dabke` | "loop until done", "keep going without stopping" | Loops the task step by step until every gate is met; acts only at high confidence, investigates first otherwise |
+| <img src="skills/black-iris/assets/modes/memory.svg" width="80" height="80" alt="memory"> | `/black-iris:memory` | `/black-iris-memory` | "autodream", "consolidate memory" | Harvest and verify session knowledge |
+| <img src="skills/black-iris/assets/modes/context.svg" width="80" height="80" alt="context"> | `/black-iris:context` | `/black-iris-context` | "analyze this log" | Derive answers from bulk data, never dump it |
+| <img src="skills/black-iris/assets/modes/ship.svg" width="80" height="80" alt="ship"> | `/black-iris:ship` | `/black-iris-ship` | "commit message", "PR body" | Conventional commits with a real why |
+| <img src="skills/black-iris/assets/modes/name.svg" width="80" height="80" alt="name"> | `/black-iris:name` | `/black-iris-name` | "rename", "name this" | Identifiers that read true |
+| <img src="skills/black-iris/assets/modes/review.svg" width="80" height="80" alt="review"> | `/black-iris:review` | `/black-iris-review` | "review this diff" | Five ranked findings, no rewrites |
 
 Dial the length with `/black-iris lite`, `full`, or `deep`.
 
