@@ -1,7 +1,7 @@
 <p align="center">
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="../../.github/assets/readme/hero-ar-dark.svg">
-  <img src="../../.github/assets/readme/hero-ar-light.svg" width="100%" alt="black-iris: مهارة واحدة، ثلاث عشرة قاعدة عمل لوكيل البرمجة، مع جدول الأنماط">
+  <img src="../../.github/assets/readme/hero-ar-light.svg" width="100%" alt="black-iris: مهارة واحدة، أربع عشرة قاعدة عمل لوكيل البرمجة، مع جدول الأنماط">
 </picture>
 </p>
 
@@ -14,11 +14,11 @@
 
 <h1 align="center">black-iris</h1>
 <p align="center"><em>السوسنة السوداء</em></p>
-<p align="center">مهارة واحدة، ثلاث عشرة قاعدة عمل لوكيل البرمجة.</p>
+<p align="center">مهارة واحدة، أربع عشرة قاعدة عمل لوكيل البرمجة.</p>
 
 <p align="center"><a href="README.md">English</a> | <a href="../../docs/es/README.md">Espanol</a> | <a href="README.md">العربية</a></p>
 
-<p align="center">مهارة واحدة لوكيل البرمجة، ثلاث عشرة قاعدة عمل. تُشكّل كل رد لقارئ لديه فرط الحركة ونقص الانتباه، وتحذف علامات النص المولَّد بالذكاء الاصطناعي من كل ما يكتبه الوكيل، وتُبقي تغييرات الكود دقيقة ومحدودة، وتكتب بوابات إنجاز قبل العمل الطويل، وتُطلق فروع أفكار معزولة، وتكتب أوامر لأدوات أخرى، وتُرتّب ذاكرة الجلسة، وتُبقي البيانات الضخمة خارج نافذة السياق، وتتولى رسائل الالتزام والتسمية ومراجعة الفروقات. موجّه من 200 سطر مع عشرة ملفات مرجعية.</p>
+<p align="center">مهارة واحدة لوكيل البرمجة، أربع عشرة قاعدة عمل. تُشكّل كل رد لقارئ لديه فرط الحركة ونقص الانتباه، وتحذف علامات النص المولَّد بالذكاء الاصطناعي من كل ما يكتبه الوكيل، وتُبقي تغييرات الكود دقيقة ومحدودة، وتكتب بوابات إنجاز قبل العمل الطويل، وتُطلق فروع أفكار معزولة، وتكتب أوامر لأدوات أخرى، وتُرتّب ذاكرة الجلسة، وتُبقي البيانات الضخمة خارج نافذة السياق، وتتولى رسائل الالتزام والتسمية ومراجعة الفروقات. موجّه من 200 سطر مع عشرة ملفات مرجعية.</p>
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="../../.github/assets/readme/section-install-ar-dark.svg">
@@ -59,6 +59,7 @@ Agent Skills، أو اطلبه بكلماته المحفّزة. `/black-iris:bla
 | <img src="../../skills/black-iris/assets/modes/ideate.svg" width="28" alt="ideate"> | `/black-iris:ideate` | `/black-iris-ideate` | "ideate"، "brainstorm" | فروع متوازية معزولة ثم حكم نهائي |
 | <img src="../../skills/black-iris/assets/modes/prompt.svg" width="28" alt="prompt"> | `/black-iris:prompt` | `/black-iris-prompt` | "write a prompt for X" | أمر واحد جاهز للصق في أداة محددة |
 | <img src="../../skills/black-iris/assets/modes/council.svg" width="28" alt="council"> | `/black-iris:council` | `/black-iris-council` | "council this"، "pressure-test this" | خمسة مستشارين معزولين، مراجعة مجهولة، حكم واحد |
+| <img src="../../skills/black-iris/assets/modes/jerash.svg" width="28" alt="jerash"> | `/black-iris:jerash` | `/black-iris-jerash` | "rematch this"، بعد إجابة مرفوضة | تغلّب على إجابة رفضتها: القديمة تحمل اللقب ومتحدّون جدد ينازلونها |
 | <img src="../../skills/black-iris/assets/modes/memory.svg" width="28" alt="memory"> | `/black-iris:memory` | `/black-iris-memory` | "autodream"، "consolidate memory" | حصاد معرفة الجلسة والتحقق منها |
 | <img src="../../skills/black-iris/assets/modes/context.svg" width="28" alt="context"> | `/black-iris:context` | `/black-iris-context` | "analyze this log" | استخلاص الإجابة من البيانات الكبيرة دون إغراق السياق |
 | <img src="../../skills/black-iris/assets/modes/ship.svg" width="28" alt="ship"> | `/black-iris:ship` | `/black-iris-ship` | "commit message"، "PR body" | التزامات اصطلاحية مع سبب حقيقي |

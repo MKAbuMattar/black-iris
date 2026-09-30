@@ -28,7 +28,7 @@ STRIP = ["wadi-rum-sand", "dead-sea-blue", "black-iris", "olive-green", "keffiye
 MODE_TONE = {
     "Shape": "black-iris", "Build": "black-iris", "Deslop": "petra-rose",
     "Gates": "keffiyeh-red", "Ideate": "olive-green", "Prompt": "wadi-rum-sand",
-    "Memory": "desert-camel", "Council": "dead-sea-blue", "Context": "basalt-black", "Ship": "amman-stone", "Name": "amman-stone",
+    "Memory": "desert-camel", "Council": "dead-sea-blue", "Jerash": "amman-stone", "Context": "basalt-black", "Ship": "amman-stone", "Name": "amman-stone",
     "Review": "amman-stone", "Diagram": "wadi-rum-sand",
 }
 SANS = "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', 'Noto Naskh Arabic', sans-serif"
@@ -38,7 +38,7 @@ MODES = [
     ("Shape", "always on"), ("Build", "always on"), ("Deslop", "humanize"),
     ("Gates", "do not stop until done"), ("Ideate", "brainstorm"),
     ("Prompt", "write a prompt for"), ("Council", "council this"), ("Memory", "autodream"),
-    ("Context", "analyze this log"),
+    ("Context", "analyze this log"), ("Jerash", "rematch this"),
     ("Ship", "commit message"), ("Name", "rename"), ("Review", "review this diff"),
     ("Diagram", "diagram this"),
 ]
@@ -46,11 +46,11 @@ MODES = [
 LANGS = {
     "en": dict(
         eyebrow="AGENT SKILL FOR CLAUDE CODE, CODEX, AND FRIENDS",
-        promise1="One skill, thirteen disciplines for a coding agent.",
+        promise1="One skill, fourteen disciplines for a coding agent.",
         promise2="Answer first. Exact numbers. Warnings kept. Done means checked.",
         promise3="", rtl=False,
         table="ROUTING TABLE", table_sub="say it, get the mode",
-        desc="One Claude Code skill with thirteen disciplines for a coding agent. The routing table of modes is shown beside the name.",
+        desc="One Claude Code skill with fourteen disciplines for a coding agent. The routing table of modes is shown beside the name.",
         sections=[("01", "install", "Install", "one command per agent"),
                   ("02", "use", "Use", "say the trigger, get the mode"),
                   ("03", "store", "Where it writes", "~/.BLACK_IRIS_AGENTS, never your repo"),
@@ -58,11 +58,11 @@ LANGS = {
     ),
     "es": dict(
         eyebrow="HABILIDAD DE AGENTE PARA CLAUDE CODE, CODEX Y MAS",
-        promise1="Una habilidad, trece disciplinas para un agente de programacion.",
+        promise1="Una habilidad, catorce disciplinas para un agente de programacion.",
         promise2="Respuesta primero. Numeros exactos. Avisos intactos.",
         promise3="Hecho significa comprobado.", rtl=False,
         table="TABLA DE MODOS", table_sub="dilo, activa el modo",
-        desc="Una habilidad de Claude Code con trece disciplinas para un agente de programacion. La tabla de modos aparece junto al nombre.",
+        desc="Una habilidad de Claude Code con catorce disciplinas para un agente de programacion. La tabla de modos aparece junto al nombre.",
         sections=[("01", "install", "Instalacion", "un comando por agente"),
                   ("02", "use", "Uso", "di el disparador, activa el modo"),
                   ("03", "store", "Donde escribe", "~/.BLACK_IRIS_AGENTS, nunca tu repo"),
@@ -70,11 +70,11 @@ LANGS = {
     ),
     "ar": dict(
         eyebrow="مهارة وكيل لـ Claude Code وCodex وغيرهما",
-        promise1="مهارة واحدة، ثلاث عشرة قاعدة عمل لوكيل البرمجة.",
+        promise1="مهارة واحدة، أربع عشرة قاعدة عمل لوكيل البرمجة.",
         promise2="الجواب أولاً. أرقام دقيقة. التحذيرات باقية. المنجَز هو المُتحقَّق منه.",
         promise3="", rtl=True,
         table="جدول الأنماط", table_sub="قلها، يعمل النمط",
-        desc="مهارة واحدة لـ Claude Code بثلاث عشرة قاعدة عمل لوكيل البرمجة. جدول الأنماط بجانب الاسم.",
+        desc="مهارة واحدة لـ Claude Code بأربع عشرة قاعدة عمل لوكيل البرمجة. جدول الأنماط بجانب الاسم.",
         sections=[("01", "install", "التثبيت", "أمر واحد لكل وكيل"),
                   ("02", "use", "الاستخدام", "قل المحفّز، يعمل النمط"),
                   ("03", "store", "أين تكتب", "~/.BLACK_IRIS_AGENTS، لا مستودعك"),
@@ -133,13 +133,17 @@ def mode(name):
         return lens((140, 188), -8, 156, 104) + f'<rect x="40" y="196" width="176" height="28" rx="14" fill="{G_INK}"/>'
     if name == "name":     # a petal tag with its hole
         return lens((56, 200), 45, 200, 130) + f'<circle cx="158" cy="98" r="16" fill="{G_PAPER}"/>'
+    if name == "jerash":   # the hippodrome track, one petal holding the lane
+        track = (f'<path fill="{G_INK}" d="M40 220 V116 A88 88 0 0 1 216 116 V220 H184 V116 '
+                 f'A56 56 0 0 0 72 116 V220 Z"/>')
+        return track + lens((128, 212), 0, 124, 84)
     if name == "review":   # the petal as an eye, a pupil held open
         return lens((24, 128), 90, 208, 150) + f'<circle cx="128" cy="128" r="34" fill="{G_PAPER}"/><circle cx="128" cy="128" r="16" fill="{G_INK}"/>'
     raise KeyError(name)
 
 # Measured bounding boxes from the logo-design audit: centre offset from 128
 # (dx, dy with the optical raise already folded in) and width, height.
-GLYPH_BOX = {'symbol': [0.0, -6.0, 130, 178], 'context': [0.0, -2.2, 208, 179], 'council': [0.0, 2.1, 221, 210], 'deslop': [-11.2, -3.3, 133, 195], 'gates': [0.0, -9.0, 176, 168], 'ideate': [0.0, -3.1, 237, 188], 'memory': [0.0, -5.0, 192, 172], 'name': [1.3, -6.3, 142, 142], 'prompt': [0.0, -5.0, 176, 128], 'review': [0.0, -5.0, 208, 84], 'ship': [0.0, -5.8, 176, 190]}
+GLYPH_BOX = {"jerash": [0.0, -1.0, 176, 192], 'symbol': [0.0, -6.0, 130, 178], 'context': [0.0, -2.2, 208, 179], 'council': [0.0, 2.1, 221, 210], 'deslop': [-11.2, -3.3, 133, 195], 'gates': [0.0, -9.0, 176, 168], 'ideate': [0.0, -3.1, 237, 188], 'memory': [0.0, -5.0, 192, 172], 'name': [1.3, -6.3, 142, 142], 'prompt': [0.0, -5.0, 176, 128], 'review': [0.0, -5.0, 208, 84], 'ship': [0.0, -5.8, 176, 190]}
 
 
 def glyph(key, ink, paper):
@@ -183,10 +187,10 @@ def hero(t, L):
         rows.append(f'<rect x="24" y="{y - 11}" width="10" height="10" rx="2" fill="{tone}"/>')
         rows.append(f'<text x="44" y="{y}" font-family="{SANS}" font-size="16" font-weight="{weight}" fill="{t["fg"]}">{mode}</text>')
         rows.append(f'<text x="160" y="{y}" font-family="{MONO}" font-size="14" fill="{t["muted"]}">{trig}</text>')
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="424" viewBox="0 0 1200 424" role="img" aria-labelledby="title desc">
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="446" viewBox="0 0 1200 446" role="img" aria-labelledby="title desc">
   <title id="title">black-iris</title>
   <desc id="desc">{L["desc"]}</desc>
-  <rect width="1200" height="424" rx="24" fill="{t["bg"]}"/>
+  <rect width="1200" height="446" rx="24" fill="{t["bg"]}"/>
   <rect x="56" y="48" width="1088" height="3" fill="{t["line"]}"/>
   <g id="identity-strip" transform="translate(56 26)">{strip}</g>
   {iris_mark(72, 92, t["fg"], 1.0)}
@@ -200,7 +204,7 @@ def hero(t, L):
     <text x="0" y="292" xml:space="preserve" font-family="{MONO}" font-size="14" fill="{t["muted"]}">{IRIS}    Jordanian Identity Colors    GPL-2.0-only    /black-iris</text>
   </g>
   <g id="project-proof" transform="translate(760 40)">
-    <rect x="0" y="0" width="384" height="364" rx="14" fill="{t["bg"]}" stroke="{t["line"]}" stroke-width="2"/>
+    <rect x="0" y="0" width="384" height="386" rx="14" fill="{t["bg"]}" stroke="{t["line"]}" stroke-width="2"/>
     <rect x="0" y="0" width="384" height="40" rx="14" fill="{t["line"]}"/>
     <rect x="0" y="26" width="384" height="14" fill="{t["line"]}"/>
     <text x="24" y="26" font-family="{ui_font}" font-size="14"{table_ls} fill="{t["bg"]}">{L["table"]}</text>
@@ -239,7 +243,7 @@ def logo(t):
 
 MODE_KEYS = {"Deslop": "deslop", "Gates": "gates", "Ideate": "ideate", "Prompt": "prompt",
              "Council": "council", "Memory": "memory", "Context": "context", "Ship": "ship",
-             "Name": "name", "Review": "review"}
+             "Name": "name", "Review": "review", "Jerash": "jerash"}
 
 
 def lum(h):

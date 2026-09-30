@@ -3,6 +3,20 @@
 Format follows Keep a Changelog. Entries are written for someone deciding
 whether to upgrade.
 
+## Unreleased
+
+### Added
+
+- Jerash mode, `/black-iris:jerash`, for when an answer was wrong. The answer
+  you rejected holds the title and your reason for rejecting it is required.
+  Fresh challengers, each written from a different Ideate frame, take it on
+  one at a time, and two blind judges with the order swapped decide each
+  challenge. The title moves only when both agree. The run stops after two
+  defenses in a row or six challengers, at most 18 Agent calls, and keeps its
+  ledger in `~/.BLACK_IRIS_AGENTS`. "Try again" earns a one-line offer and
+  never starts a run. Named for the hippodrome at Jerash; its icon is the
+  track with one petal holding the lane.
+
 ## 1.10.0 - 2026-09-30
 
 ### Added

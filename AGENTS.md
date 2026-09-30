@@ -1,13 +1,13 @@
 # Working on black-iris
 
 This repo is a prompt-only skill. The product is `skills/black-iris/SKILL.md`
-and the eleven files under `skills/black-iris/references/`. Everything else is
+and the twelve files under `skills/black-iris/references/`. Everything else is
 packaging.
 
 ## Before you edit
 
 1. Read `skills/black-iris/SKILL.md` in full.
-2. Read the one reference file your change touches, not all eleven.
+2. Read the one reference file your change touches, not all twelve.
 3. Invoke the skill on yourself. Its Shape, Build, and Cut list rules apply to
    every reply and every file you write here.
 

@@ -1,0 +1,9 @@
+description = "black-iris Jerash: rematch an answer you rejected against fresh challengers"
+prompt = """
+Use the black-iris-jerash skill from this extension for the request below. It
+loads references/jerash.md from the black-iris skill; follow that reference,
+and apply the black-iris Cut list and Pre-send check to everything you write.
+With no rejected answer in the conversation, ask for it in one line.
+
+Why the last answer was rejected: {{args}}
+"""
