@@ -1,7 +1,7 @@
 <p align="center">
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/assets/readme/hero-en-dark.svg">
-  <img src=".github/assets/readme/hero-en-light.svg" width="100%" alt="black-iris: one skill, thirteen disciplines for a coding agent, with its routing table of modes">
+  <img src=".github/assets/readme/hero-en-light.svg" width="100%" alt="black-iris: one skill, fourteen disciplines for a coding agent, with its routing table of modes">
 </picture>
 </p>
 
@@ -14,11 +14,11 @@
 
 <h1 align="center">black-iris</h1>
 <p align="center"><em>السوسنة السوداء</em></p>
-<p align="center">One skill, thirteen disciplines for a coding agent.</p>
+<p align="center">One skill, fourteen disciplines for a coding agent.</p>
 
 <p align="center"><a href="README.md">English</a> | <a href="docs/es/README.md">Espanol</a> | <a href="docs/ar/README.md">العربية</a></p>
 
-<p align="center">One skill for a coding agent, thirteen disciplines. It shapes every reply for a reader with ADHD, cuts AI tells from anything the agent writes, keeps code changes surgical, writes completion gates before long work, fans out isolated ideation branches, writes prompts for other tools, consolidates session memory, keeps bulk data out of the context window, and handles commit text, naming, and diff review. One 200-line router plus ten reference files.</p>
+<p align="center">One skill for a coding agent, fourteen disciplines. It shapes every reply for a reader with ADHD, cuts AI tells from anything the agent writes, keeps code changes surgical, writes completion gates before long work, fans out isolated ideation branches, writes prompts for other tools, consolidates session memory, keeps bulk data out of the context window, and handles commit text, naming, and diff review. One 200-line router plus ten reference files.</p>
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/assets/readme/section-install-en-dark.svg">
@@ -67,6 +67,7 @@ loads everything.
 | <img src="skills/black-iris/assets/modes/ideate.svg" width="28" alt="ideate"> | `/black-iris:ideate` | `/black-iris-ideate` | "ideate", "brainstorm" | Isolated parallel branches, then a verdict |
 | <img src="skills/black-iris/assets/modes/prompt.svg" width="28" alt="prompt"> | `/black-iris:prompt` | `/black-iris-prompt` | "write a prompt for X" | One paste-ready prompt for a named tool |
 | <img src="skills/black-iris/assets/modes/council.svg" width="28" alt="council"> | `/black-iris:council` | `/black-iris-council` | "council this", "pressure-test this" | Five isolated advisors, anonymous review, one verdict |
+| <img src="skills/black-iris/assets/modes/jerash.svg" width="28" alt="jerash"> | `/black-iris:jerash` | `/black-iris-jerash` | "rematch this", after a rejected answer | Beat an answer you rejected: the old one holds the title, fresh challengers take it on |
 | <img src="skills/black-iris/assets/modes/memory.svg" width="28" alt="memory"> | `/black-iris:memory` | `/black-iris-memory` | "autodream", "consolidate memory" | Harvest and verify session knowledge |
 | <img src="skills/black-iris/assets/modes/context.svg" width="28" alt="context"> | `/black-iris:context` | `/black-iris-context` | "analyze this log" | Derive answers from bulk data, never dump it |
 | <img src="skills/black-iris/assets/modes/ship.svg" width="28" alt="ship"> | `/black-iris:ship` | `/black-iris-ship` | "commit message", "PR body" | Conventional commits with a real why |

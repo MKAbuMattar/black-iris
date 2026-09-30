@@ -1,17 +1,17 @@
 ---
-name: black-iris-ideate
-description: Isolated parallel ideas, then one pick. black-iris mode, typed only.
+name: black-iris-jerash
+description: Rematch an answer you rejected against fresh challengers. black-iris mode, typed only.
 license: GPL-2.0-only
 disable-model-invocation: true
 allowed-tools: [Read, Grep, Glob, Agent]
-metadata: {author: MKAbuMattar, part-of: black-iris, logo: ../black-iris/assets/modes/ideate.svg}
+metadata: {author: MKAbuMattar, part-of: black-iris, logo: ../black-iris/assets/modes/jerash.svg}
 ---
 
-# black-iris: Ideate
+# black-iris: Jerash
 
 One mode of black-iris, without loading the other thirteen.
 
-1. Read `../black-iris/references/ideate.md` and follow it for this request.
+1. Read `../black-iris/references/jerash.md` and follow it for this request.
 2. Apply the Cut list and the Pre-send check from `../black-iris/SKILL.md` to
    everything you write, including commits and comments.
 3. Read nothing else from black-iris unless that reference points at it.
@@ -21,5 +21,5 @@ this folder was installed alone: say so in one line and point the user at
 the whole set, which `npx skills add MKAbuMattar/black-iris` or the plugin
 installs together.
 
-Text after the command is the input for this mode. With no input, ask for it
-in one line.
+Text after the command is the reason the last answer was rejected. With no
+rejected answer in the conversation, ask for it in one line.
