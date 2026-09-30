@@ -1,14 +1,14 @@
 <p align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/readme/hero-es-dark.svg">
-  <img src=".github/assets/readme/hero-es-light.svg" width="100%" alt="black-iris: una habilidad, trece disciplinas para un agente de programacion, con su tabla de modos">
+  <source media="(prefers-color-scheme: dark)" srcset="../../.github/assets/readme/hero-es-dark.svg">
+  <img src="../../.github/assets/readme/hero-es-light.svg" width="100%" alt="black-iris: una habilidad, trece disciplinas para un agente de programacion, con su tabla de modos">
 </picture>
 </p>
 
 <p align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/readme/logo-dark.svg">
-  <img src=".github/assets/readme/logo-light.svg" width="112" alt="black-iris logo, a geometric black iris">
+  <source media="(prefers-color-scheme: dark)" srcset="../../.github/assets/readme/logo-dark.svg">
+  <img src="../../.github/assets/readme/logo-light.svg" width="112" alt="black-iris logo, a geometric black iris">
 </picture>
 </p>
 
@@ -21,8 +21,8 @@
 <p align="center">Una sola habilidad para un agente de programacion, trece disciplinas. Da forma a cada respuesta para un lector con TDAH, elimina las marcas de texto generado por IA de todo lo que el agente escribe, mantiene los cambios de codigo quirurgicos, escribe puertas de finalizacion antes de trabajos largos, lanza ramas de ideacion aisladas, redacta prompts para otras herramientas, consolida la memoria de la sesion, mantiene los datos masivos fuera de la ventana de contexto y se ocupa de los mensajes de commit, los nombres y la revision de diffs. Un enrutador de 200 lineas mas diez archivos de referencia.</p>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/readme/section-install-es-dark.svg">
-  <img src=".github/assets/readme/section-install-es-light.svg" width="100%" alt="Instalacion">
+  <source media="(prefers-color-scheme: dark)" srcset="../../.github/assets/readme/section-install-es-dark.svg">
+  <img src="../../.github/assets/readme/section-install-es-light.svg" width="100%" alt="Instalacion">
 </picture>
 
 Claude Code, plugin con el hook de inicio de sesion:
@@ -43,8 +43,8 @@ DeepSeek Harness, Copilot, Zed, Hermes, Pi, Antigravity y Cursor, esta en
 [INSTALL.md](INSTALL.md).
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/readme/section-use-es-dark.svg">
-  <img src=".github/assets/readme/section-use-es-light.svg" width="100%" alt="Uso">
+  <source media="(prefers-color-scheme: dark)" srcset="../../.github/assets/readme/section-use-es-dark.svg">
+  <img src="../../.github/assets/readme/section-use-es-light.svg" width="100%" alt="Uso">
 </picture>
 
 Escribe `/black-iris` una vez y todos los modos se cargan completos. Shape,
@@ -53,23 +53,25 @@ cargar un solo modo: `/black-iris:deslop` en Claude Code, `/black-iris-deslop`
 en cualquier agente que lea Agent Skills, o pidelo con sus palabras
 disparadoras. `/black-iris:black-iris` lo carga todo.
 
-| Cargar un modo | O di | Que hace |
-|---|---|---|
-| `/black-iris:deslop` | "deslop", "humanize" | Quita las marcas de IA, conserva cada hecho |
-| `/black-iris:gates` | "gates", "do not stop until done" | Un registro comprobable antes de un trabajo largo |
-| `/black-iris:ideate` | "ideate", "brainstorm" | Ramas paralelas aisladas y luego un veredicto |
-| `/black-iris:prompt` | "write a prompt for X" | Un prompt listo para pegar en una herramienta concreta |
-| `/black-iris:council` | "council this", "pressure-test this" | Cinco asesores aislados, revision anonima, un veredicto |
-| `/black-iris:memory` | "autodream", "consolidate memory" | Cosecha y verifica el conocimiento de la sesion |
-| `/black-iris:ship` | "commit message", "PR body" | Commits convencionales con un porque real |
-| `/black-iris:name` | "rename", "name this" | Identificadores que dicen la verdad |
-| `/black-iris:review` | "review this diff" | Cinco hallazgos ordenados, sin reescrituras |
+| | Claude Code | Otros agentes | O di | Que hace |
+|---|---|---|---|---|
+| <img src="../../skills/black-iris/assets/logo.svg" width="28" alt="black-iris"> | `/black-iris:black-iris` | `/black-iris` | "black-iris" | Todos los modos, Shape, Build y la Cut list |
+| <img src="../../skills/black-iris/assets/modes/deslop.svg" width="28" alt="deslop"> | `/black-iris:deslop` | `/black-iris-deslop` | "deslop", "humanize" | Quita las marcas de IA, conserva cada hecho |
+| <img src="../../skills/black-iris/assets/modes/gates.svg" width="28" alt="gates"> | `/black-iris:gates` | `/black-iris-gates` | "gates", "do not stop until done" | Un registro comprobable antes de un trabajo largo |
+| <img src="../../skills/black-iris/assets/modes/ideate.svg" width="28" alt="ideate"> | `/black-iris:ideate` | `/black-iris-ideate` | "ideate", "brainstorm" | Ramas paralelas aisladas y luego un veredicto |
+| <img src="../../skills/black-iris/assets/modes/prompt.svg" width="28" alt="prompt"> | `/black-iris:prompt` | `/black-iris-prompt` | "write a prompt for X" | Un prompt listo para pegar en una herramienta concreta |
+| <img src="../../skills/black-iris/assets/modes/council.svg" width="28" alt="council"> | `/black-iris:council` | `/black-iris-council` | "council this", "pressure-test this" | Cinco asesores aislados, revision anonima, un veredicto |
+| <img src="../../skills/black-iris/assets/modes/memory.svg" width="28" alt="memory"> | `/black-iris:memory` | `/black-iris-memory` | "autodream", "consolidate memory" | Cosecha y verifica el conocimiento de la sesion |
+| <img src="../../skills/black-iris/assets/modes/context.svg" width="28" alt="context"> | `/black-iris:context` | `/black-iris-context` | "analyze this log" | Deriva respuestas de datos masivos, sin volcarlos |
+| <img src="../../skills/black-iris/assets/modes/ship.svg" width="28" alt="ship"> | `/black-iris:ship` | `/black-iris-ship` | "commit message", "PR body" | Commits convencionales con un porque real |
+| <img src="../../skills/black-iris/assets/modes/name.svg" width="28" alt="name"> | `/black-iris:name` | `/black-iris-name` | "rename", "name this" | Identificadores que dicen la verdad |
+| <img src="../../skills/black-iris/assets/modes/review.svg" width="28" alt="review"> | `/black-iris:review` | `/black-iris-review` | "review this diff" | Cinco hallazgos ordenados, sin reescrituras |
 
 Ajusta la longitud con `/black-iris lite`, `full` o `deep`.
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/readme/section-store-es-dark.svg">
-  <img src=".github/assets/readme/section-store-es-light.svg" width="100%" alt="Donde escribe">
+  <source media="(prefers-color-scheme: dark)" srcset="../../.github/assets/readme/section-store-es-dark.svg">
+  <img src="../../.github/assets/readme/section-store-es-light.svg" width="100%" alt="Donde escribe">
 </picture>
 
 Todo lo que es por proyecto va a `~/.BLACK_IRIS_AGENTS/projects/<slug>/`:
@@ -79,8 +81,8 @@ Code reinyecte la habilidad completa, referencias incluidas, y el indice de
 memoria de tu proyecto en cada inicio de sesion.
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/readme/section-repo-es-dark.svg">
-  <img src=".github/assets/readme/section-repo-es-light.svg" width="100%" alt="Repositorio">
+  <source media="(prefers-color-scheme: dark)" srcset="../../.github/assets/readme/section-repo-es-dark.svg">
+  <img src="../../.github/assets/readme/section-repo-es-light.svg" width="100%" alt="Repositorio">
 </picture>
 
 - `skills/black-iris/` es la habilidad: `SKILL.md`, `references/`, `scripts/`.

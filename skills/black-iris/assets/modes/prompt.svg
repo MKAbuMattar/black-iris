@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-labelledby="title">
+  <title id="title">black-iris prompt</title>
+  <rect width="256" height="256" rx="56" fill="#D9A36A"/>
+  <g transform="translate(128 123) scale(0.9091) translate(-128.0 -128.0)"><path fill="#2B2233" d="M40 128 A86 86 0 0 1 172.0 128.0 A86 86 0 0 1 40 128 Z"/><rect x="188" y="64" width="28" height="128" rx="6" fill="#2B2233"/></g>
+</svg>

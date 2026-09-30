@@ -16,10 +16,19 @@ whether to upgrade.
   CLI gets matching extension commands. None of them costs context until you
   type it.
 
+- An icon for every mode, and a redrawn logo. Every mark is built from one
+  petal shape and coloured from the Jordanian Identity Colors, and the README
+  shows each mode's icon next to its command.
+
 ### Changed
 
 - The installer scripts link every skill folder, not only `black-iris`,
   because the mode commands read their reference from it.
+
+### Fixed
+
+- The Spanish and Arabic READMEs showed no images. They lost their `../../`
+  prefix when the docs moved under `docs/<lang>/`.
 
 ## 1.9.0 - 2026-09-13
 
