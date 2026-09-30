@@ -67,7 +67,7 @@ loads everything.
 | <img src="skills/black-iris/assets/modes/ideate.svg" width="28" alt="ideate"> | `/black-iris:ideate` | `/black-iris-ideate` | "ideate", "brainstorm" | Isolated parallel branches, then a verdict |
 | <img src="skills/black-iris/assets/modes/prompt.svg" width="28" alt="prompt"> | `/black-iris:prompt` | `/black-iris-prompt` | "write a prompt for X" | One paste-ready prompt for a named tool |
 | <img src="skills/black-iris/assets/modes/council.svg" width="28" alt="council"> | `/black-iris:council` | `/black-iris-council` | "council this", "pressure-test this" | Five isolated advisors, anonymous review, one verdict |
-| <img src="skills/black-iris/assets/modes/jerash.svg" width="28" alt="jerash"> | `/black-iris:jerash` | `/black-iris-jerash` | "rematch this", after a rejected answer | Beat an answer you rejected: the old one holds the title, fresh challengers take it on |
+| <img src="skills/black-iris/assets/modes/jerash.svg" width="28" alt="jerash"> | `/black-iris:jerash` | `/black-iris-jerash` | "race this", "try again" | 100 entrants race in heats of critique and judging; one entry holds the lane |
 | <img src="skills/black-iris/assets/modes/memory.svg" width="28" alt="memory"> | `/black-iris:memory` | `/black-iris-memory` | "autodream", "consolidate memory" | Harvest and verify session knowledge |
 | <img src="skills/black-iris/assets/modes/context.svg" width="28" alt="context"> | `/black-iris:context` | `/black-iris-context` | "analyze this log" | Derive answers from bulk data, never dump it |
 | <img src="skills/black-iris/assets/modes/ship.svg" width="28" alt="ship"> | `/black-iris:ship` | `/black-iris-ship` | "commit message", "PR body" | Conventional commits with a real why |

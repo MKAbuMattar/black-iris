@@ -3,6 +3,22 @@
 Format follows Keep a Changelog. Entries are written for someone deciding
 whether to upgrade.
 
+## Unreleased
+
+### Changed
+
+- Jerash is now a full race. `/black-iris:jerash` gives 100 entrants the same
+  task and a different lane card each, drawn from three decks named for places
+  in Jordan, then runs heats: two entrants critique each other, answer and
+  revise, and a judge scores both on `jerash/rubric.md`. One entry is left
+  holding the lane. `--quick` races 16, `--field N` sets the size, and 100
+  entrants is 595 Agent calls in 70 waves of 10, stated before any spawn. A
+  rejected answer, with its reason, meets the champion in a blind final.
+  "try again" or "bad answer" asks consent before anything runs.
+- `jerash/hippodrome.py` keeps the race in one JSON file in the store, so a
+  compacted session resumes from disk. It is the one mode with state code,
+  and the roadmap now says so.
+
 ## 1.11.0 - 2026-09-30
 
 ### Added

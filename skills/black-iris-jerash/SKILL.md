@@ -1,6 +1,6 @@
 ---
 name: black-iris-jerash
-description: Rematch an answer you rejected against fresh challengers. black-iris mode, typed only.
+description: Race 100 entrants for the best answer. black-iris mode, typed only.
 license: GPL-2.0-only
 disable-model-invocation: true
 allowed-tools: [Read, Grep, Glob, Agent]
@@ -21,5 +21,5 @@ this folder was installed alone: say so in one line and point the user at
 the whole set, which `npx skills add MKAbuMattar/black-iris` or the plugin
 installs together.
 
-Text after the command is the reason the last answer was rejected. With no
-rejected answer in the conversation, ask for it in one line.
+Text after the command is the task and its flags. With no task in the input
+or the conversation, ask for it in one line.

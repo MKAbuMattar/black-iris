@@ -69,6 +69,19 @@ should have passed; it reads the ids you wrote. And it blocks at most once per
 ledger state per session, so a model that changes nothing stops on the second
 try and can never be trapped in a loop.
 
+## Jerash carries the one script
+
+Jerash races 100 entrants by default, 595 Agent calls in 70 waves, and that
+size cannot live in a context window or a markdown ledger. So it is the one
+mode with state code: `jerash/hippodrome.py` holds the race in one JSON file
+in the store and `next` says what to run, so a compacted session resumes
+from disk. The rubric weights live only in `jerash/rubric.md`, which the
+script parses, and the brief templates live only in `jerash/briefs.md`. The
+lane cards in `jerash/lanes.json` are named for places in Jordan; the names
+are handles and the `how` lines are the instructions. A tie the rubric
+cannot break goes to the run's seeded coin, recorded, so a replayed seed
+gives the same race.
+
 ## Gates without a checker
 
 The ledger format is kept; no checker program ships with it. The model runs

@@ -38,7 +38,7 @@ MODES = [
     ("Shape", "always on"), ("Build", "always on"), ("Deslop", "humanize"),
     ("Gates", "do not stop until done"), ("Ideate", "brainstorm"),
     ("Prompt", "write a prompt for"), ("Council", "council this"), ("Memory", "autodream"),
-    ("Context", "analyze this log"), ("Jerash", "rematch this"),
+    ("Context", "analyze this log"), ("Jerash", "race this"),
     ("Ship", "commit message"), ("Name", "rename"), ("Review", "review this diff"),
     ("Diagram", "diagram this"),
 ]

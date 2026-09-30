@@ -76,7 +76,10 @@ Each item waits for its trigger and ships as a minor version.
 
 ## Not planned
 
-- A checker binary, a memory database, or an orchestration layer. The
+- A checker binary, a memory database, or an orchestration layer beyond
+  Jerash. Jerash ships `jerash/hippodrome.py`, stdlib only, because a
+  100-entrant race is 595 Agent calls and no prompt keeps that on track
+  through compaction; that was a deliberate choice, not a precedent. The
   prompt is the product. Skills of this kind commonly carry 10 to 50 lines
   of packaging per line of prompt, and this repo exists to reverse that.
 - Per-model prompt routing. Slugs and parameters rot monthly, per

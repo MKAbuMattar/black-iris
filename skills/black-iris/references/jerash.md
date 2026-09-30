@@ -1,162 +1,143 @@
-# Jerash: beat the answer that was rejected
+# Jerash: a hundred entrants race for one answer
 
-The hippodrome at Jerash still stages chariot races, and a race there has a
-standing champion who must beat every challenger or give up the lane. This
-mode works the same way. The answer the user rejected holds the title. Fresh
-attempts challenge it one at a time, two blind judges decide each challenge,
-and the run ends when the holder has defended twice in a row.
+The hippodrome at Jerash still stages chariot races. This mode runs one over a
+task. A field of entrants, 100 by default, gets the same task and a different
+lane card each. They write entries, then race in heats: two entrants critique
+each other, answer the critiques and revise, and a judge scores the pair on
+the rubric. The winner goes through to the next round until one entry holds
+the lane. When the user rejected an earlier answer, the last entry meets that
+answer in a blind final.
 
-Ideate makes options for an open question. Council judges a decision that has
-options. Jerash starts from a concrete answer that already failed and asks
-what beats it. With no failed answer there is nothing to race against: say so
-and point at Ideate.
+You run the race. You never write an entry, never critique, never judge, and
+never pick a winner.
 
-## When
+Ideate makes options for an open question and Council judges a decision.
+Jerash is for when an answer came back wrong or weak and the user wants the
+strongest one a field can produce.
 
-Only when typed: `/black-iris:jerash`, `/black-iris jerash`, or the user names
-the mode. When the user says "try again", "bad answer", or "that is wrong"
-without naming it, answer normally and add one closing line offering it with
-its cost: "For a rematch against this answer: `/black-iris:jerash`, at most 18
-Agent calls." Never spawn anything on those phrases.
+## The files
 
-## Step 1: the incumbent and the reason
+Everything lives in `jerash/` beside this skill's `SKILL.md`:
 
-1. **The incumbent** is the answer the user rejected. Take it from the
-   conversation, word for word. If there is none in this session, ask for it
-   pasted or as a path. Do not reconstruct it from memory.
-2. **The reason** is why it was rejected, in the user's words. If the user has
-   not said, ask exactly one question: "What was wrong with it?" The run does
-   not start without a reason. A rematch with no reason optimizes against the
-   same judgment that produced the bad answer.
-3. **The task** is what the incumbent was answering: the request, every
-   constraint the user stated, the files or data it depends on, given as
-   absolute paths. A challenger sees nothing but what you write here, so write
-   it for a stranger. Add no requirement the user never gave, and no view of
-   your own about the right answer.
+- `hippodrome.py`, the race state. Every command below is
+  `python3 <skill-dir>/jerash/hippodrome.py <command>`, written `HIPPO` here.
+- `lanes.json`, three decks of lane cards, each card named for a place in
+  Jordan. No two entrants draw the same full card.
+- `rubric.md`, what the judges score and the weights. The script reads the
+  weights from it.
+- `briefs.md`, the brief templates the script fills for every subagent.
 
-Save all three in the run folder before anything else:
+The race lives in the store, `~/.BLACK_IRIS_AGENTS/projects/<slug>/jerash/`,
+never in the repo or `/tmp`. Each run gets its own folder and `jerash/LATEST`
+names the current one.
+
+## Step 1: size, cost, and consent
+
+Read the size from the request, and treat everything else as the task:
+
+| ask | field |
+|---|---|
+| nothing said | 100 entrants |
+| `--quick` | 16 entrants |
+| `--field N` | N entrants, 2 to 1080 |
+| `--seed S` | fixes the cards and the pairings |
+| `--wave W` | subagents per wave, default 10; raise only if the user raised Claude Code's limit |
+
+Run `HIPPO plan --field N` (add `--final` when there is a rejected answer). It
+prints rounds, heats, Agent calls, and waves; 100 entrants is 595 calls in 70
+waves.
+
+- **Typed** (`/black-iris:jerash`, `/black-iris jerash`, or the user asked
+  for a race): say the size and the call count in one line, then start.
+- **Fired by frustration** ("try again", "bad answer", "that is wrong") and
+  never named: ask once before spending anything. Offer the full race (100
+  entrants, 595 calls), `--quick` (16 entrants, 91 calls), or an ordinary
+  retry, and wait.
+
+Subagents write into the store, which sits outside the project. Before the
+first wave, tell the user to run `/add-dir ~/.BLACK_IRIS_AGENTS` and switch to
+accept-edits mode for the run, or they will approve hundreds of files one by
+one. Do not change their settings yourself.
+
+## Step 2: the task file
+
+This step decides the result. **Subagents cannot see this conversation.**
+Every entrant and judge knows only what the task file says, so write it for a
+stranger:
+
+- The request, in the user's own words where you can.
+- Every requirement and constraint the user stated anywhere: audience,
+  length, format, stack, what must not change.
+- What a stranger would need: absolute paths of the files that matter, the
+  data, the conventions in play.
+- What done looks like, if the user said.
+
+Add no requirement the user never gave and no view of your own about the
+right answer; a hint in the task file pushes every entrant the same way.
+
+When there is a rejected answer, save it word for word, and save the user's
+reason for rejecting it. Ask for the reason in one question if they have not
+given it. The race refuses a rejected answer without one.
+
+## Step 3: start the race
 
 ```bash
-P=${CLAUDE_PROJECT_DIR:-$(git rev-parse --show-toplevel 2>/dev/null || pwd)}
-R=~/.BLACK_IRIS_AGENTS/projects/$(printf '%s' "$P" | tr '/' '-')/jerash/$(date +%Y%m%d-%H%M%S)
-mkdir -p "$R/entries"
+HIPPO init --task task.md --field 100 --rejected old.md --reason reason.md
 ```
 
-`$R/task.md`, `$R/reason.md`, `$R/entries/00-incumbent.md`. The ledger is
-`$R/ledger.md`. Only you write the ledger. Nothing goes in the repo or `/tmp`.
+Write those three files in the store first, then run `init`. Drop
+`--rejected` and `--reason` when there is nothing to beat, and `--seed` for a
+random one; the seed is recorded either way.
 
-## Step 2: the cost, once
+## Step 4: the loop
 
-Each challenge is three Agent calls: one challenger, two judges. The default
-cap is 6 challengers, so at most 18 calls, and the run usually stops sooner.
-The user may raise the cap to 10, which is 30 calls. State the maximum and the
-stop rule in one line, then start.
+Always drive it with `HIPPO next`. It reads the state and prints the next
+step and its command. Every phase that runs subagents works the same way:
 
-## Step 3: the ledger
+1. `HIPPO briefs <phase>` writes one brief per job still to run and lists
+   them in waves.
+2. Launch one wave at a time: one message, one Agent call per brief in that
+   wave, each with the prompt "Read <brief path> and follow it exactly. It is
+   your whole brief." Wait for the whole wave before the next.
+3. After the last wave, run `HIPPO next`. A missing output sends you back to
+   the same phase and `briefs` lists only what is missing. Rerun those once.
+   A job that fails twice gets the line `NO OUTPUT` written into each of its
+   output files (`HIPPO pending <phase>` lists them) and the race moves on. A
+   judge that fails twice gets a third, fresh run; never decide a heat
+   yourself.
 
-Write the header, then one line per challenge as it happens:
+The order: **entry** once; then each round **critique**, **reply**,
+**judge**, `HIPPO collect`, `HIPPO advance`; then **final** once when a
+rejected answer exists, and `HIPPO collect`. `next` prints DONE at the end.
 
-```markdown
-# Jerash run <run id>
-Holder: 00-incumbent
-Cap: 6    Defenses in a row: 0
+After each `advance`, give the user one line: "Round 3 closed: 13 of 100
+still racing." Never paste entries, critiques, or verdicts into the chat.
 
-- [ ] C1  frame: <frame>  vs <holder>  judge-1: <X|Y>  judge-2: <X|Y>  holder after: <id>
-```
+## Step 5: the result
 
-Read the ledger before every challenge and update it after. A line is checked
-only when both verdicts are recorded. After compaction, reread the ledger and
-continue from the first unchecked line. The ledger holds ids and verdicts,
-never the texts; the texts live in `entries/`, and you do not read them during
-the run.
+Run `HIPPO champion`, then read the champion's entry at the path it prints.
+It is the only entry you read in the whole race. Reply with:
 
-## Step 4: one challenge
+1. **Line one: the verdict.** Who holds the lane, and against the rejected
+   answer, whether the champion or the old answer won the final.
+2. **The winning entry**, in full.
+3. **Why it won**: the heats it took and what it beat, from `champion`, and
+   its lane card on one line.
+4. **The race**: entrants, rounds, and the run folder.
+5. **The final**, when there was one, honestly. If the rejected answer
+   scored higher, say so and show both.
 
-**The challenger.** Pick the next frame from the frame table in
-`references/ideate.md`, a different one each challenge, at least one tagged
-`wild` among the first three. Spawn one Agent with this brief:
-
-```
-The file <R>/task.md is a task. The answer at <R>/entries/<holder>.md was
-given for it and fell short. The person who asked said why, in
-<R>/reason.md. Write a better answer.
-
-Work from this vantage: <frame name>. <frame vantage prompt>
-
-Fix what the reason names first. Keep everything the task requires. Start
-from the vantage, not from the old text: editing it line by line is not the
-job, and a new answer that shares its mistake loses. You cannot ask anything:
-where the task is unclear, take the most reasonable reading and state it in
-one line at the top. If the task is about code, give the exact change as a
-diff or full files; do not edit the user's project.
-
-Write only the answer, for the person who asked, to
-<R>/entries/<nn>-<frame-slug>.md. Say nothing about this process. Reply with
-one line: WROTE <path>.
-```
-
-**The judges.** Two Agents, spawned together, isolated. Each sees the two
-answers under the labels X and Y. Judge 1 gets the holder as X and the
-challenger as Y; judge 2 gets them the other way round, which cancels the pull
-of going first. Neither is told which answer is the holder.
-
-```
-Two answers to the same task follow. Task: <R>/task.md. The person who asked
-rejected an earlier answer for this reason: <R>/reason.md.
-
-Answer X: <path>
-Answer Y: <path>
-
-Read both in full before you decide. Decide in this order, and stop at the
-first question that separates them:
-
-1. Which one fixes what the reason names?
-2. Which one is correct? Check claims, code, and numbers yourself; an answer
-   that says it is right is not evidence.
-3. Which one meets more of what the task requires?
-4. Which one the person could act on now without guessing?
-
-Length and confident wording earn nothing. If the task is code and running it
-settles the question, run it only inside <R>/scratch/. Change no other file.
-
-Reply with exactly two lines:
-PICK X|Y
-WHY <the one difference that decided it>
-```
-
-**The call.** Map both picks back to holder or challenger. The challenger takes
-the title only when both judges picked it. A split, or two picks for the
-holder, is a defense. Record the line, set the new holder, and reset or
-increment "Defenses in a row".
-
-If a call returns nothing, run it once more. A challenger that fails twice
-forfeits and the holder defends. A judge that fails twice gets a third fresh
-run; never decide a challenge yourself.
-
-## Step 5: stop
-
-Stop when the holder has defended twice in a row, or when the cap is reached.
-
-Then read the holder's file, the only entry you read, and reply:
-
-1. **Line one: the verdict.** "The rejected answer held" or "A new answer took
-   the title from <frame>, after <n> challenges".
-2. **The holder's answer**, in full.
-3. **What changed** against the rejected answer: the reason the user gave and
-   how the holder answers it, from the judges' WHY lines.
-4. **The record**: challenges run, title changes, the ledger path.
-
-If the rejected answer held against its first two challengers, that is the
-finding: six calls say the candidates were not the problem. Say plainly that
-the task or the reason probably is, and ask which.
-
-If the holder changes files in the user's project, do not apply it. Ask.
+If the entry changes files in the user's project, do not apply it. Ask.
 
 ## Rules that do not bend
 
-- Every challenger and judge works blind and isolated. A challenger sees the
-  task, the reason, and the current holder, never another challenger.
-- The task file is the same bytes for everyone. Never add a hint to one call.
-- You run the race. You never write an entry and never pick a winner.
-- Only the ledger records state, and only you write it.
-- The user says stop: stop. The ledger resumes it later.
+- Every subagent gets the task through its brief, byte for byte the same.
+  Never add a hint to one call and never edit one brief.
+- Do not read entries, critiques, or verdicts during the race. `next`,
+  `status`, and `pending` are all you need.
+- Compacted mid-race: run `HIPPO status`, then `HIPPO next`, and continue.
+- Run every command from the same project, so the store resolves to the same
+  race.
+- Subagents write only inside the run folder. If one wrote elsewhere, tell
+  the user.
+- The user says stop: stop. `HIPPO next` resumes the race later.
