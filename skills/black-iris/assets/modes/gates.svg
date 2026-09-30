@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-labelledby="title">
+  <title id="title">black-iris gates</title>
+  <rect width="256" height="256" rx="56" fill="#8B1E2D"/>
+  <g transform="translate(128 123) scale(0.9091) translate(-128.0 -132.0)"><rect x="40" y="48" width="28" height="168" rx="6" fill="#EAE6DB"/><rect x="188" y="48" width="28" height="168" rx="6" fill="#EAE6DB"/><path fill="#EAE6DB" d="M128 208 A100 100 0 0 1 128.0 56.0 A100 100 0 0 1 128 208 Z"/></g>
+</svg>

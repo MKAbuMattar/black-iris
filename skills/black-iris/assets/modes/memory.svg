@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-labelledby="title">
+  <title id="title">black-iris memory</title>
+  <rect width="256" height="256" rx="56" fill="#B9875E"/>
+  <g transform="translate(128 123) scale(0.8333) translate(-128.0 -128.0)"><path fill="#2B2233" d="M32 64 A220 220 0 0 1 224.0 64.0 A220 220 0 0 1 32 64 Z"/><path fill="#2B2233" d="M32 128 A220 220 0 0 1 224.0 128.0 A220 220 0 0 1 32 128 Z"/><path fill="#2B2233" d="M32 192 A220 220 0 0 1 224.0 192.0 A220 220 0 0 1 32 192 Z"/></g>
+</svg>

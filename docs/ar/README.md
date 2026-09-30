@@ -1,14 +1,14 @@
 <p align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/readme/hero-ar-dark.svg">
-  <img src=".github/assets/readme/hero-ar-light.svg" width="100%" alt="black-iris: مهارة واحدة، ثلاث عشرة قاعدة عمل لوكيل البرمجة، مع جدول الأنماط">
+  <source media="(prefers-color-scheme: dark)" srcset="../../.github/assets/readme/hero-ar-dark.svg">
+  <img src="../../.github/assets/readme/hero-ar-light.svg" width="100%" alt="black-iris: مهارة واحدة، ثلاث عشرة قاعدة عمل لوكيل البرمجة، مع جدول الأنماط">
 </picture>
 </p>
 
 <p align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/readme/logo-dark.svg">
-  <img src=".github/assets/readme/logo-light.svg" width="112" alt="black-iris logo, a geometric black iris">
+  <source media="(prefers-color-scheme: dark)" srcset="../../.github/assets/readme/logo-dark.svg">
+  <img src="../../.github/assets/readme/logo-light.svg" width="112" alt="black-iris logo, a geometric black iris">
 </picture>
 </p>
 
@@ -21,8 +21,8 @@
 <p align="center">مهارة واحدة لوكيل البرمجة، ثلاث عشرة قاعدة عمل. تُشكّل كل رد لقارئ لديه فرط الحركة ونقص الانتباه، وتحذف علامات النص المولَّد بالذكاء الاصطناعي من كل ما يكتبه الوكيل، وتُبقي تغييرات الكود دقيقة ومحدودة، وتكتب بوابات إنجاز قبل العمل الطويل، وتُطلق فروع أفكار معزولة، وتكتب أوامر لأدوات أخرى، وتُرتّب ذاكرة الجلسة، وتُبقي البيانات الضخمة خارج نافذة السياق، وتتولى رسائل الالتزام والتسمية ومراجعة الفروقات. موجّه من 200 سطر مع عشرة ملفات مرجعية.</p>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/readme/section-install-ar-dark.svg">
-  <img src=".github/assets/readme/section-install-ar-light.svg" width="100%" alt="التثبيت">
+  <source media="(prefers-color-scheme: dark)" srcset="../../.github/assets/readme/section-install-ar-dark.svg">
+  <img src="../../.github/assets/readme/section-install-ar-light.svg" width="100%" alt="التثبيت">
 </picture>
 
 Claude Code، إضافة مع خطاف بداية الجلسة:
@@ -42,8 +42,8 @@ npx skills add MKAbuMattar/black-iris -g
 وCopilot وZed وHermes وPi وAntigravity وCursor، في [INSTALL.md](INSTALL.md).
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/readme/section-use-ar-dark.svg">
-  <img src=".github/assets/readme/section-use-ar-light.svg" width="100%" alt="الاستخدام">
+  <source media="(prefers-color-scheme: dark)" srcset="../../.github/assets/readme/section-use-ar-dark.svg">
+  <img src="../../.github/assets/readme/section-use-ar-light.svg" width="100%" alt="الاستخدام">
 </picture>
 
 اكتب `/black-iris` مرة واحدة فتُحمَّل كل الأنماط كاملة. تبقى Shape وBuild
@@ -51,23 +51,25 @@ npx skills add MKAbuMattar/black-iris -g
 `/black-iris:deslop` في Claude Code، أو `/black-iris-deslop` في أي وكيل يقرأ
 Agent Skills، أو اطلبه بكلماته المحفّزة. `/black-iris:black-iris` يحمّل الكل.
 
-| تحميل نمط واحد | أو قل | ماذا يفعل |
-|---|---|---|
-| `/black-iris:deslop` | "deslop"، "humanize" | إزالة علامات الذكاء الاصطناعي مع الحفاظ على كل حقيقة |
-| `/black-iris:gates` | "gates"، "do not stop until done" | سجل قابل للتحقق قبل العمل الطويل |
-| `/black-iris:ideate` | "ideate"، "brainstorm" | فروع متوازية معزولة ثم حكم نهائي |
-| `/black-iris:prompt` | "write a prompt for X" | أمر واحد جاهز للصق في أداة محددة |
-| `/black-iris:council` | "council this"، "pressure-test this" | خمسة مستشارين معزولين، مراجعة مجهولة، حكم واحد |
-| `/black-iris:memory` | "autodream"، "consolidate memory" | حصاد معرفة الجلسة والتحقق منها |
-| `/black-iris:ship` | "commit message"، "PR body" | التزامات اصطلاحية مع سبب حقيقي |
-| `/black-iris:name` | "rename"، "name this" | معرّفات صادقة في القراءة |
-| `/black-iris:review` | "review this diff" | خمس ملاحظات مرتبة دون إعادة كتابة |
+| | Claude Code | وكلاء آخرون | أو قل | ماذا يفعل |
+|---|---|---|---|---|
+| <img src="../../skills/black-iris/assets/logo.svg" width="28" alt="black-iris"> | `/black-iris:black-iris` | `/black-iris` | "black-iris" | كل الأنماط مع Shape وBuild وقائمة Cut |
+| <img src="../../skills/black-iris/assets/modes/deslop.svg" width="28" alt="deslop"> | `/black-iris:deslop` | `/black-iris-deslop` | "deslop"، "humanize" | إزالة علامات الذكاء الاصطناعي مع الحفاظ على كل حقيقة |
+| <img src="../../skills/black-iris/assets/modes/gates.svg" width="28" alt="gates"> | `/black-iris:gates` | `/black-iris-gates` | "gates"، "do not stop until done" | سجل قابل للتحقق قبل العمل الطويل |
+| <img src="../../skills/black-iris/assets/modes/ideate.svg" width="28" alt="ideate"> | `/black-iris:ideate` | `/black-iris-ideate` | "ideate"، "brainstorm" | فروع متوازية معزولة ثم حكم نهائي |
+| <img src="../../skills/black-iris/assets/modes/prompt.svg" width="28" alt="prompt"> | `/black-iris:prompt` | `/black-iris-prompt` | "write a prompt for X" | أمر واحد جاهز للصق في أداة محددة |
+| <img src="../../skills/black-iris/assets/modes/council.svg" width="28" alt="council"> | `/black-iris:council` | `/black-iris-council` | "council this"، "pressure-test this" | خمسة مستشارين معزولين، مراجعة مجهولة، حكم واحد |
+| <img src="../../skills/black-iris/assets/modes/memory.svg" width="28" alt="memory"> | `/black-iris:memory` | `/black-iris-memory` | "autodream"، "consolidate memory" | حصاد معرفة الجلسة والتحقق منها |
+| <img src="../../skills/black-iris/assets/modes/context.svg" width="28" alt="context"> | `/black-iris:context` | `/black-iris-context` | "analyze this log" | استخلاص الإجابة من البيانات الكبيرة دون إغراق السياق |
+| <img src="../../skills/black-iris/assets/modes/ship.svg" width="28" alt="ship"> | `/black-iris:ship` | `/black-iris-ship` | "commit message"، "PR body" | التزامات اصطلاحية مع سبب حقيقي |
+| <img src="../../skills/black-iris/assets/modes/name.svg" width="28" alt="name"> | `/black-iris:name` | `/black-iris-name` | "rename"، "name this" | معرّفات صادقة في القراءة |
+| <img src="../../skills/black-iris/assets/modes/review.svg" width="28" alt="review"> | `/black-iris:review` | `/black-iris-review` | "review this diff" | خمس ملاحظات مرتبة دون إعادة كتابة |
 
 اضبط الطول عبر `/black-iris lite` أو `full` أو `deep`.
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/readme/section-store-ar-dark.svg">
-  <img src=".github/assets/readme/section-store-ar-light.svg" width="100%" alt="أين تكتب">
+  <source media="(prefers-color-scheme: dark)" srcset="../../.github/assets/readme/section-store-ar-dark.svg">
+  <img src="../../.github/assets/readme/section-store-ar-light.svg" width="100%" alt="أين تكتب">
 </picture>
 
 كل ما يخص المشروع يُحفظ تحت `~/.BLACK_IRIS_AGENTS/projects/<slug>/`: سجلات
@@ -76,8 +78,8 @@ Agent Skills، أو اطلبه بكلماته المحفّزة. `/black-iris:bla
 المهارة كاملة مع مراجعها وفهرس ذاكرة مشروعك عند كل بداية جلسة.
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/readme/section-repo-ar-dark.svg">
-  <img src=".github/assets/readme/section-repo-ar-light.svg" width="100%" alt="المستودع">
+  <source media="(prefers-color-scheme: dark)" srcset="../../.github/assets/readme/section-repo-ar-dark.svg">
+  <img src="../../.github/assets/readme/section-repo-ar-light.svg" width="100%" alt="المستودع">
 </picture>
 
 - `skills/black-iris/` هو المهارة: `SKILL.md` و`references/` و`scripts/`.

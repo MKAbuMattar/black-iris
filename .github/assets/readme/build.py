@@ -83,14 +83,82 @@ LANGS = {
 }
 
 
+
+# ---------------------------------------------------------------------------
+# Marks. One primitive: the petal lens, two circular arcs of equal radius
+# between a base point and a tip. The master iris and every mode glyph are
+# built from it on a 256 canvas, drawn in G_INK with G_PAPER for cut-outs, and
+# recoloured on output. Designed with the logo-design skill: black first, then
+# the Jordanian palette; audited at 99 to 100 on every glyph.
+import math
+G_INK, G_PAPER = "#111111", "#FFFFFF"
+
+def pt(cx, cy, ang, dist):
+    a = math.radians(ang)            # 0 = up, clockwise positive
+    return (round(cx + dist * math.sin(a), 2), round(cy - dist * math.cos(a), 2))
+
+def lens(base, ang, length, r, fill=G_INK):
+    """Petal from `base` pointing at `ang`, `length` long, arcs of radius r."""
+    tip = pt(base[0], base[1], ang, length)
+    b = f"{base[0]} {base[1]}"; t = f"{tip[0]} {tip[1]}"
+    return f'<path fill="{fill}" d="M{b} A{r} {r} 0 0 1 {t} A{r} {r} 0 0 1 {b} Z"/>'
+
+G_C = (128, 140)
+# --- Concept A: six lenses. Slender standards up, fuller falls down, a beard hole at the heart.
+def master_a(fill=G_INK, hole=G_PAPER):
+    s = [lens(G_C, a, 100, 66, fill) for a in (-36, 0, 36)]
+    f = [lens(G_C, a, 78, 44, fill) for a in (124, 180, 236)]
+    return "".join(s + f) + f'<circle cx="{G_C[0]}" cy="{G_C[1]}" r="9" fill="{hole}"/>'
+
+# --- Concept A family: every mode glyph from the same lens, one idea each.
+P = (128, 128)
+def mode(name):
+    if name == "deslop":   # the petal with its tip cut off flat; the removed tip floats away
+        return (f'<path fill="{G_INK}" d="M112 224 A118 118 0 0 1 75.08 112 L148.92 112 A118 118 0 0 1 112 224 Z"/>'
+                + lens((172, 84), 30, 64, 44))
+    if name == "gates":    # a petal passing between two posts
+        return (f'<rect x="40" y="48" width="28" height="168" rx="6" fill="{G_INK}"/>'
+                f'<rect x="188" y="48" width="28" height="168" rx="6" fill="{G_INK}"/>' + lens((128, 208), 0, 152, 100))
+    if name == "ideate":   # five slim petals diverging from one point, gaps between, unequal reach
+        return "".join(lens((128, 220), a, l, 1.05 * l) for a, l in ((-64, 132), (-32, 168), (0, 188), (32, 168), (64, 132)))
+    if name == "council":  # five advisors facing a chairman
+        return "".join(lens(pt(128, 132, a, 116), a + 180, 84, 56) for a in (0, 72, 144, 216, 288)) + f'<circle cx="128" cy="132" r="22" fill="{G_INK}"/>'
+    if name == "prompt":   # a petal lying on its side, then a caret
+        return lens((40, 128), 90, 132, 86) + f'<rect x="188" y="64" width="28" height="128" rx="6" fill="{G_INK}"/>'
+    if name == "memory":   # three slim petals laid down as strata, clear gaps
+        return "".join(lens((32, y), 90, 192, 220) for y in (64, 128, 192))
+    if name == "context":  # bulk above, the derived answer below
+        return lens((24, 84), 90, 208, 136) + lens((88, 196), 90, 80, 52)
+    if name == "ship":     # a petal as a sail on a hull
+        return lens((140, 188), -8, 156, 104) + f'<rect x="40" y="196" width="176" height="28" rx="14" fill="{G_INK}"/>'
+    if name == "name":     # a petal tag with its hole
+        return lens((56, 200), 45, 200, 130) + f'<circle cx="158" cy="98" r="16" fill="{G_PAPER}"/>'
+    if name == "review":   # the petal as an eye, a pupil held open
+        return lens((24, 128), 90, 208, 150) + f'<circle cx="128" cy="128" r="34" fill="{G_PAPER}"/><circle cx="128" cy="128" r="16" fill="{G_INK}"/>'
+    raise KeyError(name)
+
+# Measured bounding boxes from the logo-design audit: centre offset from 128
+# (dx, dy with the optical raise already folded in) and width, height.
+GLYPH_BOX = {'symbol': [0.0, -6.0, 130, 178], 'context': [0.0, -2.2, 208, 179], 'council': [0.0, 2.1, 221, 210], 'deslop': [-11.2, -3.3, 133, 195], 'gates': [0.0, -9.0, 176, 168], 'ideate': [0.0, -3.1, 237, 188], 'memory': [0.0, -5.0, 192, 172], 'name': [1.3, -6.3, 142, 142], 'prompt': [0.0, -5.0, 176, 128], 'review': [0.0, -5.0, 208, 84], 'ship': [0.0, -5.8, 176, 190]}
+
+
+def glyph(key, ink, paper):
+    body = master_a() if key == "symbol" else mode(key)
+    return body.replace(G_INK, ink).replace(G_PAPER, paper)
+
+
+def placed(key, ink, paper, cx, cy, size):
+    """The glyph with its longest side `size` units, optically centred on (cx, cy)."""
+    dx, dy, w, h = GLYPH_BOX[key]
+    gx, gy = 128 - dx, 128 - (dy + 5)
+    s = size / max(w, h)
+    return (f'<g transform="translate({cx} {cy}) scale({s:.4f}) translate({-gx} {-gy})">'
+            f'{glyph(key, ink, paper)}</g>')
+
 def iris_mark(x, y, fill, scale=1.0):
-    """Three standards up, three falls down, one gold beard. About 44 units tall at scale 1."""
-    std = "M0,0 C-5,-8 -5,-18 0,-26 C5,-18 5,-8 0,0Z"
-    fall = "M0,0 C-3,7 -9,12 -15,19 C-8,17 -3,13 0,8 C3,13 8,17 15,19 C9,12 3,7 0,0Z"
-    parts = [f'<path d="{std}" transform="rotate({r})"/>' for r in (-32, 0, 32)]
-    parts += [f'<path d="{fall}" transform="rotate({r})"/>' for r in (-20, 0, 20)]
-    return (f'<g transform="translate({x} {y}) scale({scale})" fill="{fill}">' + "".join(parts) +
-            f'<circle cx="0" cy="2" r="2.2" fill="{GOLD}"/></g>')
+    """The master iris, about 44 units tall at scale 1, centred on (x, y), with a
+    Wadi Rum Sand beard. Same signature the hero and section headers always used."""
+    return placed("symbol", fill, GOLD, x, y, 44 * scale)
 
 
 def hero(t, L):
@@ -162,9 +230,38 @@ def logo(t):
     """256 square: the iris mark alone, large, on the ground of its theme."""
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
   <title id="title">black-iris logo</title>
-  <desc id="desc">A geometric black iris, three standards up and three falls down, with a Wadi Rum sand beard, on the Jordanian identity palette.</desc>
+  <desc id="desc">A black iris built from one petal lens: three slender standards up, three fuller falls down, a Wadi Rum Sand beard.</desc>
   <rect width="256" height="256" rx="56" fill="{t["bg"]}"/>
-  {iris_mark(128, 150, t["fg"], 4.6)}
+  {placed("symbol", t["fg"], GOLD, 128, 123, 176)}
+</svg>
+'''
+
+
+MODE_KEYS = {"Deslop": "deslop", "Gates": "gates", "Ideate": "ideate", "Prompt": "prompt",
+             "Council": "council", "Memory": "memory", "Context": "context", "Ship": "ship",
+             "Name": "name", "Review": "review"}
+
+
+def lum(h):
+    r, g, b = [int(h[i:i + 2], 16) / 255 for i in (1, 3, 5)]
+    f = lambda c: c / 12.92 if c <= 0.03928 else ((c + 0.055) / 1.055) ** 2.4
+    return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b)
+
+
+def contrast(a, b):
+    la, lb = sorted((lum(a), lum(b)), reverse=True)
+    return (la + 0.05) / (lb + 0.05)
+
+
+def mode_icon(title, key):
+    """A mode's icon: its glyph on a tile in the mode's palette tone. The glyph takes
+    Salt White or Black Iris, whichever contrasts more with the tile."""
+    ground = C(MODE_TONE[title])
+    ink = max((PLATE, IRIS), key=lambda c: contrast(c, ground))
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-labelledby="title">
+  <title id="title">black-iris {key}</title>
+  <rect width="256" height="256" rx="56" fill="{ground}"/>
+  {placed(key, ink, ground, 128, 123, 160)}
 </svg>
 '''
 
@@ -173,7 +270,7 @@ def logo_mark():
     """Transparent mark in the iris color, for favicons and light surfaces."""
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="title">
   <title id="title">black-iris mark</title>
-  {iris_mark(64, 78, IRIS, 2.4)}
+  {placed("symbol", IRIS, GOLD, 64, 62, 116)}
 </svg>
 '''
 
@@ -192,6 +289,10 @@ if __name__ == "__main__":
     skill_assets = out.parent.parent.parent / "skills" / "black-iris" / "assets"
     skill_assets.mkdir(exist_ok=True)
     (skill_assets / "logo.svg").write_text(logo_mark()); n += 1
+    # One icon per mode command; each skills/black-iris-<mode>/SKILL.md points here.
+    (skill_assets / "modes").mkdir(exist_ok=True)
+    for title, key in MODE_KEYS.items():
+        (skill_assets / "modes" / f"{key}.svg").write_text(mode_icon(title, key)); n += 1
     print("wrote", n, "svgs")
     # logo.png for manifests that need a raster. Regenerated here, never hand-edited.
     import shutil, subprocess
