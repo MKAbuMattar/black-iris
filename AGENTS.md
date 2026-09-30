@@ -6,7 +6,7 @@ packaging.
 
 ## Before you edit
 
-1. Read `skills/black-iris/SKILL.md` in full. It is about 12 KB by design.
+1. Read `skills/black-iris/SKILL.md` in full.
 2. Read the one reference file your change touches, not all eleven.
 3. Invoke the skill on yourself. Its Shape, Build, and Cut list rules apply to
    every reply and every file you write here.
@@ -27,8 +27,10 @@ packaging.
   removed pattern leaves a gap.
 - Per-project files go under `~/.BLACK_IRIS_AGENTS/projects/<slug>/`. Never
   write to `~/.claude` or `/tmp` from the skill or the hook.
-- The hook stays fail-open: it exits 0 on every path and runs only when the
-  flag file exists.
+- The hooks stay fail-open: each runs only when its own flag file exists
+  (`always-on`, `gates-stop`, `memory-nudge`) and exits 0 on every path but
+  one. That one is deliberate: `gates-stop.sh` exits 2 to block a stop while
+  the ledger has unmet gates.
 - No AI attribution anywhere: no Co-Authored-By naming a model, no "Generated
   with", in commits, PRs, or docs. This is Cut list rule 10 and it applies to
   this repo's own history.
@@ -44,7 +46,9 @@ Both must print `clean`. If you changed a count the lint asserts (Shape 10,
 Build 5, Cut list 10, 15 ideate frames), update the assertion in all three
 check scripts: `universal/check.py`, `linux/check.sh`, `windows/check.ps1`.
 
-If you changed the hook, dry-run it with a scratch home:
+If you changed `reinject.sh`, dry-run it with a scratch home. The two Stop
+hooks read a JSON payload on stdin; their dry runs are the "Gates Stop hook"
+and "Memory Stop hook" steps in `.github/workflows/check.yml`.
 
 ```bash
 H=$(mktemp -d); mkdir -p "$H/.BLACK_IRIS_AGENTS"; touch "$H/.BLACK_IRIS_AGENTS/always-on"

@@ -155,7 +155,7 @@ changes the user's intent.
 | Assumes prior knowledge | Prepend the memory block below |
 | Invites hallucination | "State only what you can verify; say [uncertain] otherwise" |
 | Prior failures unmentioned | Ask what they tried (counts toward the 3) |
-| No output format or length | Explicit format lock with a count |
+| No output format or length | Explicit format lock: shape, sections, and the length the reader needs |
 | Vague aesthetic ("professional") | Measurable specs |
 | No file boundary for an IDE agent | Scope lock to files and functions |
 | No stop condition for an agent | Checkpoints and human-review triggers |
@@ -163,7 +163,7 @@ changes the user's intent.
 | Request for hidden reasoning | Remove; ask for rationale, evidence, checks |
 | Contradicts an earlier decision | Flag, resolve, include the memory block |
 | No starting or target state for an agent | Add both, concretely |
-| Silent agent | "After each step output what was completed" |
+| Silent agent | Name when it reports: each checkpoint, any blocker, the final evidence |
 
 ## Memory block
 
@@ -229,7 +229,8 @@ lacks by the checklist above, then the rebuilt prompt for the named tool.
 
 1. Target tool identified and the prompt uses its syntax?
 2. The most critical constraints in the first 30 percent?
-3. Strongest signal words: MUST over should, NEVER over avoid?
+3. Each constraint stated once, at normal volume, with its reason? Emphasis
+   only on a rule a test showed the target tool underweights.
 4. Every fabricated technique removed?
 5. Every sentence load-bearing, format explicit, scope bounded?
 6. Would it work on the first paste? That is the only metric.
