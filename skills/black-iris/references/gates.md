@@ -1,9 +1,11 @@
 # Gates: completion you can check
 
 A confident "done" is the cheapest thing a model produces. A gate ledger
-makes incompleteness visible and completion testable. This mode is prompt
-only: you write the ledger, you run the checks with your shell tool, you
-record the evidence. No checker script, no hook.
+makes incompleteness visible and completion testable. You write the ledger,
+you run the checks with your shell tool, you record the evidence. No checker
+script ships. The plugin has one opt-in Stop hook, `hooks/gates-stop.sh`, off
+unless `~/.BLACK_IRIS_AGENTS/gates-stop` exists, that refuses a stop while the
+ledger has unmet gates. The mode works the same without it.
 
 ## When
 

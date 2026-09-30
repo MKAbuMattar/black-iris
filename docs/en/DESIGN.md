@@ -89,7 +89,7 @@ ascending rather than pinning a count.
 Every section was audited by a second model from another family, mode by
 mode, and then by a third reviewer with the full file set. Their
 findings are applied, not summarized, and the ones that changed behavior are
-recorded above. The review prompt lives in `references/evals.md`.
+recorded above. How to keep such a reviewer blind is in `references/evals.md`.
 
 ## What was left out on purpose
 

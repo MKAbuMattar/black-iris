@@ -27,6 +27,10 @@ whether to upgrade.
 
 ### Fixed
 
+- Prompt mode no longer tells generated prompts to shout. Its final check
+  said "MUST over should, NEVER over avoid", which made current models apply
+  rules too rigidly and contradicted its own advice to state instructions
+  positively. It now asks for each constraint once, with its reason.
 - The Spanish and Arabic READMEs showed no images. They lost their `../../`
   prefix when the docs moved under `docs/<lang>/`.
 
