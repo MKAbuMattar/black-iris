@@ -1,7 +1,7 @@
 <p align="center">
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/assets/readme/hero-en-dark.svg">
-  <img src=".github/assets/readme/hero-en-light.svg" width="100%" alt="black-iris: one skill, fifteen disciplines for a coding agent, with its routing table of modes">
+  <img src=".github/assets/readme/hero-en-light.svg" width="100%" alt="black-iris: one skill, sixteen disciplines for a coding agent, with its routing table of modes">
 </picture>
 </p>
 
@@ -14,11 +14,11 @@
 
 <h1 align="center">black-iris</h1>
 <p align="center"><em>السوسنة السوداء</em></p>
-<p align="center">One skill, fifteen disciplines for a coding agent.</p>
+<p align="center">One skill, sixteen disciplines for a coding agent.</p>
 
 <p align="center"><a href="README.md">English</a> | <a href="docs/es/README.md">Espanol</a> | <a href="docs/ar/README.md">العربية</a></p>
 
-<p align="center">One skill for a coding agent, fifteen disciplines. It shapes every reply for a reader with ADHD, cuts AI tells from anything the agent writes, keeps code changes surgical, writes completion gates before long work, fans out isolated ideation branches, writes prompts for other tools, consolidates session memory, hands the session across compaction, keeps bulk data out of the context window, and handles commit text, naming, and diff review. One 200-line router plus ten reference files.</p>
+<p align="center">One skill for a coding agent, sixteen disciplines. It shapes every reply for a reader with ADHD, cuts AI tells from anything the agent writes, keeps code changes surgical, writes completion gates before long work, fans out isolated ideation branches, writes prompts for other tools, consolidates session memory, hands the session across compaction, loops a task until every gate is met, keeps bulk data out of the context window, and handles commit text, naming, and diff review. One 200-line router plus ten reference files.</p>
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/assets/readme/section-install-en-dark.svg">
@@ -69,6 +69,7 @@ loads everything.
 | <img src="skills/black-iris/assets/modes/council.svg" width="80" alt="council"> | `/black-iris:council` | `/black-iris-council` | "council this", "pressure-test this" | Five isolated advisors, anonymous review, one verdict |
 | <img src="skills/black-iris/assets/modes/jerash.svg" width="80" alt="jerash"> | `/black-iris:jerash` | `/black-iris-jerash` | "race this", "try again" | 100 entrants race in heats of critique and judging; one entry holds the lane |
 | <img src="skills/black-iris/assets/modes/siq.svg" width="80" alt="siq"> | `/black-iris:siq` | `/black-iris-siq` | "handoff", "resume where we left off" | Writes decisions, proof, and corrections before compaction and reads them back after |
+| <img src="skills/black-iris/assets/modes/dabke.svg" width="80" alt="dabke"> | `/black-iris:dabke` | `/black-iris-dabke` | "loop until done", "keep going without stopping" | Loops the task step by step until every gate is met; acts only at high confidence, investigates first otherwise |
 | <img src="skills/black-iris/assets/modes/memory.svg" width="80" alt="memory"> | `/black-iris:memory` | `/black-iris-memory` | "autodream", "consolidate memory" | Harvest and verify session knowledge |
 | <img src="skills/black-iris/assets/modes/context.svg" width="80" alt="context"> | `/black-iris:context` | `/black-iris-context` | "analyze this log" | Derive answers from bulk data, never dump it |
 | <img src="skills/black-iris/assets/modes/ship.svg" width="80" alt="ship"> | `/black-iris:ship` | `/black-iris-ship` | "commit message", "PR body" | Conventional commits with a real why |

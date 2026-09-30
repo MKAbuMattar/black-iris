@@ -607,6 +607,27 @@ Verify: `python3 "$S" meter <transcript.jsonl>` prints the fill, the inferred
 window, and the threshold for any session transcript under
 `~/.claude/projects/`.
 
+## Optional: Dabke, a loop that does not stop until done
+
+Claude Code plugin route only. Nothing to enable globally: a loop is on for
+one chat, from the moment you start it.
+
+```text
+/black-iris:dabke fix every failing test in tests/io, then make lint pass
+/black-iris:dabke --max 20 <brief>     # step budget, default 40
+/black-iris:dabke status
+/black-iris:dabke stop
+```
+
+The model writes `GATES.md` in the store, then `hooks/dabke-stop.sh` refuses
+each stop and hands over the next step until every gate is met or abandoned.
+It lets go after two stops in a row with nothing changed, or at the step
+budget. An interrupt fires no Stop hook, but the loop is still on for the
+next reply, so say stop and the model runs `dabke.py stop`.
+
+Verify: `/black-iris:dabke status` prints the step count once the first stop
+has bound the loop to the chat.
+
 ## Always-on snippet for agents without the hook
 
 Paste into the agent's persistent rules file. It carries the always-on core

@@ -1,13 +1,13 @@
 # Working on black-iris
 
 This repo is a prompt-only skill. The product is `skills/black-iris/SKILL.md`
-and the thirteen files under `skills/black-iris/references/`. Everything else is
+and the fourteen files under `skills/black-iris/references/`. Everything else is
 packaging.
 
 ## Before you edit
 
 1. Read `skills/black-iris/SKILL.md` in full.
-2. Read the one reference file your change touches, not all thirteen.
+2. Read the one reference file your change touches, not all fourteen.
 3. Invoke the skill on yourself. Its Shape, Build, and Cut list rules apply to
    every reply and every file you write here.
 
@@ -30,10 +30,13 @@ packaging.
 - The hooks stay fail-open: each runs only when its own flag file exists
   (`always-on`, `gates-stop`, `memory-nudge`; Siq reads `siq-on`, the
   project's `siq-on`, or `siq/on-<session>`, which `siq-arm` becomes at the
-  next Stop) and exits 0 on every path but two. Both are deliberate:
+  next Stop; Dabke reads `dabke/<session>.json`, which `dabke-arm` becomes
+  the same way) and exits 0 on every path but three. All are deliberate:
   `gates-stop.sh` exits 2 to block a stop while the ledger has unmet gates,
-  and `siq-stop.sh` exits 2 once per compaction cycle to ask for the handoff.
-  Any error in `siq.py` still exits 0.
+  `siq-stop.sh` exits 2 once per compaction cycle to ask for the handoff, and
+  `dabke-stop.sh` exits 2 with the next step while a loop has unmet gates,
+  until a stall or its step budget lets go. Any error in `siq.py` or
+  `dabke.py` still exits 0.
 - No AI attribution anywhere: no Co-Authored-By naming a model, no "Generated
   with", in commits, PRs, or docs. This is Cut list rule 10 and it applies to
   this repo's own history.

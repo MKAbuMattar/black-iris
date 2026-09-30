@@ -3,6 +3,22 @@
 Format follows Keep a Changelog. Entries are written for someone deciding
 whether to upgrade.
 
+## Unreleased
+
+### Added
+
+- Dabke, a loop that keeps working until the task is done. Start it with
+  `/black-iris:dabke <brief>`. The model writes a gate ledger, and the Stop
+  hook refuses every stop and hands over the next step until each gate is
+  met or abandoned. The model acts only at high confidence, meaning it read
+  the failure, the current file, and the installed version's source for any
+  outside fact, and can name the check. Below that it investigates first:
+  the failing log, the file, the lockfile, the upstream source, the release
+  notes, every use of the name. Two stops in a row with nothing changed, or
+  the 40-step budget, end the loop with a handoff report. It works with
+  Siq through compaction, writes traps to Memory, and commits per gate with
+  Ship only when you allowed commits.
+
 ## 1.13.0 - 2026-09-30
 
 ### Added

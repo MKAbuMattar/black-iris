@@ -1,7 +1,7 @@
 <p align="center">
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="../../.github/assets/readme/hero-es-dark.svg">
-  <img src="../../.github/assets/readme/hero-es-light.svg" width="100%" alt="black-iris: una habilidad, quince disciplinas para un agente de programacion, con su tabla de modos">
+  <img src="../../.github/assets/readme/hero-es-light.svg" width="100%" alt="black-iris: una habilidad, dieciseis disciplinas para un agente de programacion, con su tabla de modos">
 </picture>
 </p>
 
@@ -14,11 +14,11 @@
 
 <h1 align="center">black-iris</h1>
 <p align="center"><em>السوسنة السوداء</em></p>
-<p align="center">Una habilidad, quince disciplinas para un agente de programacion.</p>
+<p align="center">Una habilidad, dieciseis disciplinas para un agente de programacion.</p>
 
 <p align="center"><a href="README.md">English</a> | <a href="README.md">Espanol</a> | <a href="../../docs/ar/README.md">العربية</a></p>
 
-<p align="center">Una sola habilidad para un agente de programacion, quince disciplinas. Da forma a cada respuesta para un lector con TDAH, elimina las marcas de texto generado por IA de todo lo que el agente escribe, mantiene los cambios de codigo quirurgicos, escribe puertas de finalizacion antes de trabajos largos, lanza ramas de ideacion aisladas, redacta prompts para otras herramientas, consolida la memoria de la sesion, lleva la sesion a traves de la compactacion, mantiene los datos masivos fuera de la ventana de contexto y se ocupa de los mensajes de commit, los nombres y la revision de diffs. Un enrutador de 200 lineas mas diez archivos de referencia.</p>
+<p align="center">Una sola habilidad para un agente de programacion, dieciseis disciplinas. Da forma a cada respuesta para un lector con TDAH, elimina las marcas de texto generado por IA de todo lo que el agente escribe, mantiene los cambios de codigo quirurgicos, escribe puertas de finalizacion antes de trabajos largos, lanza ramas de ideacion aisladas, redacta prompts para otras herramientas, consolida la memoria de la sesion, lleva la sesion a traves de la compactacion, repite una tarea hasta cumplir cada puerta, mantiene los datos masivos fuera de la ventana de contexto y se ocupa de los mensajes de commit, los nombres y la revision de diffs. Un enrutador de 200 lineas mas diez archivos de referencia.</p>
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="../../.github/assets/readme/section-install-es-dark.svg">
@@ -63,6 +63,7 @@ disparadoras. `/black-iris:black-iris` lo carga todo.
 | <img src="../../skills/black-iris/assets/modes/council.svg" width="80" alt="council"> | `/black-iris:council` | `/black-iris-council` | "council this", "pressure-test this" | Cinco asesores aislados, revision anonima, un veredicto |
 | <img src="../../skills/black-iris/assets/modes/jerash.svg" width="80" alt="jerash"> | `/black-iris:jerash` | `/black-iris-jerash` | "race this", "try again" | 100 participantes compiten en rondas de critica y juicio; una respuesta gana la pista |
 | <img src="../../skills/black-iris/assets/modes/siq.svg" width="80" alt="siq"> | `/black-iris:siq` | `/black-iris-siq` | "handoff", "resume where we left off" | Escribe decisiones, pruebas y correcciones antes de la compactacion y las lee despues |
+| <img src="../../skills/black-iris/assets/modes/dabke.svg" width="80" alt="dabke"> | `/black-iris:dabke` | `/black-iris-dabke` | "loop until done", "keep going without stopping" | Repite la tarea paso a paso hasta cumplir cada puerta; actua solo con alta confianza y si no, investiga primero |
 | <img src="../../skills/black-iris/assets/modes/memory.svg" width="80" alt="memory"> | `/black-iris:memory` | `/black-iris-memory` | "autodream", "consolidate memory" | Cosecha y verifica el conocimiento de la sesion |
 | <img src="../../skills/black-iris/assets/modes/context.svg" width="80" alt="context"> | `/black-iris:context` | `/black-iris-context` | "analyze this log" | Deriva respuestas de datos masivos, sin volcarlos |
 | <img src="../../skills/black-iris/assets/modes/ship.svg" width="80" alt="ship"> | `/black-iris:ship` | `/black-iris-ship` | "commit message", "PR body" | Commits convencionales con un porque real |
