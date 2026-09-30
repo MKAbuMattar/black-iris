@@ -55,19 +55,21 @@ indexed at [docs/](docs/README.md).
 
 Type `/black-iris` once and every mode loads in full. Shape, Build, and the
 Cut list stay on until you say "stop black-iris". To load one mode alone, name
-it: `/black-iris deslop`, or ask with its trigger words.
+it: `/black-iris:deslop` in Claude Code, `/black-iris-deslop` in any agent that
+reads Agent Skills, or ask with its trigger words. `/black-iris:black-iris`
+loads everything.
 
 | Load one mode | Or say | What it does |
 |---|---|---|
-| `/black-iris deslop` | "deslop", "humanize" | Remove AI tells, keep every fact |
-| `/black-iris gates` | "gates", "do not stop until done" | A checkable ledger before long work |
-| `/black-iris ideate` | "ideate", "brainstorm" | Isolated parallel branches, then a verdict |
-| `/black-iris prompt` | "write a prompt for X" | One paste-ready prompt for a named tool |
-| `/black-iris council` | "council this", "pressure-test this" | Five isolated advisors, anonymous review, one verdict |
-| `/black-iris memory` | "autodream", "consolidate memory" | Harvest and verify session knowledge |
-| `/black-iris ship` | "commit message", "PR body" | Conventional commits with a real why |
-| `/black-iris name` | "rename", "name this" | Identifiers that read true |
-| `/black-iris review` | "review this diff" | Five ranked findings, no rewrites |
+| `/black-iris:deslop` | "deslop", "humanize" | Remove AI tells, keep every fact |
+| `/black-iris:gates` | "gates", "do not stop until done" | A checkable ledger before long work |
+| `/black-iris:ideate` | "ideate", "brainstorm" | Isolated parallel branches, then a verdict |
+| `/black-iris:prompt` | "write a prompt for X" | One paste-ready prompt for a named tool |
+| `/black-iris:council` | "council this", "pressure-test this" | Five isolated advisors, anonymous review, one verdict |
+| `/black-iris:memory` | "autodream", "consolidate memory" | Harvest and verify session knowledge |
+| `/black-iris:ship` | "commit message", "PR body" | Conventional commits with a real why |
+| `/black-iris:name` | "rename", "name this" | Identifiers that read true |
+| `/black-iris:review` | "review this diff" | Five ranked findings, no rewrites |
 
 Dial the length with `/black-iris lite`, `full`, or `deep`.
 

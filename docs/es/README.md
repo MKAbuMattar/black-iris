@@ -49,20 +49,21 @@ DeepSeek Harness, Copilot, Zed, Hermes, Pi, Antigravity y Cursor, esta en
 
 Escribe `/black-iris` una vez y todos los modos se cargan completos. Shape,
 Build y la Cut list quedan activos hasta que digas "stop black-iris". Para
-cargar un solo modo, nombralo: `/black-iris deslop`, o pidelo con sus
-palabras disparadoras.
+cargar un solo modo: `/black-iris:deslop` en Claude Code, `/black-iris-deslop`
+en cualquier agente que lea Agent Skills, o pidelo con sus palabras
+disparadoras. `/black-iris:black-iris` lo carga todo.
 
 | Cargar un modo | O di | Que hace |
 |---|---|---|
-| `/black-iris deslop` | "deslop", "humanize" | Quita las marcas de IA, conserva cada hecho |
-| `/black-iris gates` | "gates", "do not stop until done" | Un registro comprobable antes de un trabajo largo |
-| `/black-iris ideate` | "ideate", "brainstorm" | Ramas paralelas aisladas y luego un veredicto |
-| `/black-iris prompt` | "write a prompt for X" | Un prompt listo para pegar en una herramienta concreta |
-| `/black-iris council` | "council this", "pressure-test this" | Cinco asesores aislados, revision anonima, un veredicto |
-| `/black-iris memory` | "autodream", "consolidate memory" | Cosecha y verifica el conocimiento de la sesion |
-| `/black-iris ship` | "commit message", "PR body" | Commits convencionales con un porque real |
-| `/black-iris name` | "rename", "name this" | Identificadores que dicen la verdad |
-| `/black-iris review` | "review this diff" | Cinco hallazgos ordenados, sin reescrituras |
+| `/black-iris:deslop` | "deslop", "humanize" | Quita las marcas de IA, conserva cada hecho |
+| `/black-iris:gates` | "gates", "do not stop until done" | Un registro comprobable antes de un trabajo largo |
+| `/black-iris:ideate` | "ideate", "brainstorm" | Ramas paralelas aisladas y luego un veredicto |
+| `/black-iris:prompt` | "write a prompt for X" | Un prompt listo para pegar en una herramienta concreta |
+| `/black-iris:council` | "council this", "pressure-test this" | Cinco asesores aislados, revision anonima, un veredicto |
+| `/black-iris:memory` | "autodream", "consolidate memory" | Cosecha y verifica el conocimiento de la sesion |
+| `/black-iris:ship` | "commit message", "PR body" | Commits convencionales con un porque real |
+| `/black-iris:name` | "rename", "name this" | Identificadores que dicen la verdad |
+| `/black-iris:review` | "review this diff" | Cinco hallazgos ordenados, sin reescrituras |
 
 Ajusta la longitud con `/black-iris lite`, `full` o `deep`.
 

@@ -27,7 +27,7 @@ STRIP = ["wadi-rum-sand", "dead-sea-blue", "black-iris", "olive-green", "keffiye
 # One palette tone per mode family, used only as a small marker beside each row.
 MODE_TONE = {
     "Shape": "black-iris", "Build": "black-iris", "Deslop": "petra-rose",
-    "Gates": "keffiyeh-red", "Ideate": "dead-sea-blue", "Prompt": "olive-green",
+    "Gates": "keffiyeh-red", "Ideate": "olive-green", "Prompt": "wadi-rum-sand",
     "Memory": "desert-camel", "Council": "dead-sea-blue", "Context": "basalt-black", "Ship": "amman-stone", "Name": "amman-stone",
     "Review": "amman-stone", "Diagram": "wadi-rum-sand",
 }

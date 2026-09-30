@@ -1,0 +1,6 @@
+description = "black-iris: every mode loaded, Shape, Build, and the Cut list on for the session"
+prompt = """
+Use the black-iris skill from this extension. Read every reference its routing
+table names once before replying, then keep Shape, Build, and the Cut list on
+for the rest of the session until "stop black-iris". {{args}}
+"""

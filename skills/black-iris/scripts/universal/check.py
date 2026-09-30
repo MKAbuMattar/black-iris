@@ -85,6 +85,28 @@ for f in sorted(named - on_disk):
 for f in sorted(on_disk - named):
     hit(f"references/{f} exists but SKILL.md never points at it")
 
+# Mode commands: one skills/black-iris-<mode>/ per routed reference, so
+# /black-iris:black-iris-<mode> exists for every mode, and each one points at a
+# reference that is really there. evals.md is maintainer-only and has none.
+mode_dirs = sorted(p for p in SKILL.parent.glob("black-iris-*") if p.is_dir())
+pointed = set()
+for d in mode_dirs:
+    md = d / "SKILL.md"
+    if not md.is_file():
+        hit(f"{d.name}/ has no SKILL.md")
+        continue
+    body = md.read_text(encoding="utf-8")
+    if not re.search(rf"^name: {re.escape(d.name)}$", body, re.M):
+        hit(f"{d.name}/SKILL.md name does not match its folder")
+    if "disable-model-invocation: true" not in body:
+        hit(f"{d.name}/SKILL.md must set disable-model-invocation: true, or it doubles the router")
+    for f in re.findall(r"`\.\./black-iris/references/([a-z-]+\.md)`", body):
+        pointed.add(f)
+        if f not in on_disk:
+            hit(f"{d.name}/SKILL.md points at missing references/{f}")
+for f in sorted((named - {"evals.md"}) - pointed):
+    hit(f"references/{f} is routed but has no skills/black-iris-<mode>/ command")
+
 hooks = ROOT / "hooks/hooks.json"
 if hooks.exists():
     try:

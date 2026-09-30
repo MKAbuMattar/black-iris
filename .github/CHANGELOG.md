@@ -3,6 +3,24 @@
 Format follows Keep a Changelog. Entries are written for someone deciding
 whether to upgrade.
 
+## Unreleased
+
+### Added
+
+- A command per mode. In Claude Code, `/black-iris:deslop`, `/black-iris:gates`,
+  `/black-iris:ideate`, `/black-iris:prompt`, `/black-iris:council`,
+  `/black-iris:memory`, `/black-iris:context`, `/black-iris:ship`,
+  `/black-iris:name` and `/black-iris:review` load that one mode and nothing
+  else; `/black-iris:black-iris` still loads everything. Any agent that reads
+  Agent Skills gets the same set as `/black-iris-deslop` and so on, and Gemini
+  CLI gets matching extension commands. None of them costs context until you
+  type it.
+
+### Changed
+
+- The installer scripts link every skill folder, not only `black-iris`,
+  because the mode commands read their reference from it.
+
 ## 1.9.0 - 2026-09-13
 
 ### Added

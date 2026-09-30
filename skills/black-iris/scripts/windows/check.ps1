@@ -54,6 +54,21 @@ $onDisk = Get-ChildItem references -Filter *.md | ForEach-Object Name
 foreach ($f in $named)  { if ($f -notin $onDisk) { Hit "SKILL.md points at missing references/$f" } }
 foreach ($f in $onDisk) { if ($f -notin $named)  { Hit "references/$f exists but SKILL.md never points at it" } }
 
+# Mode commands: every routed reference has a skills\black-iris-<mode>\ folder.
+$pointed = @()
+foreach ($d in Get-ChildItem -Path (Split-Path $skill -Parent) -Directory -Filter 'black-iris-*') {
+  $md = Join-Path $d.FullName 'SKILL.md'
+  if (-not (Test-Path $md)) { Hit "$($d.Name)/ has no SKILL.md"; continue }
+  $body = Get-Content $md -Raw -Encoding UTF8
+  if ($body -notmatch "(?m)^name: $([regex]::Escape($d.Name))\r?$") { Hit "$($d.Name)/SKILL.md name does not match its folder" }
+  if ($body -notmatch 'disable-model-invocation: true') { Hit "$($d.Name)/SKILL.md must set disable-model-invocation: true" }
+  foreach ($m in [regex]::Matches($body, '`\.\./black-iris/references/([a-z-]+\.md)`')) {
+    $f = $m.Groups[1].Value; $pointed += $f
+    if ($f -notin $onDisk) { Hit "$($d.Name)/SKILL.md points at missing references/$f" }
+  }
+}
+foreach ($f in $named) { if ($f -ne 'evals.md' -and $f -notin $pointed) { Hit "references/$f is routed but has no skills/black-iris-<mode>/ command" } }
+
 $hooks = Join-Path $root 'hooks\hooks.json'
 if (Test-Path $hooks) { try { Get-Content $hooks -Raw | ConvertFrom-Json | Out-Null } catch { Hit "hooks.json is not valid JSON: $_" } }
 
