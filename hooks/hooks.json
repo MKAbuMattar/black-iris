@@ -40,6 +40,11 @@
             "type": "command",
             "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/siq-stop.sh\"",
             "timeout": 10
+          },
+          {
+            "type": "command",
+            "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/dabke-stop.sh\"",
+            "timeout": 10
           }
         ]
       }

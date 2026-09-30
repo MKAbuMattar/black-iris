@@ -80,7 +80,8 @@ Each item waits for its trigger and ships as a minor version.
   Jerash. Jerash ships `jerash/hippodrome.py`, stdlib only, because a
   100-entrant race is 595 Agent calls and no prompt keeps that on track
   through compaction; that was a deliberate choice, not a precedent. Siq ships `siq/siq.py`
-  for the same kind of reason: only a script can read the context size. The
+  for the same kind of reason: only a script can read the context size.
+  Dabke ships `dabke/dabke.py` because only a hook can refuse a stop. The
   prompt is the product. Skills of this kind commonly carry 10 to 50 lines
   of packaging per line of prompt, and this repo exists to reverse that.
 - Per-model prompt routing. Slugs and parameters rot monthly, per

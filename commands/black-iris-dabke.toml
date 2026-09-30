@@ -1,0 +1,9 @@
+description = "black-iris Dabke: loop a task until every gate is met, acting only at high confidence"
+prompt = """
+Use the black-iris-dabke skill from this extension for the request below. It
+loads references/dabke.md from the black-iris skill; follow that reference,
+and apply the black-iris Cut list and Pre-send check to everything you write.
+With no brief in the request or the conversation, ask for it in one line.
+
+Request: {{args}}
+"""

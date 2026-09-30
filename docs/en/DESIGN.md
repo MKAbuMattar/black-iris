@@ -69,7 +69,7 @@ should have passed; it reads the ids you wrote. And it blocks at most once per
 ledger state per session, so a model that changes nothing stops on the second
 try and can never be trapped in a loop.
 
-## Jerash and Siq carry the only scripts
+## Jerash, Siq, and Dabke carry the only scripts
 
 Jerash races 100 entrants by default, 595 Agent calls in 70 waves, and that
 size cannot live in a context window or a markdown ledger. So it is the one
@@ -90,6 +90,18 @@ three sections the built-in summary lacks, Decisions, Verified, and
 Corrections, and writes Open gates itself. SessionStart reads the file back
 after compaction, capped at 4096 bytes, and falls back to an extract from
 the transcript when nothing was written. Full design: `SIQ.md`.
+
+Dabke is the third. A loop that must not stop needs something outside the
+model to refuse the stop, and the hook needs state the model cannot forget:
+`dabke/dabke.py` keeps the brief, the step count, and a digest of the ledger
+and the step log on disk. The hook hands the next step on stderr while the
+ledger has an unmet gate. It ignores `stop_hook_active`, because continuing
+is the point, and two other rules keep it from trapping a session: a stop
+with nothing changed gets one warning and the second lets go, and the step
+budget, 40 by default, ends with a handoff report. Confidence is defined as
+four observable proofs rather than a feeling, so "not High" always has a
+concrete next read: the failing log, the file, the lockfile, the upstream
+source, the release notes, the uses of the name.
 
 ## Gates without a checker
 
