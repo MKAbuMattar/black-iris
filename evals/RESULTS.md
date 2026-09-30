@@ -105,6 +105,42 @@ the read tools.
 
 Not weighed: ideate, name, prompt, review. They have no cases yet.
 
+## Deslop routing, traced and fixed, 2026-09-30
+
+Same harness and model as the smoke above. `mizan.py` now splits a miss in
+two: **skip** (the skill never loaded, so the description did not route it)
+and **miss** (the skill loaded but no reference was opened). `--always-on`
+injects the router as `hooks/reinject.sh` does, so there is no first hop.
+
+Repro: `mizan.py --mode deslop`, 8 cases, 0 of 8 at the start.
+
+| hypothesis | change | deslop hits of 8 | verdict |
+|---|---|---|---|
+| H1 another skill competes | none, listed the skills | - | killed: none competes |
+| H3 the listing truncates the description | none, asked the model to quote it | - | killed: it sees all of it |
+| H2a the description frames Deslop as self-discipline | reworded the Deslop sentence | 0 | killed |
+| H4 the Cut list inline looks complete, so `deslop.md` is skipped | handoff says open `deslop.md` first | 3, 2 | holds |
+| H2b "not for a trivial edit" swallows a rewrite | narrowed to "trivial code edit" | 2 | killed |
+| H5 the model does not know the skill has more | named the 37-pattern catalog | 3, 2 | killed |
+
+Attribution, two runs each:
+
+| router | condition | hit | skip |
+|---|---|---|---|
+| main | skill loaded by description | 2, 1 | 5, 6 |
+| H4 | skill loaded by description | 2, 2 | 6, 5 |
+| main | always-on | 2, 3 | 6, 4 |
+| H4 | always-on | **7, 7** | 1, 0 |
+
+H4 shipped; H2a, H2b, and H5 were reverted. With the router in context,
+Deslop now opens its catalog 7 of 8 times, up from 2 or 3. Without the
+hook, the model still skips loading the skill for 5 or 6 of 8 text
+rewrites whatever the description says; three wordings did not move it.
+Use the always-on hook or `/black-iris:deslop` when the catalog matters.
+
+Always-on smoke after the fix, `--per-mode 2 --always-on`: 23 of 26, no
+false fire; the three misses are one each in context, gates, and memory.
+
 ## Still needed for a real result
 
 1. A pinned model, recorded here by id.

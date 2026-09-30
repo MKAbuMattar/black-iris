@@ -13,7 +13,8 @@ assert not m.REF.search("/x/references/athar.md.bak")
 assert m.score({"mode": "athar"}, ["athar"]) == "hit"
 assert m.score({"mode": "athar"}, ["dabke", "athar"]) == "extra"
 assert m.score({"mode": "athar"}, ["dabke"]) == "wrong"
-assert m.score({"mode": "athar"}, []) == "miss"
+assert m.score({"mode": "athar"}, [], loaded=True) == "miss"
+assert m.score({"mode": "athar"}, []) == "skip"
 assert m.score({"mode": "name"}, ["naming"]) == "hit"
 assert m.score({"mode": "none"}, []) == "hit" and m.score({"mode": "shape"}, ["deslop"]) == "false fire"
 print("mizan: pass")
