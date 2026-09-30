@@ -55,19 +55,19 @@ disparadoras. `/black-iris:black-iris` lo carga todo.
 
 | | Claude Code | Otros agentes | O di | Que hace |
 |---|---|---|---|---|
-| <img src="../../skills/black-iris/assets/logo.svg" width="28" alt="black-iris"> | `/black-iris:black-iris` | `/black-iris` | "black-iris" | Todos los modos, Shape, Build y la Cut list |
-| <img src="../../skills/black-iris/assets/modes/deslop.svg" width="28" alt="deslop"> | `/black-iris:deslop` | `/black-iris-deslop` | "deslop", "humanize" | Quita las marcas de IA, conserva cada hecho |
-| <img src="../../skills/black-iris/assets/modes/gates.svg" width="28" alt="gates"> | `/black-iris:gates` | `/black-iris-gates` | "gates", "do not stop until done" | Un registro comprobable antes de un trabajo largo |
-| <img src="../../skills/black-iris/assets/modes/ideate.svg" width="28" alt="ideate"> | `/black-iris:ideate` | `/black-iris-ideate` | "ideate", "brainstorm" | Ramas paralelas aisladas y luego un veredicto |
-| <img src="../../skills/black-iris/assets/modes/prompt.svg" width="28" alt="prompt"> | `/black-iris:prompt` | `/black-iris-prompt` | "write a prompt for X" | Un prompt listo para pegar en una herramienta concreta |
-| <img src="../../skills/black-iris/assets/modes/council.svg" width="28" alt="council"> | `/black-iris:council` | `/black-iris-council` | "council this", "pressure-test this" | Cinco asesores aislados, revision anonima, un veredicto |
-| <img src="../../skills/black-iris/assets/modes/jerash.svg" width="28" alt="jerash"> | `/black-iris:jerash` | `/black-iris-jerash` | "race this", "try again" | 100 participantes compiten en rondas de critica y juicio; una respuesta gana la pista |
-| <img src="../../skills/black-iris/assets/modes/siq.svg" width="28" alt="siq"> | `/black-iris:siq` | `/black-iris-siq` | "handoff", "resume where we left off" | Escribe decisiones, pruebas y correcciones antes de la compactacion y las lee despues |
-| <img src="../../skills/black-iris/assets/modes/memory.svg" width="28" alt="memory"> | `/black-iris:memory` | `/black-iris-memory` | "autodream", "consolidate memory" | Cosecha y verifica el conocimiento de la sesion |
-| <img src="../../skills/black-iris/assets/modes/context.svg" width="28" alt="context"> | `/black-iris:context` | `/black-iris-context` | "analyze this log" | Deriva respuestas de datos masivos, sin volcarlos |
-| <img src="../../skills/black-iris/assets/modes/ship.svg" width="28" alt="ship"> | `/black-iris:ship` | `/black-iris-ship` | "commit message", "PR body" | Commits convencionales con un porque real |
-| <img src="../../skills/black-iris/assets/modes/name.svg" width="28" alt="name"> | `/black-iris:name` | `/black-iris-name` | "rename", "name this" | Identificadores que dicen la verdad |
-| <img src="../../skills/black-iris/assets/modes/review.svg" width="28" alt="review"> | `/black-iris:review` | `/black-iris-review` | "review this diff" | Cinco hallazgos ordenados, sin reescrituras |
+| <img src="../../skills/black-iris/assets/logo.svg" width="80" alt="black-iris"> | `/black-iris:black-iris` | `/black-iris` | "black-iris" | Todos los modos, Shape, Build y la Cut list |
+| <img src="../../skills/black-iris/assets/modes/deslop.svg" width="80" alt="deslop"> | `/black-iris:deslop` | `/black-iris-deslop` | "deslop", "humanize" | Quita las marcas de IA, conserva cada hecho |
+| <img src="../../skills/black-iris/assets/modes/gates.svg" width="80" alt="gates"> | `/black-iris:gates` | `/black-iris-gates` | "gates", "do not stop until done" | Un registro comprobable antes de un trabajo largo |
+| <img src="../../skills/black-iris/assets/modes/ideate.svg" width="80" alt="ideate"> | `/black-iris:ideate` | `/black-iris-ideate` | "ideate", "brainstorm" | Ramas paralelas aisladas y luego un veredicto |
+| <img src="../../skills/black-iris/assets/modes/prompt.svg" width="80" alt="prompt"> | `/black-iris:prompt` | `/black-iris-prompt` | "write a prompt for X" | Un prompt listo para pegar en una herramienta concreta |
+| <img src="../../skills/black-iris/assets/modes/council.svg" width="80" alt="council"> | `/black-iris:council` | `/black-iris-council` | "council this", "pressure-test this" | Cinco asesores aislados, revision anonima, un veredicto |
+| <img src="../../skills/black-iris/assets/modes/jerash.svg" width="80" alt="jerash"> | `/black-iris:jerash` | `/black-iris-jerash` | "race this", "try again" | 100 participantes compiten en rondas de critica y juicio; una respuesta gana la pista |
+| <img src="../../skills/black-iris/assets/modes/siq.svg" width="80" alt="siq"> | `/black-iris:siq` | `/black-iris-siq` | "handoff", "resume where we left off" | Escribe decisiones, pruebas y correcciones antes de la compactacion y las lee despues |
+| <img src="../../skills/black-iris/assets/modes/memory.svg" width="80" alt="memory"> | `/black-iris:memory` | `/black-iris-memory` | "autodream", "consolidate memory" | Cosecha y verifica el conocimiento de la sesion |
+| <img src="../../skills/black-iris/assets/modes/context.svg" width="80" alt="context"> | `/black-iris:context` | `/black-iris-context` | "analyze this log" | Deriva respuestas de datos masivos, sin volcarlos |
+| <img src="../../skills/black-iris/assets/modes/ship.svg" width="80" alt="ship"> | `/black-iris:ship` | `/black-iris-ship` | "commit message", "PR body" | Commits convencionales con un porque real |
+| <img src="../../skills/black-iris/assets/modes/name.svg" width="80" alt="name"> | `/black-iris:name` | `/black-iris-name` | "rename", "name this" | Identificadores que dicen la verdad |
+| <img src="../../skills/black-iris/assets/modes/review.svg" width="80" alt="review"> | `/black-iris:review` | `/black-iris-review` | "review this diff" | Cinco hallazgos ordenados, sin reescrituras |
 
 Ajusta la longitud con `/black-iris lite`, `full` o `deep`.
 
