@@ -3,7 +3,7 @@
 Format follows Keep a Changelog. Entries are written for someone deciding
 whether to upgrade.
 
-## Unreleased
+## 1.17.0 - 2026-10-19
 
 ### Added
 
