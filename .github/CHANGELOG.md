@@ -3,18 +3,33 @@
 Format follows Keep a Changelog. Entries are written for someone deciding
 whether to upgrade.
 
-## 1.16.0 - 2026-09-30
+## Unreleased
 
 ### Added
 
-- Mizan, a routing eval that needs no judge. `python3 evals/mizan.py`
-  runs each eval case with only this plugin loaded and records which mode
-  reference the model opened before its first answer: hit, extra, wrong,
-  miss, or false fire, per mode. `--per-mode 2` is a smoke run. The first
-  smoke routed 18 of 26 right, with no false fire; deslop and context missed
-  both cases. `evals/RESULTS.md` names every miss.
+- Factory, one feature from spec to merge. `/black-iris:factory <feature>`
+  writes a spec with checkable acceptance criteria, builds on a
+  `factory/<ID>-<feature>` branch, runs security, UX, UI, and code reviewers
+  in parallel, and loops findings back to the builder at most twice. An
+  approver then returns APPROVE, which opens a pull request (`--merge`
+  merges), or ESCALATE with the business questions for you to answer with
+  `/black-iris:factory approve <ID>`. Job files live in the store, not the
+  repo. 7 Agent calls on a clean pass, up to 17.
 
-## Unreleased
+### Fixed
+
+- Windows: one store per project. The slug kept `C:\`, `C:/`, and `/c/`
+  apart, so memory, gates, and handoffs split across up to three folders
+  depending on the shell. All three now map to `-c-...`; Linux and macOS
+  slugs are unchanged. Move files from an old `C-...` or `C:-...` folder
+  into the `-c-...` one to keep them.
+- Windows: Siq and Dabke run. The hooks took the Microsoft Store
+  `python3` stub for a real Python and did nothing; they now try
+  `python3`, `python`, and `py` and use the first that runs.
+- The tests no longer write into your real home on Windows, and CI now
+  runs them there.
+
+## 1.16.0 - 2026-09-30
 
 ### Fixed
 
@@ -28,6 +43,12 @@ whether to upgrade.
 
 ### Added
 
+- Mizan, a routing eval that needs no judge. `python3 evals/mizan.py`
+  runs each eval case with only this plugin loaded and records which mode
+  reference the model opened before its first answer: hit, extra, wrong,
+  miss, or false fire, per mode. `--per-mode 2` is a smoke run. The first
+  smoke routed 18 of 26 right, with no false fire; deslop and context missed
+  both cases. `evals/RESULTS.md` names every miss.
 - `evals/mizan.py --always-on` measures routing with the router already in
   context, and splits a miss into skip (the skill never loaded) and miss
   (loaded, no reference opened).
