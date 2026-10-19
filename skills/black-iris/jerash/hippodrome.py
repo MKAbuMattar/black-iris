@@ -40,6 +40,8 @@ from itertools import product
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE.parent / "siq"))
+import siq  # noqa: E402  the store slug is shared, not copied
 FIELD, QUICK, WAVE = 100, 16, 10
 PHASES = ("entry", "critique", "reply", "judge", "final")
 
@@ -50,22 +52,8 @@ class RaceError(Exception):
 
 # ------------------------------------------------------------ store and files
 
-def project_root():
-    env = os.environ.get("CLAUDE_PROJECT_DIR")
-    if env:
-        return env
-    try:
-        out = subprocess.run(["git", "rev-parse", "--show-toplevel"], capture_output=True, text=True)
-        if out.returncode == 0 and out.stdout.strip():
-            return out.stdout.strip()
-    except OSError:
-        pass
-    return os.getcwd()
-
-
 def races_dir():
-    """The same slug rule as references/memory.md: the project path with / as -."""
-    return Path.home() / ".BLACK_IRIS_AGENTS" / "projects" / project_root().replace("/", "-") / "jerash"
+    return siq.store() / "jerash"
 
 
 def filled(path):

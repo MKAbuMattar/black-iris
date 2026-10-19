@@ -23,7 +23,9 @@ printf 'fires, resolving it against that root. Do not read them all up front.\n\
 # Body only: everything after the second frontmatter fence.
 awk '/^---[[:space:]]*$/ && c<2 { c++; next } c>=2' "$f"
 # Project memory index. Same slug derivation as references/memory.md.
+[ -f "${root}/hooks/lib.sh" ] || exit 0
+. "${root}/hooks/lib.sh"
 proj="${CLAUDE_PROJECT_DIR:-$(git rev-parse --show-toplevel 2>/dev/null || pwd)}"
-idx="${base}/projects/$(printf '%s' "$proj" | tr '/' '-')/memory/MEMORY.md"
+idx="${base}/projects/$(slug "$proj")/memory/MEMORY.md"
 [ -f "$idx" ] && { printf '\n# Project memory index\n'; cat "$idx"; }
 exit 0
