@@ -58,8 +58,17 @@ def project_root(cwd=None):
     return cwd or os.getcwd()
 
 
+def slug(path):
+    """The project path with / as -. A Windows path becomes /c/... first, so
+    C:\\x, C:/x, and /c/x share one store whichever shell handed it over."""
+    p = path.replace("\\", "/")
+    if re.match(r"[A-Za-z]:/", p):
+        p = "/" + p[0].lower() + p[2:]
+    return p.replace("/", "-")
+
+
 def store(cwd=None):
-    return base() / "projects" / project_root(cwd).replace("/", "-")
+    return base() / "projects" / slug(project_root(cwd))
 
 
 def handoff_path(session, cwd=None):

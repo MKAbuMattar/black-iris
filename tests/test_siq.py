@@ -8,10 +8,14 @@ from pathlib import Path
 root = Path(__file__).resolve().parents[1]
 home = Path(tempfile.mkdtemp())
 proj = home / "proj"; proj.mkdir()
-env = dict(os.environ, HOME=str(home), CLAUDE_PROJECT_DIR=str(proj), CLAUDE_PLUGIN_ROOT=str(root))
-os.environ.update(HOME=str(home), CLAUDE_PROJECT_DIR=str(proj))
+env = dict(os.environ, HOME=str(home), USERPROFILE=str(home), CLAUDE_PROJECT_DIR=str(proj), CLAUDE_PLUGIN_ROOT=str(root))
+os.environ.update(HOME=str(home), USERPROFILE=str(home), CLAUDE_PROJECT_DIR=str(proj))
 sys.path.insert(0, str(root / "skills/black-iris/siq"))
 import siq  # noqa: E402
+
+# one store per project whichever shell named the path; POSIX slugs unchanged
+assert siq.slug("C:\\a\\b") == siq.slug("C:/a/b") == siq.slug("/c/a/b") == "-c-a-b"
+assert siq.slug("/home/u/p") == "-home-u-p"
 
 def asst(tokens, model="claude-opus-5-5"):
     return {"type": "assistant", "message": {"model": model, "usage": {"input_tokens": tokens},

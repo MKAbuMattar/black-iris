@@ -7,7 +7,7 @@ from pathlib import Path
 
 root = Path(__file__).resolve().parents[1]
 home = tempfile.mkdtemp()
-os.environ["HOME"] = home
+os.environ["HOME"] = os.environ["USERPROFILE"] = home  # Path.home() reads USERPROFILE on Windows
 os.environ["CLAUDE_PROJECT_DIR"] = "/tmp/jerash-test-project"
 sys.path.insert(0, str(root / "skills/black-iris/jerash"))
 import hippodrome as H  # noqa: E402

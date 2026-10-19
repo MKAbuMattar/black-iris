@@ -60,7 +60,9 @@ done
 
 # Hook files parse.
 h=../../hooks
-[ -f "$h/hooks.json" ] && { python3 -c 'import json,sys;json.load(open(sys.argv[1]))' "$h/hooks.json" 2>/dev/null || hit "hooks.json is not valid JSON"; }
+# python3 can be the Windows Store stub, which exists and exits 49.
+py=python3; for c in python3 python py; do "$c" -c 1 >/dev/null 2>&1 && { py=$c; break; }; done
+[ -f "$h/hooks.json" ] && { "$py" -c 'import json,sys;json.load(open(sys.argv[1]))' "$h/hooks.json" 2>/dev/null || hit "hooks.json is not valid JSON"; }
 [ -f "$h/reinject.sh" ] && { sh -n "$h/reinject.sh" || hit "reinject.sh has a syntax error"; }
 
 [ "$fail" = 0 ] && echo clean

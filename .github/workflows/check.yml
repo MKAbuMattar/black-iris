@@ -119,6 +119,12 @@ jobs:
       - uses: actions/checkout@v5
       - name: Python lint
         run: python skills/black-iris/scripts/universal/check.py
+      - name: Tests
+        run: |
+          python tests/test_hippodrome.py
+          python tests/test_siq.py
+          python tests/test_dabke.py
+          python tests/test_mizan.py
       - name: PowerShell lint
         run: pwsh skills/black-iris/scripts/windows/check.ps1
       - name: Installer dry run

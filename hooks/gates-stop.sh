@@ -25,8 +25,10 @@ payload=''
 session=$(printf '%s' "$payload" | sed -n 's/.*"session_id"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p')
 [ -n "$session" ] || session=nosession
 
+[ -f "$(dirname "$0")/lib.sh" ] || exit 0
+. "$(dirname "$0")/lib.sh"
 proj="${CLAUDE_PROJECT_DIR:-$(git rev-parse --show-toplevel 2>/dev/null || pwd)}"
-store="${base}/projects/$(printf '%s' "$proj" | tr '/' '-')"
+store="${base}/projects/$(slug "$proj")"
 ledger="${store}/GATES.md"
 [ -f "$ledger" ] || exit 0
 

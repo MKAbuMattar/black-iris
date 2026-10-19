@@ -8,8 +8,10 @@ from pathlib import Path
 root = Path(__file__).resolve().parents[1]
 home = Path(tempfile.mkdtemp())
 proj = home / "proj"; proj.mkdir()
-env = dict(os.environ, HOME=str(home), CLAUDE_PROJECT_DIR=str(proj), CLAUDE_PLUGIN_ROOT=str(root))
-store = home / ".BLACK_IRIS_AGENTS/projects" / str(proj).replace("/", "-")
+env = dict(os.environ, HOME=str(home), USERPROFILE=str(home), CLAUDE_PROJECT_DIR=str(proj), CLAUDE_PLUGIN_ROOT=str(root))
+sys.path.insert(0, str(root / "skills/black-iris/siq"))
+import siq  # noqa: E402
+store = home / ".BLACK_IRIS_AGENTS/projects" / siq.slug(str(proj))
 ledger, log = store / "GATES.md", store / "dabke/s1.md"
 cli = [sys.executable, str(root / "skills/black-iris/dabke/dabke.py")]
 

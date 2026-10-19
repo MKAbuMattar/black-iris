@@ -8,14 +8,17 @@ missing, because it gets trusted and acted on.
 
 The store is `~/.BLACK_IRIS_AGENTS/projects/<slug>/memory/`, one fact per
 file, plus `MEMORY.md`, the index. `<slug>` is the absolute project path with
-`/` replaced by `-`. Nothing in this mode touches `~/.claude` or `/tmp`.
+`/` replaced by `-`, after a Windows path such as `C:\x` or `C:/x` becomes
+`/c/x`. Nothing in this mode touches `~/.claude` or `/tmp`.
 
 ```bash
 P=${CLAUDE_PROJECT_DIR:-$(git rev-parse --show-toplevel 2>/dev/null || pwd)}
+P=$(printf '%s' "$P" | tr '\\' '/'); case $P in [A-Za-z]:/*) P="/$(printf %s "${P%%:*}" | tr A-Z a-z)${P#?:}";; esac
 B=~/.BLACK_IRIS_AGENTS/projects/$(printf '%s' "$P" | tr '/' '-'); M=$B/memory; mkdir -p "$M" "$B/tmp"
 ```
 
-This is the only place the slug is derived. Every other mode and the hook use
+This is the only place the slug is derived for a model. The hooks use
+`hooks/lib.sh` and the scripts `siq.slug`, the same rule. Every other mode uses
 this command, never a hand-typed path, so a `cd` earlier in the session cannot
 send a file to a store the hook does not read.
 
